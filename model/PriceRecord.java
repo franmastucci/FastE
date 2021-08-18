@@ -15,8 +15,8 @@ public class PriceRecord {
 	
 	public static PriceRecord generateRecord(Price aPrice) {
 		
-		LocalDate aFinisgDate = LocalDate.now();
-		return new PriceRecord(aPrice.getValue(), aPrice.getStartDate(), aFinisgDate);
+		LocalDate aFinishDate = LocalDate.now();
+		return new PriceRecord(aPrice.getValue(), aPrice.getStartDate(), aFinishDate);
 	}
  	
 }
