@@ -1,0 +1,13 @@
+/Customer.class
+/Delivery.class
+/Order.class
+/Price.class
+/PriceRecord.class
+/Product.class
+/Provider.class
+/User.class
+/OrderState.class
+/PendingState.class
+/PreparedState.class
+/ArrivedState.class
+/CancelState.class
