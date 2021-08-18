@@ -44,21 +44,21 @@ public class Order {
 
 	
 	public void getCancel(){
-		state.getCancel(this);
+		this.state.getCancel(this);
 	}
 	
 	public void getPrepare() {
-		state.getPrepare(this);
+		this.state.getPrepare(this);
 	}
 	
 	public void getArrive() {
-		state.getArrive(this);
+		this.state.getArrive(this);
 	}
 
 	//El modificador de visibilidad seria preferentemente como de paquete para que no se pueda setear un 
 	//estado que no corresponda (solo sea visible para la orden y sus estados)
 	public void setOrderState(OrderState newOrderState) {
-		state = newOrderState;
+		this.state = newOrderState;
 	}
 
 	public OrderState getCancelState() {

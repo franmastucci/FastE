@@ -35,8 +35,7 @@ public class Price {
 	public void updateValue(Float aNewValue) {
 		this.priceStory.add(PriceRecord.generateRecord(this));
 		this.value = aNewValue;
-		this.startDate = LocalDate.now();
-		
+		this.startDate = LocalDate.now();		
 	}
 
 }

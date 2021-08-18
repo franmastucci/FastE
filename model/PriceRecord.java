@@ -18,5 +18,17 @@ public class PriceRecord {
 		LocalDate aFinishDate = LocalDate.now();
 		return new PriceRecord(aPrice.getValue(), aPrice.getStartDate(), aFinishDate);
 	}
+
+	public Float getValue() {
+		return value;
+	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public LocalDate getFinishDate() {
+		return finishDate;
+	}
  	
 }

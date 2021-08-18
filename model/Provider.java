@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Provider {
-	private String name;
-	private Integer cuil;
-	private String adress;
+	private final String name;
+	private final Integer cuil;
+	private String adress; // se podria implimentar una clase "dirección" que contenga las coordenadas X e Y"
 	private Integer xCoordinate;
 	private Integer yCoordinate;
-	private final  List<Order> preparedOrders;
+	private final  List<Order> ordersToDispatch;
 	
 	
 	private Provider(String aName, Integer aCuil, String anAdress, Integer aXCoordinate, Integer aYCoordinate ) {
@@ -18,15 +18,31 @@ public class Provider {
 		adress = anAdress;
 		xCoordinate = aXCoordinate;
 		yCoordinate = aYCoordinate;
-		preparedOrders = new ArrayList<Order>();
+		ordersToDispatch = new ArrayList<Order>();
 	}
-	
-	public void prepareOrder(Order orderToBePrepared) {
-		
+
+	public String getName() {
+		return name;
 	}
-	
-	public void rejectOrder(Order orderToBeRejected) {
-		
+
+	public Integer getCuil() {
+		return cuil;
 	}
-	
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public Integer getxCoordinate() {
+		return xCoordinate;
+	}
+
+	public Integer getyCoordinate() {
+		return yCoordinate;
+	}
+
+	public List<Order> getOrdersToDispatch() {
+		return ordersToDispatch;
+	}
+
 }

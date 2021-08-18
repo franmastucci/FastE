@@ -13,6 +13,7 @@ public class Product {
 		price = aPrice;
 	}
 	
+	//Sigue la lógica de la implementacion del método "register" en los usuarios ("Customer"  y "Delivery")
 	public Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
 		Price aPrice = Price.initialPrice(aPriceValue);
 		return new Product(aName, aProvider, aWeight, aPrice);
