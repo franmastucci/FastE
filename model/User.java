@@ -9,8 +9,6 @@ public abstract class User {
 	protected String name;
 	protected String email;
 	protected LocalDate birthday;
-	
-	public abstract User register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday);
 
 	public String getUserName() {
 		return userName;

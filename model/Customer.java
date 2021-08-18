@@ -15,14 +15,12 @@ public class Customer extends User {
 		birthday = aBirthday;
 		activeOrders = new ArrayList<Order>();
 	}
+	
+	public static Customer register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+		return new Customer (anUserName, aPass, aName, anEmail, aBirthday);
+	}
 
 	public List<Order> getActiveOrders() {
 		return activeOrders;
-	}
-
-	@Override
-	public User register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-		
-		return new Customer (anUserName, aPass, aName, anEmail, aBirthday);
 	}
 }

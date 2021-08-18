@@ -17,17 +17,15 @@ public class Delivery extends User {
 		takenOrders = new ArrayList<Order>();
 	}
 	
+	public static Delivery register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+		return new Delivery(anUserName, aPass, aName, anEmail, aBirthday);
+	}
+	
 	public List<Order> getTakenOrders() {
 		return takenOrders;
 	}
 
 	public Integer getCapacity() {
 		return capacity;
-	}
-
-	@Override
-	public User register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-	
-		return new Delivery(anUserName, aPass, aName, anEmail, aBirthday);
 	}
 }
