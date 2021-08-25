@@ -4,7 +4,7 @@ public class Product {
 	private  final String name;
 	private  final Provider provider;
 	private  final Float weight;
-	private final Price price;
+	private  final Price price;
 	
 	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice) {
 		name = aName;
@@ -13,7 +13,7 @@ public class Product {
 		price = aPrice;
 	}
 	
-	//Sigue la lógica de la implementacion del método "register" en los usuarios ("Customer"  y "Delivery")
+	//Sigue la lï¿½gica de la implementacion del mï¿½todo "register" en los usuarios "Customer"  y "Delivery"
 	public Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
 		Price aPrice = Price.initialPrice(aPriceValue);
 		return new Product(aName, aProvider, aWeight, aPrice);

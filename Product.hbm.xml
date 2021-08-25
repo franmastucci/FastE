@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model">
+	<class name = "Product" table = "PRODUCT">
+		<id name = "name" column = "NAME">
+			<generator class = "native"/>
+		</id>
+		
+		<property name = "weight"/>
+		<property name = "price"/> <!-- definir como relacion -->
+		<property name = "provider"/> <!-- definir como relacion -->
+	</class>
+</hibernate-mapping>
