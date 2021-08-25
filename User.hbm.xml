@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping package="model">
+
+    <class name="User" table="USER" abstract="true">
+        <id name="userName" column="USER_NAME">
+            <generator class="native"/>
+        </id>
+        <property name="pass"/>
+        <property name="name"/>
+        <property name="email"/>
+        <property name="birthday"/>
+        
+        <union-subclass name="Customer" table="CUSTOMER">
+			<key column="USER_NAME"/>
+			<property name="activeOrders" column="ACTIVE_ORDERS"/>
+		</union-subclass>
+		
+		<union-subclass name="Delivery" table="DELIVERY">
+			<key column="USER_NAME"/>
+			<property name="capacity" not-null="true"/>
+			<property name="takenOrders" column="TAKEN_ORDERS"/>
+		</union-subclass>
+    </class>
+
+</hibernate-mapping>

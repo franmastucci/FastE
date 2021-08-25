@@ -29,5 +29,5 @@ public abstract class User {
 	public LocalDate getBirthDay() {
 		return birthday;
 	}
-	
+
 }
