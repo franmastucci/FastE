@@ -2,9 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
-public class PriceRecord {
-	private final Float value;
-	private final LocalDate startDate;
+public class PriceRecord extends Price{
+	
 	private final LocalDate finishDate;
 	
 	private PriceRecord(Float aValue, LocalDate aStartDate, LocalDate aFinishDate) {
@@ -19,14 +18,7 @@ public class PriceRecord {
 		return new PriceRecord(aPrice.getValue(), aPrice.getStartDate(), aFinishDate);
 	}
 
-	public Float getValue() {
-		return value;
-	}
-
-	public LocalDate getStartDate() {
-		return startDate;
-	}
-
+	@Override
 	public LocalDate getFinishDate() {
 		return finishDate;
 	}
