@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <hibernate-mapping package="model">
-	<class name = "Price" table = "PRICE">
-		<id name = "value">
-			<generator class = "native"/>
-		</id>
+	<class name = "Price" table = "PRICE" abstract="true">
+        <id name="value" column="VALUE">
+            <generator class="native"/>
+        </id>
+        <property name="startDate"/>
+        
+        <union-subclass name="CurrentPrice" table="CURRENT_PRICE">
+			<key column="VALUE"/>
+		</union-subclass>
 		
-		<property name = "startDate"/>
-		<property name = "priceStory" column = "PRICE_STORY"/>
-		
-	</class>
+		<union-subclass name="PriceRecord" table="PRICE_RECORD">
+			<key column="VALUE"/>
+			<property name="finishDate" not-null="true"/>
+		</union-subclass>
+    </class>
 </hibernate-mapping>
 

@@ -35,7 +35,6 @@
         <mapping resource="model/Provider.hbm.xml"/>
         <mapping resource="model/Product.hbm.xml"/>
         <mapping resource="model/Price.hbm.xml"/>
-        <mapping resource="model/PriceRecord.hbm.xml"/>
 
     </session-factory>
 
