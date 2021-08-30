@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import org.hibernate.Session;
 
 import model.*;
-import util.HibernateUtil;
+import persistence.HibernateUtil;
 
 public class FastE {
 
