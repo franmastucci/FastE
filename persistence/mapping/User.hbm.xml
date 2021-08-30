@@ -11,12 +11,12 @@
         <property name="name"/>
         <property name="email"/>
         <property name="birthday"/>
-        <property name="capacity"/>
         
         <subclass name="Customer" discriminator-value="Customer">
 		</subclass>
 		
 		<subclass name="Delivery" discriminator-value="Delivery">
+	        <property name="capacity"/>
    		</subclass>
     </class>
     
