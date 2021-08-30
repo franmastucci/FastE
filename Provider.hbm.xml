@@ -10,6 +10,6 @@
 		<property name = "adress"/>
 		<property name = "xCoordinate"/>
 		<property name = "yCoordinate"/>
-		<property name = "orderToDispatch" column = "ORDER_TO_DISPATCH"/>
+
 	</class>
 </hibernate-mapping>

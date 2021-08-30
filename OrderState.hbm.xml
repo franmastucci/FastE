@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model">
+
+    <class name="OrderState" table="ORDER_STATE" abstract="true">
+        <id name="name" column="state">
+            <generator class="native"/>
+        </id>
+        <discriminator type="string" column="state"/>
+        
+        <subclass name="ArrivedState" discriminator-value="Arrived">
+			<set name="order" inverse="true">
+				<key column="state"/>
+				<one-to-many class="Order"/>
+			</set>
+		</subclass>
+		
+		<subclass name="CancelState" discriminator-value="Cancel">
+			<set name="order" inverse="true">
+				<key column="state"/>
+				<one-to-many class="Order"/>
+			</set>
+		</subclass>
+		
+		<subclass name="PendingState" discriminator-value="Pending">
+			<set name="order" inverse="true">
+				<key column="state"/>
+				<one-to-many class="Order"/>
+			</set>
+		</subclass>
+		
+		<subclass name="PreparedState" discriminator-value="Prepared">
+			<set name="order" inverse="true">
+				<key column="state"/>
+				<one-to-many class="Order"/>
+			</set>
+		</subclass>
+		
+    </class>
+    
+</hibernate-mapping>

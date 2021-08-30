@@ -17,7 +17,7 @@ public class Product {
 	}
 	
 	//Sigue la l�gica de la implementacion del m�todo "register" en los usuarios "Customer"  y "Delivery"
-	public Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
+	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
 		Price aPrice = CurrentPrice.initialPrice(aPriceValue);
 		return new Product(aName, aProvider, aWeight, aPrice);
 	}

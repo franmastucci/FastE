@@ -7,7 +7,12 @@
 		</id>
 		
 		<property name = "weight"/>
-		<property name = "price"/> <!-- definir como relacion -->
-		<property name = "provider"/> <!-- definir como relacion -->
+		<many-to-one name = "price" unique="true" not-null="true"/> <!-- definir como relacion -->
+		<many-to-one name = "provider" unique="true" not-null="true"/> <!-- definir como relacion -->
+		<list name="priceStory">
+			<key column="value" not-null="true"/>
+			<list-index column="productIdx"/>
+			<one-to-many class="PriceRecord"/>
+		</list>
 	</class>
 </hibernate-mapping>

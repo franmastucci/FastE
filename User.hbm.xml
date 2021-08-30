@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <hibernate-mapping package="model">
+
     <class name="User" table="USER" abstract="true">
         <id name="userName" column="USER_NAME">
             <generator class="native"/>
         </id>
+        <discriminator column= "type" type="string"/>
         <property name="pass"/>
         <property name="name"/>
         <property name="email"/>
         <property name="birthday"/>
+        <property name="capacity"/>
         
-        <union-subclass name="Customer" table="CUSTOMER">
-			<key column="USER_NAME"/>
-			<property name="activeOrders" column="ACTIVE_ORDERS"/>
-		</union-subclass>
+        <subclass name="Customer" discriminator-value="Customer">
+		</subclass>
 		
-		<union-subclass name="Delivery" table="DELIVERY">
-			<key column="USER_NAME"/>
-			<property name="capacity" not-null="true"/>
-			<property name="takenOrders" column="TAKEN_ORDERS"/>
-		</union-subclass>
+		<subclass name="Delivery" discriminator-value="Delivery">
+   		</subclass>
     </class>
+    
+
+<!--     <class name="Order" table="ORDER">
+    	<id name="orderNumber" column="ORDER_NUMBER">
+    		<generator class="native"/>
+    	</id>
+    	<property name="quantity"/>
+    	<many-to-one name ="customer" column="customer_name" unique="true"/>
+    	<many-to-one name ="product" column="product_name" unique="true"/>
+    	<many-to-one name ="state" class="OrderState" unique="true"/>
+		Falta generar la asociacion con delivery para crear una tabla aparte
+    </class>
+ -->
 </hibernate-mapping>
