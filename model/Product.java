@@ -30,6 +30,17 @@ public class Product {
 		newProduct.setPriceStory(aPriceStory);
 		return newProduct;
 	}
+	
+	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Price aPrice)  {
+		Product newProduct = new Product();
+		List<PriceRecord> aPriceStory = new ArrayList<PriceRecord>();
+		newProduct.setName(aName);
+		newProduct.setProvider(aProvider);
+		newProduct.setWeight(aWeight);
+		newProduct.setPrice(aPrice);
+		newProduct.setPriceStory(aPriceStory);
+		return newProduct;
+	}
 
 	public String getName() {
 		return name;

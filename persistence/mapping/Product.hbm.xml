@@ -2,9 +2,7 @@
 
 <hibernate-mapping package="model">
 	<class name = "Product" table = "PRODUCT">
-		<id name = "name" column = "NAME">
-			<generator class = "native"/>
-		</id>
+		<id name = "name" column = "NAME"/>
 		
 		<property name = "weight"/>
 		<many-to-one name = "price" unique="true" not-null="true"/> <!-- definir como relacion -->

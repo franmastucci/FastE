@@ -3,6 +3,7 @@
 <hibernate-mapping package = "model">
 	
 	<class name = "Price" abstract="true">
+		<id name="value" column="VALUE"/>
 		<property name="startDate" not-null="true"/>
         
         <union-subclass name="CurrentPrice" table="CURRENT_PRICE">
