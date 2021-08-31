@@ -2,14 +2,12 @@
 
 <hibernate-mapping package = "model">
 	<class name = "Provider" table = "PROVIDER">
-		<id name = "cuil" column = "CUIL">
-			<generator class = "native"/>
-		</id>
+		<id name = "cuil" column = "CUIL"></id>
 		
-		<property name = "name"/>
-		<property name = "adress"/>
-		<property name = "xCoordinate"/>
-		<property name = "yCoordinate"/>
+		<property name = "name" not-null="true"/>
+		<property name = "adress" not-null="true"/>
+		<property name = "xCoordinate" not-null="true"/>
+		<property name = "yCoordinate" not-null="true"/>
 
 	</class>
 </hibernate-mapping>
