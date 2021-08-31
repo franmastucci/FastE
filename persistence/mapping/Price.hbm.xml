@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<hibernate-mapping package="model">
+<hibernate-mapping package = "model">
 	
 	<class name = "Price" abstract="true">
-        <id name="value" column="VALUE">
-            <generator class="native"/>
-        </id>
-        <property name="startDate"/>
+		<property name="startDate" not-null="true"/>
         
         <union-subclass name="CurrentPrice" table="CURRENT_PRICE">
-			<composite-id>
-				<key-property name="value" column="VALUE"/>
-				<key-many-to-one class="Product" column="product_name"/>
-    		</composite-id>
 		</union-subclass>
 		
 		<union-subclass name="PriceRecord" table="PRICE_RECORD">
-			<composite-id>
-				<key-property name="value" column="VALUE"/>
-				<key-many-to-one class="Product" column="product_name"/>
-    		</composite-id>
-			<property name="finishDate" not-null="true"/>
+			<property name="finishDate" not-null="true"/>									
 		</union-subclass>
 		
     </class>

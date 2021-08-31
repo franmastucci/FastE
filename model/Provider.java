@@ -8,25 +8,23 @@ public class Provider {
 	private Integer yCoordinate;
 	//private List<Order> ordersToDispatch;
 	
-	
-	public Provider(String aName, Integer aCuil, String anAdress, Integer aXCoordinate, Integer aYCoordinate ) {
-		setName(aName);
-		setCuil(aCuil);
-		setAdress(anAdress);
-		setxCoordinate(aXCoordinate);
-		setyCoordinate(aYCoordinate);
-		//ordersToDispatch = new ArrayList<Order>();
-	}
+	private Provider() {};
 	
 	public static Provider register(String aName, Integer aCuil, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
-		return new Provider(aName, aCuil, anAdress, aXCoordinate, aYCoordinate);
+        Provider newProvider = new Provider();
+        newProvider.setName(aName);
+        newProvider.setCuil(aCuil);
+        newProvider.setAdress(anAdress);
+        newProvider.setxCoordinate(aXCoordinate);
+        newProvider.setyCoordinate(aYCoordinate);
+        return newProvider;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	private void setName(String name) {
 		this.name = name;
 	}
 
@@ -34,7 +32,7 @@ public class Provider {
 		return cuil;
 	}
 
-	public void setCuil(Integer cuil) {
+	private void setCuil(Integer cuil) {
 		this.cuil = cuil;
 	}
 
@@ -42,7 +40,7 @@ public class Provider {
 		return adress;
 	}
 
-	public void setAdress(String adress) {
+	private void setAdress(String adress) {
 		this.adress = adress;
 	}
 
@@ -50,7 +48,7 @@ public class Provider {
 		return xCoordinate;
 	}
 
-	public void setxCoordinate(Integer xCoordinate) {
+	private void setxCoordinate(Integer xCoordinate) {
 		this.xCoordinate = xCoordinate;
 	}
 
@@ -58,7 +56,7 @@ public class Provider {
 		return yCoordinate;
 	}
 
-	public void setyCoordinate(Integer yCoordinate) {
+	private void setyCoordinate(Integer yCoordinate) {
 		this.yCoordinate = yCoordinate;
 	}
 
