@@ -3,14 +3,12 @@
 <hibernate-mapping package="model">
 
     <class name="User" table="USER" abstract="true">
-        <id name="userName" column="USER_NAME">
-            <generator class="native"/>
-        </id>
+        <id name="userName" column="USER_NAME"/>
         <discriminator column= "type" type="string"/>
-        <property name="pass"/>
-        <property name="name"/>
-        <property name="email"/>
-        <property name="birthday"/>
+        <property name="pass" not-null="true"/>
+        <property name="name" not-null="true"/>
+        <property name="email" not-null="true"/>
+        <property name="birthday" not-null="true"/>
         
         <subclass name="Customer" discriminator-value="Customer">
 		</subclass>
