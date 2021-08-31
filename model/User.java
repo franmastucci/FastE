@@ -14,7 +14,7 @@ public abstract class User {
 		return userName;
 	}
 
-	public void setUserName(String anUserName) {
+	protected void setUserName(String anUserName) {
 		this.userName = anUserName;
 	}
 	
@@ -22,7 +22,7 @@ public abstract class User {
 		return pass;
 	}
 	
-	public void setPass(String aPass) {
+	protected void setPass(String aPass) {
 		this.pass = aPass;
 	}
 
@@ -30,7 +30,7 @@ public abstract class User {
 		return name;
 	}
 	
-	public void setName(String aName) {
+	protected void setName(String aName) {
 		this.name = aName;
 	}
 
@@ -38,7 +38,7 @@ public abstract class User {
 		return email;
 	}
 
-	public void setEmail(String anEMail) {
+	protected void setEmail(String anEMail) {
 		this.email = anEMail;
 	}
 	
@@ -46,9 +46,8 @@ public abstract class User {
 		return birthday;
 	}
 
-	public void setBirthday(LocalDate aDate) {
+	protected void setBirthday(LocalDate aDate) {
 		this.birthday = aDate;
 	}
 
-	
 }
