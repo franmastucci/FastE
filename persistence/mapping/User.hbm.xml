@@ -3,7 +3,7 @@
 <hibernate-mapping package="model">
 
     <class name="User" table="USER" abstract="true">
-        <id name="userName" column="USER_NAME"></id>
+        <id name="userName" column="USER_NAME"/>
         <discriminator column= "type" type="string"/>
         <property name="pass" not-null="true"/>
         <property name="name" not-null="true"/>
@@ -14,7 +14,7 @@
 		</subclass>
 		
 		<subclass name="Delivery" discriminator-value="Delivery">
-	        <property name="capacity" not-null="true"/>
+	        <property name="capacity"/>
    		</subclass>
     </class>
     

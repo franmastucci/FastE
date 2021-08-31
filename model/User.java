@@ -42,7 +42,7 @@ public abstract class User {
 		this.email = anEMail;
 	}
 	
-	public LocalDate getBirthDay() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
