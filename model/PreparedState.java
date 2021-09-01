@@ -14,7 +14,7 @@ public class PreparedState extends OrderState {
 
 	@Override
 	public void getArrive(Order anOrder) {
-		anOrder.setOrderState(anOrder.getArrivedState());
+		anOrder.setState(anOrder.getArrivedState());
 	}
 
 	@Override

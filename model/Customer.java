@@ -31,8 +31,8 @@ public class Customer extends User {
 		this.activeOrders = anOrderList;
 	}
 
-	public void makeAnOrder(Integer orderNumber, Integer aQuantity, Product aProduct) {
-		Order.newOrder(orderNumber, aQuantity, this, aProduct);
+	public void makeAnOrder(Integer aQuantity, Product aProduct) {
+		Order.newOrder(aQuantity, this, aProduct);
 	};
 	
 }

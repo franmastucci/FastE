@@ -1,10 +1,10 @@
 package model;
 
 public class Order {
-	private final Integer orderNumber;
-	private final Integer quantity;
-	private final User customer;
-	private final Product product;
+	private long orderNumber;
+	private Integer quantity;
+	private User customer;
+	private Product product;
 	private OrderState state;
 	
 	//Se instancian de manera provisoria los estados dentro de la orden hasta contar con una clase 
@@ -14,35 +14,57 @@ public class Order {
 	OrderState arrivedState = new ArrivedState();
 	OrderState cancelState = new CancelState();
 
-	private Order(Integer anOrderNumber, Integer aQuantity, User aCustomer, Product aProduct ) {
-		orderNumber = anOrderNumber;
-		quantity = aQuantity;
-		customer = aCustomer;
-		product = aProduct;
-		state = pendingState;
+	private Order() {}
+	
+	public static Order newOrder(Integer aQuantity, User aCustomer, Product aProduct) {
+		Order newOrder = new Order();
+		newOrder.setQuantity(aQuantity);
+		newOrder.setCustomer(aCustomer);
+		newOrder.setProduct(aProduct);
+		newOrder.setState(newOrder.getPendingState());
+		return newOrder;
 	}
 	
-	public static Order newOrder(Integer anOrderNumber, Integer aQuantity, User aCustomer, Product aProduct) {
-		return new Order(anOrderNumber, aQuantity, aCustomer, aProduct);
-	}
-	
-	public int getOrderNumber() {
+	public long getOrderNumber() {
 		return orderNumber;
+	}
+
+	private void setOrderNumber(long orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
 	public Integer getQuantity() {
 		return quantity;
 	}
+	
+	private void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 	public User getCustomer() {
 		return customer;
+	}
+	
+	private void setCustomer(User customer) {
+		this.customer = customer;
 	}
 
 	public Product getProduct() {
 		return product;
 	}
-
 	
+	private void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public OrderState getState() {
+		return state;
+	}
+
+	void setState(OrderState state) {
+		this.state = state;
+	}
+
 	public void getCancel(){
 		this.state.getCancel(this);
 	}
@@ -55,12 +77,10 @@ public class Order {
 		this.state.getArrive(this);
 	}
 
-	//El modificador de visibilidad seria preferentemente como de paquete para que no se pueda setear un 
-	//estado que no corresponda (solo sea visible para la orden y sus estados)
-	public void setOrderState(OrderState newOrderState) {
-		this.state = newOrderState;
+	public OrderState getPendingState() {
+		return pendingState;
 	}
-
+	
 	public OrderState getCancelState() {
 		return cancelState;
 	}
