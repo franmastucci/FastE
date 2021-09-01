@@ -13,11 +13,12 @@ public class CurrentPrice extends Price{
 	
 	private CurrentPrice() {}
 	
-	public static Price settlePrice(Float aPriceValue) {
+	public static Price settlePrice(Float aPriceValue, Product aProduct) {
 		CurrentPrice newCurrentPrice = new CurrentPrice();
 		LocalDate aStartDate = LocalDate.now();
-		newCurrentPrice.setStartDate(aStartDate);
 		newCurrentPrice.setValue(aPriceValue);
+		newCurrentPrice.setProduct(aProduct);
+		newCurrentPrice.setStartDate(aStartDate);
 		return  newCurrentPrice;
 	}
 	

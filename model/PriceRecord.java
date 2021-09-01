@@ -14,10 +14,11 @@ public class PriceRecord extends Price{
 	
 	private PriceRecord() {}
 	
-	public static PriceRecord generateRecord(Price aPrice) {
+	public static PriceRecord generateRecord(Price aPrice, Product aProduct) {
 		PriceRecord newPriceRecord = new PriceRecord();
 		LocalDate aFinishDate = LocalDate.now();
 		newPriceRecord.setValue(aPrice.getValue());
+		newPriceRecord.setProduct(aProduct);
 		newPriceRecord.setStartDate(aPrice.getStartDate());
 		newPriceRecord.setFinishDate(aFinishDate);
 		return newPriceRecord;

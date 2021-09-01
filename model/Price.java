@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public abstract class Price {
 	
 	Float value;
+	Product product;
 	LocalDate startDate;
 
 	public Float getValue() {
@@ -13,6 +14,14 @@ public abstract class Price {
 	
 	protected void setValue(Float aValue) {
 		this.value = aValue;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	protected void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public LocalDate getStartDate() {

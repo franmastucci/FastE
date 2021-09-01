@@ -22,18 +22,7 @@ public class Product {
 	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
 		Product newProduct = new Product();
 		List<PriceRecord> aPriceStory = new ArrayList<PriceRecord>();
-		Price aPrice = CurrentPrice.settlePrice(aPriceValue);
-		newProduct.setName(aName);
-		newProduct.setProvider(aProvider);
-		newProduct.setWeight(aWeight);
-		newProduct.setPrice(aPrice);
-		newProduct.setPriceStory(aPriceStory);
-		return newProduct;
-	}
-	
-	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Price aPrice)  {
-		Product newProduct = new Product();
-		List<PriceRecord> aPriceStory = new ArrayList<PriceRecord>();
+		Price aPrice = CurrentPrice.settlePrice(aPriceValue, newProduct);
 		newProduct.setName(aName);
 		newProduct.setProvider(aProvider);
 		newProduct.setWeight(aWeight);
@@ -83,8 +72,8 @@ public class Product {
 	}
 	
 	public void updatePrice(Float aNewPriceValue) {
-		PriceRecord priceToRecord = PriceRecord.generateRecord(this.price);
+		PriceRecord priceToRecord = PriceRecord.generateRecord(this.price, this);
 		priceStory.add(priceToRecord);
-		this.price = CurrentPrice.settlePrice(aNewPriceValue);
+		this.price = CurrentPrice.settlePrice(aNewPriceValue, this);
 	}
 }
