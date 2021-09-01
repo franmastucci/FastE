@@ -9,18 +9,28 @@ public class Customer extends User {
 	
 	private Customer() {}
 	
-	//el m�todo de clase "register" est� pensado para realizar las validaciones antes de construir una instancia de
-	// "Customer" y para evitar que el contructor sea de acceso p�blico
+	//Constructor creado para cumplir con requerimientos de Hibernate
+	private Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, List<Order> anActiveOrdersList) {
+		userName = anUserName;
+		pass = aPass;
+		name = aName;
+		email = anEmail;
+		birthday = aBirthday;
+		activeOrders = anActiveOrdersList;
+	}
+
+	private Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+		userName = anUserName;
+		pass = aPass;
+		name = aName;
+		email = anEmail;
+		birthday = aBirthday;
+		activeOrders = new ArrayList<Order>();
+	}
+
+	//Metodo de acceso publico para crear instancias de Customer
 	public static Customer register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-		Customer newCustomer = new Customer();
-		List<Order> anOrderList = new ArrayList<Order>();
-		newCustomer.setUserName(anUserName);
-		newCustomer.setPass(aPass);
-		newCustomer.setName(aName);
-		newCustomer.setEmail(anEmail);
-		newCustomer.setBirthday(aBirthday);
-		newCustomer.setActiveOrders(anOrderList);
-		return newCustomer;
+		return new Customer(anUserName, aPass, aName, anEmail, aBirthday);
 	}
 
 	public List<Order> getActiveOrders() {
@@ -32,7 +42,7 @@ public class Customer extends User {
 	}
 
 	public void makeAnOrder(Integer aQuantity, Product aProduct) {
-		Order.newOrder(aQuantity, this, aProduct);
+		Order.newOrder(this, aProduct, aQuantity);
 	};
 	
 }

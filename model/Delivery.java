@@ -9,17 +9,19 @@ public class Delivery extends User {
 	
 	private Delivery() {}
 	
-	//el m�todo de clase "register" est� pensado para realizar las validaciones antes de construir una instancia de
-	// "Delivery" y para evitar que el contructor sea de acceso p�blico
+	//Constructor creado para cumplir con requerimientos de Hibernate
+	private Delivery(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity) {
+		userName = anUserName;
+		pass = aPass;
+		name = aName;
+		email = anEmail;
+		birthday = aBirthday;
+		capacity = aCapacity;
+	}
+
+	//Metodo de acceso publico para crear instancias de Delivery
 	public static Delivery register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity) {
-		Delivery newDelivery = new Delivery();
-		newDelivery.setUserName(anUserName);
-		newDelivery.setPass(aPass);
-		newDelivery.setName(aName);
-		newDelivery.setEmail(anEmail);
-		newDelivery.setBirthday(aBirthday);
-		newDelivery.setCapacity(aCapacity);
-		return newDelivery;
+		return new Delivery(anUserName, aPass, aName, anEmail, aBirthday, aCapacity);
 	}
 	
 	public Float getCapacity() {

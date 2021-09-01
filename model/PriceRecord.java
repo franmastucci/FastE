@@ -6,22 +6,20 @@ public class PriceRecord extends Price{
 	
 	private LocalDate finishDate;
 	
-//	private PriceRecord(Float aValue, LocalDate aStartDate, LocalDate aFinishDate) {
-//		value = aValue;
-//		startDate = aStartDate;
-//		finishDate =  aFinishDate;
-//	}
 	
 	private PriceRecord() {}
 	
-	public static PriceRecord generateRecord(Price aPrice, Product aProduct) {
-		PriceRecord newPriceRecord = new PriceRecord();
+	private PriceRecord(Float aValue, Product aProduct, LocalDate aStartDate, LocalDate aFinishDate) {
+		value = aValue;
+		product = aProduct;
+		startDate = aStartDate;
+		finishDate =  aFinishDate;
+	}
+
+	//Metodo de acceso publico para crear instancias de PriceRecord
+	public static PriceRecord generateRecord(Price aPrice) {
 		LocalDate aFinishDate = LocalDate.now();
-		newPriceRecord.setValue(aPrice.getValue());
-		newPriceRecord.setProduct(aProduct);
-		newPriceRecord.setStartDate(aPrice.getStartDate());
-		newPriceRecord.setFinishDate(aFinishDate);
-		return newPriceRecord;
+		return new PriceRecord(aPrice.getValue(), aPrice.getProduct(), aPrice.getStartDate(), aFinishDate);
 	}
 
 	@Override

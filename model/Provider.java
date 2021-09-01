@@ -1,23 +1,25 @@
 package model;
 
 public class Provider {
-	private String name;
 	private Integer cuil;
+	private String name;
 	private String adress; // se podria implimentar una clase "direcci�n" que contenga las coordenadas X e Y"
 	private Integer xCoordinate;
 	private Integer yCoordinate;
-	//private List<Order> ordersToDispatch;
 	
 	private Provider() {};
 	
-	public static Provider register(String aName, Integer aCuil, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
-        Provider newProvider = new Provider();
-        newProvider.setName(aName);
-        newProvider.setCuil(aCuil);
-        newProvider.setAdress(anAdress);
-        newProvider.setxCoordinate(aXCoordinate);
-        newProvider.setyCoordinate(aYCoordinate);
-        return newProvider;
+	private Provider(Integer aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
+		cuil = aCuil;
+		name = aName;
+		adress = anAdress;
+		xCoordinate = aXCoordinate;
+		yCoordinate = aYCoordinate;
+	}
+
+	//Metodo de acceso publico para crear instancias de Provider
+	public static Provider register(Integer aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
+        return new Provider(aCuil, aName, anAdress, aXCoordinate, aYCoordinate);
 	}
 
 	public String getName() {

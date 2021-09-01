@@ -10,19 +10,28 @@ public class Product {
 	
 	private Product() {}
 	
-	//Sigue la l�gica de la implementacion del m�todo "register" en los usuarios "Customer"  y "Delivery"
-	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
-		Product newProduct = new Product();
-		List<PriceRecord> aPriceStory = new ArrayList<PriceRecord>();
-		Price aPrice = CurrentPrice.settlePrice(aPriceValue, newProduct);
-		newProduct.setName(aName);
-		newProduct.setProvider(aProvider);
-		newProduct.setWeight(aWeight);
-		newProduct.setPrice(aPrice);
-		newProduct.setPriceStory(aPriceStory);
-		return newProduct;
+	//Constructor creado para cumplir con requerimientos de Hibernate
+	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
+		name = aName;
+		provider = aProvider;
+		weight = aWeight;
+		price = aPrice;
+		priceStory = aPriceStory;
 	}
-	
+
+	private Product(String aName, Provider aProvider, Float aWeight, Float aPriceValue) {
+		name = aName;
+		provider = aProvider;
+		weight = aWeight;
+		price = CurrentPrice.settlePrice(aPriceValue, this);
+		priceStory = new ArrayList<PriceRecord>();
+	}
+
+	//Metodo de acceso publico para crear instancias de Product
+	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
+		return new Product(aName, aProvider, aWeight, aPriceValue);
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -64,8 +73,9 @@ public class Product {
 	}
 	
 	public void updatePrice(Float aNewPriceValue) {
-		PriceRecord priceToRecord = PriceRecord.generateRecord(this.price, this);
-		priceStory.add(priceToRecord);
-		this.price = CurrentPrice.settlePrice(aNewPriceValue, this);
+		PriceRecord priceToRecord = PriceRecord.generateRecord(this.getPrice());
+		Price newPrice = CurrentPrice.settlePrice(aNewPriceValue, this);
+		this.getPriceStory().add(priceToRecord);
+		this.setPrice(newPrice);
 	}
 }
