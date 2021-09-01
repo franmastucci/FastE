@@ -4,9 +4,18 @@ import java.time.LocalDate;
 
 public abstract class Price {
 	
+	long id;
 	Float value;
 	Product product;
 	LocalDate startDate;
+
+	public long getId() {
+		return id;
+	}
+
+	private void setId(long id) {
+		this.id = id;
+	}
 
 	public Float getValue() {
 		return value;

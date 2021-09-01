@@ -3,14 +3,20 @@
 <hibernate-mapping package = "model">
 	
 	<class name = "Price" abstract="true">
-		<id name="value" column="VALUE"/>
+		<id name="id">
+			<generator class="increment"/>
+		</id>
+		
+		<property name="value" not-null="true"/>
 		<property name="startDate" not-null="true"/>
         
         <union-subclass name="CurrentPrice" table="CURRENT_PRICE">
+		<many-to-one name = "product" unique="true" foreign-key="PRODUCT_NAME" cascade="save-update"/> 
 		</union-subclass>
 		
 		<union-subclass name="PriceRecord" table="PRICE_RECORD">
 			<property name="finishDate" not-null="true"/>									
+			<many-to-one name = "product" foreign-key="PRODUCT_NAME" cascade="save-update"/> 
 		</union-subclass>
 		
     </class>

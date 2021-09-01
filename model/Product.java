@@ -8,14 +8,6 @@ public class Product {
 	private Price price;
 	private List<PriceRecord> priceStory;
 	
-	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice) {
-		name = aName;
-		provider = aProvider;
-		weight = aWeight;
-		price = aPrice;
-		priceStory = new ArrayList<PriceRecord>();
-	}
-	
 	private Product() {}
 	
 	//Sigue la l�gica de la implementacion del m�todo "register" en los usuarios "Customer"  y "Delivery"
@@ -30,7 +22,7 @@ public class Product {
 		newProduct.setPriceStory(aPriceStory);
 		return newProduct;
 	}
-
+	
 	public String getName() {
 		return name;
 	}

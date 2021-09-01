@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class CurrentPrice extends Price{
 
-	private final String IS_CURRENT_PRICE = "El precio es el actual por lo que aun no tiene fecha de finalizacion";
+	private String IS_CURRENT_PRICE = "El precio es el actual por lo que aun no tiene fecha de finalizacion";
 	
 //	private CurrentPrice(Float aValue, LocalDate aStartDate) {
 //		value = aValue;
