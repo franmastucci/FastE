@@ -31,10 +31,10 @@
     	
     	<many-to-one name ="customer" column="customer_id"/>
     	<many-to-one name ="product" column="product_name"/>
+    	<many-to-one name ="state" class="OrderState"/>
     	
     </class>
 <!--
-    	<many-to-one name ="state" class="OrderState" unique="true"/>
 		Falta generar la asociacion con delivery para crear una tabla aparte
  -->
 </hibernate-mapping>

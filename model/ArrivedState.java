@@ -4,7 +4,7 @@ public class ArrivedState extends OrderState {
 
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public ArrivedState() {
-		name = "entregado";
+		name = "Entregado";
 	}
 	
 	@Override
