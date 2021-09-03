@@ -10,7 +10,7 @@
 		<list name="priceStory" inverse="true" cascade="all">
 			<key column="value" not-null="true"/>
 			<list-index column="PRODUCT_NAME"/>
-			<one-to-many class="PriceRecord"/>
+			<one-to-many class="model.price.PriceRecord"/>
 		</list>
 <!-- 		
  -->	
