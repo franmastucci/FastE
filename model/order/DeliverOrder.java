@@ -1,4 +1,6 @@
-package model;
+package model.order;
+
+import model.user.User;
 
 public class DeliverOrder {
 	private long id;

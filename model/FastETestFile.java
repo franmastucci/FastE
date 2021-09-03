@@ -1,6 +1,13 @@
+package model;
 import org.hibernate.Session;
 
-import model.*;
+import model.order.DeliverOrder;
+import model.order.Order;
+import model.provider.Product;
+import model.provider.Provider;
+import model.user.Customer;
+import model.user.Delivery;
+
 import java.time.LocalDate;
 import persistence.HibernateUtil;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<hibernate-mapping package="model">
+<hibernate-mapping package="model.order">
 
     <class name="OrderState" table="ORDER_STATE" abstract="true" >
         <id name="name"/>

@@ -1,4 +1,7 @@
-package model;
+package model.order;
+
+import model.provider.Product;
+import model.user.User;
 
 public class Order {
 	private long orderNumber;
@@ -34,6 +37,10 @@ public class Order {
 	public static Order newOrder(User aCustomer, Product aProduct, Integer aQuantity) {
 		return new Order(aCustomer, aProduct, aQuantity);
 	}
+	
+	public Float getTotalCost() {
+        return this.getProduct().getPrice().getValue() * this.getQuantity();
+    }
 	
 	public long getOrderNumber() {
 		return orderNumber;
@@ -101,10 +108,6 @@ public class Order {
 
 	public OrderState getArrivedState() {
 		return arrivedState;
-	}
-
-	public Float getTotalCost() {
-		return this.getProduct().getPrice().getValue() * this.getQuantity();
 	}
 	
 }

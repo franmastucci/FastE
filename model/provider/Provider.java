@@ -1,4 +1,4 @@
-package model;
+package model.provider;
 
 public class Provider {
 	private Integer cuil;

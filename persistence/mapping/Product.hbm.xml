@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<hibernate-mapping package="model">
+<hibernate-mapping package="model.provider">
 	<class name = "Product" table = "PRODUCT">
 		<id name = "name" column = "NAME"/>
 		

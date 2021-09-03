@@ -1,4 +1,4 @@
-package model;
+package model.order;
 
 public class PendingState extends OrderState {
 	

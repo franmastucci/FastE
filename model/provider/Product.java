@@ -1,5 +1,9 @@
-package model;
+package model.provider;
 import java.util.*;
+
+import model.price.CurrentPrice;
+import model.price.Price;
+import model.price.PriceRecord;
 
 public class Product {
 	private String name;

@@ -1,6 +1,8 @@
-package model;
+package model.price;
 
 import java.time.LocalDate;
+
+import model.provider.Product;
 
 public abstract class Price {
 	

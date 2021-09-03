@@ -1,6 +1,8 @@
-package model;
+package model.price;
 
 import java.time.LocalDate;
+
+import model.provider.Product;
 
 public class PriceRecord extends Price{
 	

@@ -36,6 +36,8 @@
         <mapping resource="persistence/mapping/Product.hbm.xml"/>
         <mapping resource="persistence/mapping/Price.hbm.xml"/>
         <mapping resource="persistence/mapping/OrderState.hbm.xml"/>
+        <mapping resource="persistence/mapping/Order.hbm.xml"/>
+        
 <!--         
  -->        
     </session-factory>

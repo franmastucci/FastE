@@ -1,10 +1,10 @@
-package model;
+package model.order;
 
-public class ArrivedState extends OrderState {
-
+public class CancelState extends OrderState {
+	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
-	public ArrivedState() {
-		name = "Entregado";
+	public CancelState() {
+		name = "Cancelado";
 	}
 	
 	@Override
@@ -21,5 +21,4 @@ public class ArrivedState extends OrderState {
 	public void getCancel(Order anOrder) {
 		throw new RuntimeException(CANT_BE_CANCEL);
 	}
-
 }

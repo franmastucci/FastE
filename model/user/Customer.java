@@ -1,7 +1,10 @@
-package model;
+package model.user;
 
 import java.time.LocalDate;
 import java.util.*;
+
+import model.order.Order;
+import model.provider.Product;
 
 public class Customer extends User {
 	

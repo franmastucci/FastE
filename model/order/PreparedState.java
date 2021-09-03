@@ -1,12 +1,12 @@
-package model;
+package model.order;
 
-public class CancelState extends OrderState {
+public class PreparedState extends OrderState {
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
-	public CancelState() {
-		name = "Cancelado";
+	public PreparedState() {
+		name = "Preparado";
 	}
-	
+
 	@Override
 	public void getPrepare(Order anOrder) {
 		throw new RuntimeException(CANT_BE_PREPARED);
@@ -14,7 +14,7 @@ public class CancelState extends OrderState {
 
 	@Override
 	public void getArrive(Order anOrder) {
-		throw new RuntimeException(CANT_BE_ARRIVED);
+		anOrder.setState(anOrder.getArrivedState());
 	}
 
 	@Override
