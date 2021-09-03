@@ -1,10 +1,10 @@
-package model;
+package model.order;
 
 public class CancelState extends OrderState {
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public CancelState() {
-		name = "cancelado";
+		name = "Cancelado";
 	}
 	
 	@Override

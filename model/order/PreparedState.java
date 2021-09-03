@@ -1,25 +1,24 @@
-package model;
+package model.order;
 
-public class PendingState extends OrderState {
+public class PreparedState extends OrderState {
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
-	public PendingState() {
-		name = "pendiente";
+	public PreparedState() {
+		name = "Preparado";
 	}
-	
+
 	@Override
 	public void getPrepare(Order anOrder) {
-		anOrder.setOrderState(anOrder.getPreparedState());
+		throw new RuntimeException(CANT_BE_PREPARED);
 	}
 
 	@Override
 	public void getArrive(Order anOrder) {
-		throw new RuntimeException(CANT_BE_ARRIVED);
+		anOrder.setState(anOrder.getArrivedState());
 	}
 
 	@Override
 	public void getCancel(Order anOrder) {
-		anOrder.setOrderState(anOrder.getCancelState());
+		throw new RuntimeException(CANT_BE_CANCEL);
 	}
-
 }

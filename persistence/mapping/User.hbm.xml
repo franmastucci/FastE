@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model.user">
+
+    <class name="User" table="USER" abstract="true">
+        <id name="userName" column="USER_NAME"/>
+        <discriminator column= "type" type="string"/>
+        
+        <property name="pass" not-null="true"/>
+        <property name="name" not-null="true"/>
+        <property name="email" not-null="true"/>
+        <property name="birthday" not-null="true"/>
+        
+        <subclass name="Customer" discriminator-value="Customer">
+		</subclass>
+		
+		<subclass name="Delivery" discriminator-value="Delivery">
+	        <property name="capacity"/>
+   		</subclass>
+   		
+    </class>
+
+</hibernate-mapping>

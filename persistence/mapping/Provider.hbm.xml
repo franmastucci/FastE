@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package = "model.provider">
+	<class name = "Provider" table = "PROVIDER">
+		<id name = "cuil" column = "CUIL"></id>
+		
+		<property name = "name" not-null="true"/>
+		<property name = "adress" not-null="true"/>
+		<property name = "xCoordinate" not-null="true"/>
+		<property name = "yCoordinate" not-null="true"/>
+
+	</class>
+</hibernate-mapping>
