@@ -12,3 +12,5 @@
 /ArrivedState.class
 /CancelState.class
 /CurrentPrice.class
+/OrderDeliver.class
+/DeliverOrder.class

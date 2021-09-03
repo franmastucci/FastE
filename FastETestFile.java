@@ -4,10 +4,12 @@ import model.*;
 import java.time.LocalDate;
 import persistence.HibernateUtil;
 
-public class FastE {
+//Este archivo tiene como finalidad servir de ingreso a la aplicacion para ver los efectos generados en la base de datos
+
+public class FastETestFile {
 
 	public static void main(String[] args) {
-        FastE faste = new FastE();
+        FastETestFile faste = new FastETestFile();
 
         faste.mappingTest();
         
@@ -30,7 +32,9 @@ public class FastE {
         Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
         Order cokeOrder = pepe.makeAnOrder(coca, 1);
         Order cindorOrder = pepe.makeAnOrder(cindor, 10);
-
+        DeliverOrder order = DeliverOrder.doneOrderDeliver(cindorOrder, jose);  
+        DeliverOrder otherOrder = DeliverOrder.doneOrderDeliver(cokeOrder, jose);
+        
         //Persist objects
         session.save(pepe);
         session.save(jose);
@@ -47,8 +51,14 @@ public class FastE {
         session.save(cokeOrder);
         session.save(cindorOrder);
         
+        session.save(order);
+        session.save(otherOrder);
+        
         Order dato = session.load(Order.class, Integer.toUnsignedLong(1));
-        System.out.println(dato.getState().getName());
+        System.out.println("El estado de la orden " + dato.getOrderNumber() + " del cliente " 
+        + dato.getCustomer().getUserName() + " de " + dato.getProduct().getName() + " por la cantidad de "
+        		+ dato.getQuantity() + " es " + dato.getState().getName() + " y suma un total a pagar de "
+        		+ dato.getTotalCost());
         
         session.getTransaction().commit();
     }
