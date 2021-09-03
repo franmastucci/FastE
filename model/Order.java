@@ -102,5 +102,9 @@ public class Order {
 	public OrderState getArrivedState() {
 		return arrivedState;
 	}
+
+	public Float getTotalCost() {
+		return this.getProduct().getPrice().getValue() * this.getQuantity();
+	}
 	
 }

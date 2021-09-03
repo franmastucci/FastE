@@ -20,7 +20,6 @@
    		
     </class>
     
-
 	<class name="Order" table="CUSTOMER_ORDER">
     	<id name="orderNumber" type="long">
             <column name="orderNumber" sql-type="BIGINT" not-null="true"/>
@@ -29,12 +28,20 @@
 
     	<property name="quantity"/>
     	
-    	<many-to-one name ="customer" column="customer_id"/>
-    	<many-to-one name ="product" column="product_name"/>
+    	<many-to-one name ="customer" column="customer_user_name" foreign-key="fk_customer_user_name"/>
+    	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name"/>
     	<many-to-one name ="state" class="OrderState"/>
     	
     </class>
-<!--
-		Falta generar la asociacion con delivery para crear una tabla aparte
- -->
+    
+    <class name="DeliverOrder" table="DELIVER">
+    	<id name="id" type="long">
+    		<column name="id" sql-type="BIGINT" not-null="true"/>
+            <generator class="increment"/>
+    	</id>
+    	
+    	<many-to-one name="order" column="order_id" foreign-key="fk_order_id" cascade="save-update"/>
+    	<many-to-one name="delivery" column="delivery_user_name" foreign-key="fk_delivery_name" cascade="save-update"/>
+    </class>
+
 </hibernate-mapping>
