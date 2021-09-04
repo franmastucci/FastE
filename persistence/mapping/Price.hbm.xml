@@ -11,7 +11,7 @@
 		<property name="startDate" not-null="true"/>
         
         <union-subclass name="CurrentPrice" table="PRICE_LIST">
-		<many-to-one name = "product" not-null="true" unique="true" foreign-key="PRODUCT_NAME" cascade="save-update"/> 
+		<many-to-one name = "product" unique="true" foreign-key="PRODUCT_NAME" cascade="save-update"/> 
 		</union-subclass>
 		
 		<union-subclass name="PriceRecord" table="PRICE_STORY">
