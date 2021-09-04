@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model.provider">
+	<class name = "Address" table = "ADDRESS">
+        <id name="id">
+			<generator class="increment"/>
+		</id>
+		<property name = "streetName" column = "STREET"/>
+        <property name = "number" column = "NUMBER"/>        
+        <property name = "xCoordinate"/>
+        <property name = "yCoordinate"/>
+    </class>
+</hibernate-mapping>

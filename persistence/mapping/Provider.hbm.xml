@@ -2,12 +2,9 @@
 
 <hibernate-mapping package = "model.provider">
 	<class name = "Provider" table = "PROVIDER">
-		<id name = "cuil" column = "CUIL"></id>
+		<id name = "cuil" column = "CUIL"></id>	
 		
-		<property name = "name" not-null="true"/>
-		<property name = "adress" not-null="true"/>
-		<property name = "xCoordinate" not-null="true"/>
-		<property name = "yCoordinate" not-null="true"/>
-
+        <property name = "name" not-null="true"/>
+        <many-to-one name = "address"  unique="true" not-null="true" foreign-key="ADDRESS_ID" cascade="save-update"/> 
 	</class>
 </hibernate-mapping>

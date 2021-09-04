@@ -3,23 +3,19 @@ package model.provider;
 public class Provider {
 	private Integer cuil;
 	private String name;
-	private String adress; // se podria implimentar una clase "direcci�n" que contenga las coordenadas X e Y"
-	private Integer xCoordinate;
-	private Integer yCoordinate;
+	private Address address;
 	
 	private Provider() {};
 	
-	private Provider(Integer aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
+	private Provider(Integer aCuil, String aName, Address anAddress) {
 		cuil = aCuil;
 		name = aName;
-		adress = anAdress;
-		xCoordinate = aXCoordinate;
-		yCoordinate = aYCoordinate;
+		address = anAddress;
 	}
 
 	//Metodo de acceso publico para crear instancias de Provider
-	public static Provider register(Integer aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
-        return new Provider(aCuil, aName, anAdress, aXCoordinate, aYCoordinate);
+	public static Provider register(Integer aCuil, String aName, Address anAddress) {
+        return new Provider(aCuil, aName, anAddress);
 	}
 
 	public String getName() {
@@ -38,28 +34,11 @@ public class Provider {
 		this.cuil = cuil;
 	}
 
-	public String getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	private void setAdress(String adress) {
-		this.adress = adress;
+	private void setAddress(Address address) {
+		this.address = address;
 	}
-
-	public Integer getxCoordinate() {
-		return xCoordinate;
-	}
-
-	private void setxCoordinate(Integer xCoordinate) {
-		this.xCoordinate = xCoordinate;
-	}
-
-	public Integer getyCoordinate() {
-		return yCoordinate;
-	}
-
-	private void setyCoordinate(Integer yCoordinate) {
-		this.yCoordinate = yCoordinate;
-	}
-
 }

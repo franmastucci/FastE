@@ -3,6 +3,7 @@ import org.hibernate.Session;
 
 import model.order.DeliverOrder;
 import model.order.Order;
+import model.provider.Address;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -34,7 +35,8 @@ public class FastETestFile {
         //Instantiate persistent objects 
         Customer pepe = Customer.register("pepe", "contraseña", "Pepe", "pepe@mail.com", LocalDate.now());
         Delivery jose = Delivery.register("josepe", "algo", "Jose", "jose@mail.com", LocalDate.now(), 10f);
-        Provider cocaCola = Provider.register(3030123, "Coca-Cola", "calle falsa 123", 0, 10);
+        Address rivadavia = Address.registerAddress(1, "Rivadavia", "1570 piso '10' depto 'b' ", 20, 10);
+        Provider cocaCola = Provider.register(3030123, "Coca-Cola", rivadavia);
         Product coca = Product.publishProduct("Coca", cocaCola, 1.0f, 15.0f);
         Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
         Order cokeOrder = pepe.makeAnOrder(coca, 1);
@@ -45,6 +47,7 @@ public class FastETestFile {
         //Persist objects
         session.save(pepe);
         session.save(jose);
+        session.save(rivadavia);
         session.save(cocaCola);
         coca.updatePrice(25.0f);
         coca.updatePrice(35.0f);
