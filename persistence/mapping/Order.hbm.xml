@@ -16,13 +16,13 @@
     	
     </class>
     
-    <class name="DeliverOrder" table="DELIVER">
+      <class name="DeliverOrder" table="DELIVER">
     	<id name="id" type="long">
     		<column name="id" sql-type="BIGINT" not-null="true"/>
             <generator class="increment"/>
     	</id>
     	
-    	<many-to-one name="order" column="order_id" foreign-key="fk_order_id" cascade="save-update"/>
-    	<many-to-one name="delivery" column="delivery_user_name" foreign-key="fk_delivery_name" cascade="save-update"/>
-    </class>
+    	<many-to-one name="order" column="order_id" not-null="true" unique="true" foreign-key="fk_order_id" cascade="save-update"/>
+    	<many-to-one name="delivery" column="delivery_user_name" not-null="true" foreign-key="fk_delivery_name" cascade="save-update"/>
+    </class> 
 </hibernate-mapping>    

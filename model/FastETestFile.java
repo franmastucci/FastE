@@ -46,17 +46,24 @@ public class FastETestFile {
         session.save(pepe);
         session.save(jose);
         session.save(cocaCola);
+        
         coca.updatePrice(25.0f);
         coca.updatePrice(35.0f);
         coca.updatePrice(55.0f);
         cindor.updatePrice(25.0f);
         cindor.updatePrice(30.0f);
         cindor.updatePrice(40.0f);
+        
         session.save(cindor);
         session.save(coca);
         
         session.save(cokeOrder);
         session.save(cindorOrder);
+        
+        cindorOrder.getPrepare();
+        jose.deliver(cindorOrder);
+        cokeOrder.getPrepare();
+        jose.deliver(cokeOrder);
         
         session.save(order);
         session.save(otherOrder);

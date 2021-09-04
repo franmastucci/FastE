@@ -15,9 +15,14 @@
 		</subclass>
 		
 		<subclass name="Delivery" discriminator-value="Delivery">
-	        <property name="capacity"/>
+	        <property name="capacity"/>        
+	        <bag name="deliveredOrders" table="DELIVERED_ORDER" inverse="true">
+            	<key column="orderNumber"/>
+            	<one-to-many class="model.order.Order"/>
+       		 </bag>
    		</subclass>
    		
     </class>
+
 
 </hibernate-mapping>

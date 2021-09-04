@@ -1,11 +1,15 @@
 package model.user;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import model.order.Order;
+
 
 public class Delivery extends User {
 	
 	private Float capacity;
-//	private List<Order> takenOrders;
+	private List<Order> deliveredOrders;
 	
 	private Delivery() {}
 	
@@ -17,6 +21,7 @@ public class Delivery extends User {
 		email = anEmail;
 		birthday = aBirthday;
 		capacity = aCapacity;
+		deliveredOrders = new ArrayList<Order>();
 	}
 
 	//Metodo de acceso publico para crear instancias de Delivery
@@ -32,8 +37,16 @@ public class Delivery extends User {
 		this.capacity = aCapacity;
 	}	
 
-//	public List<Order> getTakenOrders() {
-//		return takenOrders;
-//	}
+	public List<Order> getDeliveredOrders() {
+		return deliveredOrders;
+	}
+
+	private void setDeliveredOrders(List<Order> aListOfDeliveredOrders) {
+		deliveredOrders = aListOfDeliveredOrders;
+	}	
 	
+	public void deliver(Order anOrder) {
+		anOrder.getArrive();
+		this.getDeliveredOrders().add(anOrder);
+	}	
 }

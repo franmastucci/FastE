@@ -6,10 +6,10 @@
 		
 		<property name = "weight"/>
 		<many-to-one name = "provider" not-null="true" foreign-key="PROVIDER_CUIL" cascade="save-update"/>
-		<many-to-one name = "price" unique="true" not-null="true" foreign-key="PRICE_COD" cascade="save-update"/> 
-		<list name="priceStory" inverse="true" cascade="all">
+		<many-to-one name = "price" column="price_id" unique="true" not-null="true" foreign-key="PRICE_COD" cascade="save-update"/> 
+		<list name="priceStory"  inverse="true" cascade="all">
 			<key column="value" not-null="true"/>
-			<list-index column="PRODUCT_NAME"/>
+			<list-index column="RECORD_IDX"/>
 			<one-to-many class="model.price.PriceRecord"/>
 		</list>
 <!-- 		
