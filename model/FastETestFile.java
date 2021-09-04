@@ -35,7 +35,9 @@ public class FastETestFile {
         //Instantiate persistent objects 
         Customer pepe = Customer.register("pepe", "contraseña", "Pepe", "pepe@mail.com", LocalDate.now());
         Delivery jose = Delivery.register("josepe", "algo", "Jose", "jose@mail.com", LocalDate.now(), 10f);
-        Address rivadavia = Address.registerAddress(1, "Rivadavia", "1570 piso '10' depto 'b' ", 20, 10);
+        Address rivadavia = Address.registerAddress("Rivadavia", "1570 piso '10' depto 'b' ", 20, 10);
+        Address callao = Address.registerAddress("Callao", "1300 oficina 7 ", 30, 40);
+        Provider sancor = Provider.register(1002040, "Sancor", callao);
         Provider cocaCola = Provider.register(3030123, "Coca-Cola", rivadavia);
         Product coca = Product.publishProduct("Coca", cocaCola, 1.0f, 15.0f);
         Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
@@ -47,8 +49,10 @@ public class FastETestFile {
         //Persist objects
         session.save(pepe);
         session.save(jose);
+        session.save(callao);
         session.save(rivadavia);
         session.save(cocaCola);
+        session.save(sancor);
         coca.updatePrice(25.0f);
         coca.updatePrice(35.0f);
         coca.updatePrice(55.0f);

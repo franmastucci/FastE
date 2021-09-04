@@ -16,15 +16,23 @@ public class Address {
         xCoordinate = aXCoordinate;
         yCoordinate = aYCoordinate;
     }
+    
+    private Address (String aStreetName, String aNumber, Integer aXCoordinate, Integer aYCoordinate) {
+        streetName = aStreetName;
+        number = aNumber;
+        xCoordinate = aXCoordinate;
+        yCoordinate = aYCoordinate;
+    }
 
-    public static Address registerAddress(long anId, String aStreetName, String aNumber, Integer aXCoordinate, Integer aYCoordinate) {  
-        return new Address(anId, aStreetName, aNumber , aXCoordinate, aYCoordinate);       
+    public static Address registerAddress( String aStreetName, String aNumber, Integer aXCoordinate, Integer aYCoordinate) {  
+        return new Address(aStreetName, aNumber , aXCoordinate, aYCoordinate);       
     }
 
     public long getId () {
 		return id;
 	}
 
+	@SuppressWarnings("unused")
 	private void setId(long anId) {
 		this.id = anId;
 	}
@@ -33,6 +41,7 @@ public class Address {
 		return streetName;
 	}
 
+	@SuppressWarnings("unused")
 	private void setStreetName(String aStreetName) {
 		this.streetName = aStreetName;
 	}
@@ -41,6 +50,7 @@ public class Address {
 		return number;
 	}
 
+	@SuppressWarnings("unused")
 	private void setNumber(String aNumber) {
 		this.number = aNumber;
 	}
@@ -49,6 +59,7 @@ public class Address {
 		return xCoordinate;
 	}
 
+	@SuppressWarnings("unused")
 	private void setxCoordinate(Integer xCoordinate) {
 		this.xCoordinate = xCoordinate;
 	}
@@ -57,6 +68,7 @@ public class Address {
 		return yCoordinate;
 	}
 
+	@SuppressWarnings("unused")
 	private void setyCoordinate(Integer yCoordinate) {
 		this.yCoordinate = yCoordinate;
 	}
