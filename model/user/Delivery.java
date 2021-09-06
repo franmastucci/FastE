@@ -13,13 +13,8 @@ public class Delivery extends User {
 	
 	private Delivery() {}
 	
-	//Constructor creado para cumplir con requerimientos de Hibernate
 	private Delivery(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity) {
-		userName = anUserName;
-		pass = aPass;
-		name = aName;
-		email = anEmail;
-		birthday = aBirthday;
+		super(anUserName, aPass, aName, anEmail, aBirthday);
 		capacity = aCapacity;
 		deliveredOrders = new ArrayList<Order>();
 	}

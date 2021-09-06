@@ -1,7 +1,10 @@
 package persistence;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import model.user.User;
 
 public class HibernateUtil {
 
@@ -27,5 +30,21 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+    
+    public static void persist(Object anObject) {
+    	Session session = sessionFactory.openSession();
+    	
+    	session.beginTransaction();
+    	session.save(anObject);
+    	
+    	session.getTransaction().commit();
+    	
+    }
+    
+//    public static void persistUserEncryptingPassword(User anUser, String toEncrypt) {
+//    	User toModifyUser = anUser;
+//    	
+//    	
+//    }
     
 }

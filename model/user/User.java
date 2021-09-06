@@ -10,6 +10,16 @@ public abstract class User {
 	protected String email;
 	protected LocalDate birthday;
 
+	protected User() {};
+	
+	protected User(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+		userName = anUserName;
+		pass = aPass;
+		name = aName;
+		email = anEmail;
+		birthday = aBirthday;
+	}
+	
 	public String getUserName() {
 		return userName;
 	}

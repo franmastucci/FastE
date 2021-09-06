@@ -11,23 +11,9 @@ public class Customer extends User {
 	private List<Order> activeOrders;
 	
 	private Customer() {}
-	
-	//Constructor creado para cumplir con requerimientos de Hibernate
-	private Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, List<Order> anActiveOrdersList) {
-		userName = anUserName;
-		pass = aPass;
-		name = aName;
-		email = anEmail;
-		birthday = aBirthday;
-		activeOrders = anActiveOrdersList;
-	}
 
 	private Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-		userName = anUserName;
-		pass = aPass;
-		name = aName;
-		email = anEmail;
-		birthday = aBirthday;
+		super(anUserName, aPass, aName, anEmail, aBirthday);
 		activeOrders = new ArrayList<Order>();
 	}
 
