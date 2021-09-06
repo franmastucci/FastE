@@ -26,6 +26,7 @@ public class Provider {
 		return name;
 	}
 
+	@SuppressWarnings("unused")
 	private void setName(String name) {
 		this.name = name;
 	}
@@ -34,6 +35,7 @@ public class Provider {
 		return cuil;
 	}
 
+	@SuppressWarnings("unused")
 	private void setCuil(Integer cuil) {
 		this.cuil = cuil;
 	}
@@ -42,6 +44,7 @@ public class Provider {
 		return adress;
 	}
 
+	@SuppressWarnings("unused")
 	private void setAdress(String adress) {
 		this.adress = adress;
 	}
@@ -50,6 +53,7 @@ public class Provider {
 		return xCoordinate;
 	}
 
+	@SuppressWarnings("unused")
 	private void setxCoordinate(Integer xCoordinate) {
 		this.xCoordinate = xCoordinate;
 	}
@@ -58,6 +62,7 @@ public class Provider {
 		return yCoordinate;
 	}
 
+	@SuppressWarnings("unused")
 	private void setyCoordinate(Integer yCoordinate) {
 		this.yCoordinate = yCoordinate;
 	}

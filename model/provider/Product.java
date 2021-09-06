@@ -40,6 +40,7 @@ public class Product {
 		return name;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setName(String aName) {
 		this.name = aName;
 	}	
@@ -48,6 +49,7 @@ public class Product {
 		return provider;
 	}
 
+	@SuppressWarnings("unused")
 	private void setProvider(Provider aProvider) {
 		this.provider = aProvider;
 	}		
@@ -56,6 +58,7 @@ public class Product {
 		return weight;
 	}
 
+	@SuppressWarnings("unused")
 	private void setWeight(Float aWeight) {
 		this.weight = aWeight;
 	}	

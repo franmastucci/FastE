@@ -33,6 +33,7 @@ public class Delivery extends User {
 		return capacity;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setCapacity(Float aCapacity) {
 		this.capacity = aCapacity;
 	}	
@@ -41,6 +42,7 @@ public class Delivery extends User {
 		return deliveredOrders;
 	}
 
+	@SuppressWarnings("unused")
 	private void setDeliveredOrders(List<Order> aListOfDeliveredOrders) {
 		deliveredOrders = aListOfDeliveredOrders;
 	}	

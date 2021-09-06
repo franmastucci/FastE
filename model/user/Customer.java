@@ -40,6 +40,7 @@ public class Customer extends User {
 		return activeOrders;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setActiveOrders(List<Order> anOrderList) {
 		this.activeOrders = anOrderList;
 	}

@@ -15,6 +15,7 @@ public abstract class Price {
 		return id;
 	}
 
+	@SuppressWarnings("unused")
 	private void setId(long id) {
 		this.id = id;
 	}

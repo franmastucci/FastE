@@ -28,6 +28,7 @@ public class DeliverOrder {
 		return id;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setId(long id) {
 		this.id = id;
 	}
@@ -36,6 +37,7 @@ public class DeliverOrder {
 		return order;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setOrder(Order order) {
 		this.order = order;
 	}
@@ -44,6 +46,7 @@ public class DeliverOrder {
 		return delivery;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setDelivery(User delivery) {
 		this.delivery = delivery;
 	}

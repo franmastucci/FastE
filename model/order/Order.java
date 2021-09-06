@@ -46,6 +46,7 @@ public class Order {
 		return orderNumber;
 	}
 
+	@SuppressWarnings("unused")
 	private void setOrderNumber(long orderNumber) {
 		this.orderNumber = orderNumber;
 	}
@@ -54,6 +55,7 @@ public class Order {
 		return quantity;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
@@ -62,6 +64,7 @@ public class Order {
 		return customer;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setCustomer(User customer) {
 		this.customer = customer;
 	}
@@ -70,6 +73,7 @@ public class Order {
 		return product;
 	}
 	
+	@SuppressWarnings("unused")
 	private void setProduct(Product product) {
 		this.product = product;
 	}
