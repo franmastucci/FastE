@@ -60,4 +60,6 @@ public abstract class User {
 		this.birthday = aDate;
 	}
 
+	public abstract User copyToPersist();
+
 }

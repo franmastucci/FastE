@@ -43,7 +43,6 @@ public class FastETestFile {
         DeliverOrder otherOrder = DeliverOrder.doneOrderDeliver(cokeOrder, jose);
         
         //Persist objects
-        session.save(pepe);
         session.save(jose);
         session.save(cocaCola);
         
