@@ -45,6 +45,7 @@ public class FastETestFile {
         //Persist objects
         session.save(jose);
         session.save(cocaCola);
+        session.save(pepe);
         
         coca.updatePrice(25.0f);
         coca.updatePrice(35.0f);
@@ -56,7 +57,7 @@ public class FastETestFile {
         session.save(cindor);
         session.save(coca);
         
-        session.save(cokeOrder);
+        session.save(cokeOrder); 
         session.save(cindorOrder);
         
         cindorOrder.getPrepare();
@@ -74,6 +75,9 @@ public class FastETestFile {
         		+ dato.getTotalCost());
         
         session.getTransaction().commit();
+        
+        Customer francisco = Customer.register("Fran", "12345", "Francisco", "fran@gmail.com", LocalDate.now());
+        HibernateUtil.persist(francisco);
     }
 
 }

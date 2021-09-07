@@ -2,6 +2,8 @@ package model.user;
 
 import java.time.LocalDate;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 public abstract class User {
 	
 	protected String userName;
@@ -13,8 +15,9 @@ public abstract class User {
 	protected User() {};
 	
 	protected User(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+		String encryptedPass = DigestUtils.sha1Hex(aPass);
 		userName = anUserName;
-		pass = aPass;
+		pass = encryptedPass;
 		name = aName;
 		email = anEmail;
 		birthday = aBirthday;
@@ -59,7 +62,5 @@ public abstract class User {
 	protected void setBirthday(LocalDate aDate) {
 		this.birthday = aDate;
 	}
-
-	public abstract User copyToPersist();
 
 }

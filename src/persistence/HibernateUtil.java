@@ -41,9 +41,4 @@ public class HibernateUtil {
     	
     }
     
-    public static void persistUser(User anUser) {
-    	User encriptedUser = anUser.copyToPersist();
-    	persist(encriptedUser);
-    }
-
 }

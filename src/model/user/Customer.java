@@ -46,10 +46,4 @@ public class Customer extends User {
 		return Order.newOrder(this, aProduct, aQuantity);
 	}
 
-	@Override
-	public Customer copyToPersist() {
-		String encryptedPass = DigestUtils.sha1Hex(this.getPass());
-		return new Customer(this.getUserName(), encryptedPass, this.getName(), this.getEmail(), this.getBirthday(), 
-				this.getActiveOrders());
-	}
 }
