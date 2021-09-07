@@ -58,7 +58,7 @@ public class Delivery extends User {
 
 	@Override
 	public Delivery copyToPersist() {
-		String encryptedPass = DigestUtils.sha1Hex(pass);
+		String encryptedPass = DigestUtils.sha1Hex(this.getPass());
 		return new Delivery(this.getUserName(), encryptedPass, this.getName(), this.getEmail(), this.getBirthday(), 
 				this.getCapacity(), this.getDeliveredOrders());
 	}	
