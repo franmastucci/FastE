@@ -9,24 +9,17 @@ public class CurrentPrice extends Price{
 	private String IS_CURRENT_PRICE = "El precio es el actual por lo que aun no tiene fecha de finalizacion";
 	
 	
-	private CurrentPrice() {}
-
-	//Constructor creado para cumplir con requerimientos de Hibernate
-	private CurrentPrice(Float aValue, LocalDate aStartDate, Product aProduct) {
-		value = aValue;
-		startDate = aStartDate;
-		product = aProduct;
-	}
+	protected CurrentPrice() {}
 	
-	private CurrentPrice(Float aValue, Product aProduct) {
-		value = aValue;
-		startDate = LocalDate.now();
-		product = aProduct;
+	//Requerido por hibernate
+	protected CurrentPrice(Float aValue, Product aProduct, LocalDate aStartDate) {
+		super(aValue, aProduct, aStartDate);
 	}
-	
+		
 	//Metodo de acceso publico para crear instancias de CurrentPrice
 	public static Price settlePrice(Float aPriceValue, Product aProduct) {
-		return new CurrentPrice(aPriceValue, aProduct);
+		LocalDate aStartDate = LocalDate.now();
+		return new CurrentPrice(aPriceValue, aProduct, aStartDate);
 	}
 	
 	@Override

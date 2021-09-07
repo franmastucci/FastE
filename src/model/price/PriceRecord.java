@@ -9,12 +9,11 @@ public class PriceRecord extends Price{
 	private LocalDate finishDate;
 	
 	
-	private PriceRecord() {}
+	protected PriceRecord() {}
 	
-	private PriceRecord(Float aValue, Product aProduct, LocalDate aStartDate, LocalDate aFinishDate) {
-		value = aValue;
-		product = aProduct;
-		startDate = aStartDate;
+	//Reuerido por hibernate
+	protected PriceRecord(Float aValue, Product aProduct, LocalDate aStartDate, LocalDate aFinishDate) {
+		super(aValue, aProduct, aStartDate);
 		finishDate =  aFinishDate;
 	}
 

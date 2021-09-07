@@ -11,17 +11,20 @@ public class Delivery extends User {
 	private Float capacity;
 	private List<Order> deliveredOrders;
 	
-	private Delivery() {}
-	
-	private Delivery(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity) {
+	protected Delivery() {}
+
+	//Requerido por hibernate	
+	protected Delivery(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity, 
+			List<Order> aDeliveredOrdersList) {
 		super(anUserName, aPass, aName, anEmail, aBirthday);
 		capacity = aCapacity;
-		deliveredOrders = new ArrayList<Order>();
+		deliveredOrders = aDeliveredOrdersList;
 	}
 
 	//Metodo de acceso publico para crear instancias de Delivery
 	public static Delivery register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity) {
-		return new Delivery(anUserName, aPass, aName, anEmail, aBirthday, aCapacity);
+		List<Order> aDeliveredOrders = new ArrayList<Order>();
+		return new Delivery(anUserName, aPass, aName, anEmail, aBirthday, aCapacity, aDeliveredOrders);
 	}
 	
 	public Float getCapacity() {

@@ -11,6 +11,14 @@ public abstract class Price {
 	Product product;
 	LocalDate startDate;
 
+	protected Price() {}
+	
+	protected Price(Float aValue, Product aProduct, LocalDate aStartDate) {
+		value = aValue;
+		product = aProduct;
+		startDate = aStartDate;
+	}
+	
 	public long getId() {
 		return id;
 	}

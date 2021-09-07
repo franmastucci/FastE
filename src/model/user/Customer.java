@@ -10,16 +10,19 @@ public class Customer extends User {
 	
 	private List<Order> activeOrders;
 	
-	private Customer() {}
+	protected Customer() {}
 
-	private Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
+	//Requerido por hibernate
+	protected Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, 
+			List<Order>	anActiveOrderList) {
 		super(anUserName, aPass, aName, anEmail, aBirthday);
-		activeOrders = new ArrayList<Order>();
+		activeOrders = anActiveOrderList;
 	}
 
 	//Metodo de acceso publico para crear instancias de Customer
 	public static Customer register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-		return new Customer(anUserName, aPass, aName, anEmail, aBirthday);
+		List<Order> anActiveOrders = new ArrayList<Order>();
+		return new Customer(anUserName, aPass, aName, anEmail, aBirthday, anActiveOrders);
 	}
 
 	public List<Order> getActiveOrders() {
