@@ -3,8 +3,6 @@ package model.user;
 import java.time.LocalDate;
 import java.util.*;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import model.order.Order;
 import model.provider.Product;
 
