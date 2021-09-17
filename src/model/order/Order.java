@@ -1,5 +1,7 @@
 package model.order;
 
+import java.time.LocalDate;
+
 import model.provider.Product;
 import model.user.User;
 
@@ -9,6 +11,7 @@ public class Order {
 	private Product product;
 	private Integer quantity;
 	private OrderState state;
+	private LocalDate lastStateModifycation;
 	
 	OrderState pendingState = new PendingState();
 	OrderState preparedState = new PreparedState();
@@ -18,12 +21,14 @@ public class Order {
 	private Order() {}
 
 	//Constructor creado para cumplir con requerimientos de Hibernate	
-	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState) {
+	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
+			LocalDate aCreationDate) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
 		product = aProduct;
 		quantity = aQuantity;
 		state = anOrderState;
+		lastStateModifycation = aCreationDate;
 	}
 
 	private Order(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -31,6 +36,7 @@ public class Order {
 		product = aProduct;
 		quantity = aQuantity;
 		state = this.getPendingState();
+		lastStateModifycation = LocalDate.now();
 	}
 
 	//Metodo de acceso publico para crear instancias de Order	
@@ -85,17 +91,31 @@ public class Order {
 	void setState(OrderState state) {
 		this.state = state;
 	}
+	
+	public LocalDate getLastStateModifycation() {
+		return lastStateModifycation;
+	}
+	
+	@SuppressWarnings("unused")
+	private void setLastStateModifycation(LocalDate lastStateModifycation) {
+		this.lastStateModifycation = lastStateModifycation;
+	}
 
 	public void getCancel(){
 		this.state.getCancel(this);
 	}
-	
+
 	public void getPrepare() {
 		this.state.getPrepare(this);
 	}
 	
 	public void getArrive() {
 		this.state.getArrive(this);
+	}
+
+	void updateLastModify() {
+		LocalDate today = LocalDate.now();
+		this.setLastStateModifycation(today);
 	}
 
 	public OrderState getPendingState() {
