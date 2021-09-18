@@ -37,6 +37,7 @@ public class FastETestFile {
         Provider cocaCola = Provider.register(3030123, "Coca-Cola", "calle falsa 123", 0, 10);
         Product coca = Product.publishProduct("Coca", cocaCola, 1.0f, 15.0f);
         Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
+        Product cepita = Product.publishProduct("Cepita", cocaCola, 1f, 20f);
         Order cokeOrder = pepe.makeAnOrder(coca, 1);
         Order cindorOrder = pepe.makeAnOrder(cindor, 10);
         DeliverOrder order = DeliverOrder.doneOrderDeliver(cindorOrder, jose);  
@@ -56,6 +57,7 @@ public class FastETestFile {
         
         session.save(cindor);
         session.save(coca);
+        session.save(cepita);
         
         session.save(cokeOrder); 
         session.save(cindorOrder);

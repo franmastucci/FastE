@@ -5,13 +5,22 @@ import java.time.LocalDate;
 import model.provider.Product;
 import model.user.User;
 
+/**
+ *  @implNote
+ *  Se introducen las variables de instancia creationDate y lastStateModification a fines de poder obtener en la base de datos
+ *  los los montos totales gastados por los clientes en determinadas fechas asi como las ordenes canceladas dias dias atras respecto
+ *  a cuando se realiza la consulta
+ */
+
+
 public class Order {
 	private long orderNumber;
 	private User customer;
 	private Product product;
 	private Integer quantity;
 	private OrderState state;
-	private LocalDate lastStateModifycation;
+	private LocalDate creationDate;
+	private LocalDate lastStateModification;
 	
 	OrderState pendingState = new PendingState();
 	OrderState preparedState = new PreparedState();
@@ -20,15 +29,26 @@ public class Order {
 
 	private Order() {}
 
-	//Constructor creado para cumplir con requerimientos de Hibernate	
+	/**
+	 * @implNote
+	 * Constructor creado para cumplir con requerimientos de Hibernate	
+	 * @param anOrderNumber
+	 * @param aCustomer
+	 * @param aProduct
+	 * @param aQuantity
+	 * @param anOrderState
+	 * @param aCreationDate
+	 * @param aModificationDate
+	 */
 	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
-			LocalDate aCreationDate) {
+			LocalDate aCreationDate, LocalDate aModificationDate) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
 		product = aProduct;
 		quantity = aQuantity;
 		state = anOrderState;
-		lastStateModifycation = aCreationDate;
+		creationDate = aCreationDate;
+		lastStateModification = aModificationDate;
 	}
 
 	private Order(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -36,10 +56,18 @@ public class Order {
 		product = aProduct;
 		quantity = aQuantity;
 		state = this.getPendingState();
-		lastStateModifycation = LocalDate.now();
+		creationDate = LocalDate.now();
+		lastStateModification = LocalDate.now();
 	}
 
-	//Metodo de acceso publico para crear instancias de Order	
+	/**
+	 * @implNote
+	 * Metodo de acceso publico para crear instancias de Order	
+	 * @param aCustomer
+	 * @param aProduct
+	 * @param aQuantity
+	 * @return Order
+	 */
 	public static Order newOrder(User aCustomer, Product aProduct, Integer aQuantity) {
 		return new Order(aCustomer, aProduct, aQuantity);
 	}
@@ -92,13 +120,21 @@ public class Order {
 		this.state = state;
 	}
 	
-	public LocalDate getLastStateModifycation() {
-		return lastStateModifycation;
+	public LocalDate getCreationDate() {
+		return creationDate;
+	}
+
+	@SuppressWarnings("unused")
+	private void setCreationDate(LocalDate creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public LocalDate getLastStateModification() {
+		return lastStateModification;
 	}
 	
-	@SuppressWarnings("unused")
-	private void setLastStateModifycation(LocalDate lastStateModifycation) {
-		this.lastStateModifycation = lastStateModifycation;
+	private void setLastStateModification(LocalDate lastStateModifycation) {
+		this.lastStateModification = lastStateModifycation;
 	}
 
 	public void getCancel(){
@@ -115,7 +151,7 @@ public class Order {
 
 	void updateLastModify() {
 		LocalDate today = LocalDate.now();
-		this.setLastStateModifycation(today);
+		this.setLastStateModification(today);
 	}
 
 	public OrderState getPendingState() {

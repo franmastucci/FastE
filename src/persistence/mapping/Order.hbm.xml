@@ -13,7 +13,8 @@
     	<many-to-one name ="customer" foreign-key="fk_customer"/>
     	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name"/>
     	<many-to-one name ="state" class="OrderState"/>
-    	<property name="lastStateModifycation"/>
+    	<property name="creationDate"/>
+    	<property name="lastStateModification"/>
     	
     </class>
     

@@ -32,5 +32,5 @@ public class PriceRecord extends Price{
 	protected void setFinishDate(LocalDate aFinishDate) {
 		this.finishDate = aFinishDate;
 	}
- 	
+
 }
