@@ -1,5 +1,8 @@
 package model.provider;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Provider {
 	private Integer cuil;
 	private String name;
@@ -7,7 +10,7 @@ public class Provider {
 	private Integer xCoordinate;
 	private Integer yCoordinate;
 	
-	private Provider() {};
+	public Provider() {};
 	
 	private Provider(Integer aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
 		cuil = aCuil;

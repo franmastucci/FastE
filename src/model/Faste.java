@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.order.DeliverOrder;
@@ -22,12 +22,12 @@ public class Faste {
 
 	@SuppressWarnings("unused")
 	private Faste() {
-		customers = new Vector<Customer>();
-		deliverys = new Vector<Delivery>();
-		products = new Vector<Product>();
-		providers = new Vector<Provider>();
-		orders = new Vector<Order>();
-		deliveredOrders = new Vector<DeliverOrder>();
+		customers = new ArrayList<Customer>();
+		deliverys = new ArrayList<Delivery>();
+		products = new ArrayList<Product>();
+		providers = new ArrayList<Provider>();
+		orders = new ArrayList<Order>();
+		deliveredOrders = new ArrayList<DeliverOrder>();
 	}
 	
 	public Faste(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,

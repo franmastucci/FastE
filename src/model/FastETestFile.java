@@ -1,5 +1,7 @@
 package model;
 import org.hibernate.Session;
+import org.hibernate.internal.build.AllowSysOut;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import model.order.DeliverOrder;
 import model.order.Order;
@@ -15,15 +17,23 @@ import persistence.HibernateUtil;
 
 public class FastETestFile {
 
+	//Instanciando el contexto
+	static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationContext.class);
+	
+	//Solicitando un bean provider
+	static Provider pepsi = context.getBean("providerConstructor", Provider.class);
+
 	public static void main(String[] args) {
         FastETestFile faste = new FastETestFile();
 
         faste.mappingTest();
         
-        HibernateUtil.getSessionFactory().getCurrentSession().close();
+        System.out.println(pepsi);
 
 	}
 
+	
+	
     private void mappingTest() {
 
     	//Instantiate a session 
@@ -80,7 +90,10 @@ public class FastETestFile {
         
         Customer francisco = Customer.register("Fran", "12345", "Francisco", "fran@gmail.com", LocalDate.now());
         HibernateUtil.persist(francisco);
+
+        session.close();
     }
+    
 
 }
 
