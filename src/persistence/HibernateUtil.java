@@ -1,12 +1,11 @@
 package persistence;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory sessionFactory;
     							
     private static SessionFactory buildSessionFactory() {
     	
@@ -26,17 +25,8 @@ public class HibernateUtil {
     }
 
     public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) sessionFactory = buildSessionFactory();
         return sessionFactory;
     }
-    
-    public static void persist(Object anObject) {
-    	Session session = sessionFactory.openSession();
-    	
-    	session.beginTransaction();
-    	session.save(anObject);
-    	
-    	session.getTransaction().commit();
-    	
-    }
-    
+       
 }

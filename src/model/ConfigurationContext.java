@@ -1,19 +1,17 @@
 package model;
 
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import model.provider.Provider;
-
+import persistence.HibernateUtil;
 
 @Configuration
-@ComponentScan("model")
 public class ConfigurationContext {
 
 	@Bean 
-	public Provider providerConstructor() {
-		return new Provider();
+	public SessionFactory sessionFactory() {
+		return HibernateUtil.getSessionFactory();
 	}
 		
 }

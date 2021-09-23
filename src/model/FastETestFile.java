@@ -1,8 +1,9 @@
 package model;
 import org.hibernate.Session;
-import org.hibernate.internal.build.AllowSysOut;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import model.dao.ProviderDAO;
 import model.order.DeliverOrder;
 import model.order.Order;
 import model.provider.Product;
@@ -11,6 +12,8 @@ import model.user.Customer;
 import model.user.Delivery;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import persistence.HibernateUtil;
 
 //Este archivo tiene como finalidad servir de ingreso a la aplicacion para ver los efectos generados en la base de datos
@@ -18,21 +21,25 @@ import persistence.HibernateUtil;
 public class FastETestFile {
 
 	//Instanciando el contexto
-	static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationContext.class);
+//	static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationContext.class);
+	static ApplicationContext context = new ClassPathXmlApplicationContext("classpath:model/ConfigurationContext.xml");
 	
-	//Solicitando un bean provider
-	static Provider pepsi = context.getBean("providerConstructor", Provider.class);
 
 	public static void main(String[] args) {
         FastETestFile faste = new FastETestFile();
-
-        faste.mappingTest();
         
-        System.out.println(pepsi);
+        faste.mappingTest();
 
+        ProviderDAO providerDao = (ProviderDAO) context.getBean("providerDAO");
+
+        List<Provider> providers = providerDao.getProviders();
+//        
+//        for(Provider provider:providers) {
+//        	System.out.println(provider);
+//        }
+        
+        
 	}
-
-	
 	
     private void mappingTest() {
 
@@ -87,13 +94,9 @@ public class FastETestFile {
         		+ dato.getTotalCost());
         
         session.getTransaction().commit();
-        
-        Customer francisco = Customer.register("Fran", "12345", "Francisco", "fran@gmail.com", LocalDate.now());
-        HibernateUtil.persist(francisco);
 
         session.close();
     }
-    
 
 }
 
