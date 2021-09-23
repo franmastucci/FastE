@@ -70,4 +70,10 @@ public class Provider {
 		this.yCoordinate = yCoordinate;
 	}
 
+	@Override
+	public String toString() {
+		return "Provider [cuil=" + cuil + ", name=" + name + ", adress=" + adress + ", xCoordinate=" + xCoordinate
+				+ ", yCoordinate=" + yCoordinate + "]";
+	}
+
 }

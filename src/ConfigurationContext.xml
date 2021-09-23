@@ -17,7 +17,7 @@
     /-->
 
     <!-- enabling annotation driven configuration /-->
-    <context:annotation-config transaction-manager="transactionManager"/>
+    <context:annotation-config/>
 
     <!-- Scans the classpath of this application for @Components to deploy as beans -->
     <context:component-scan base-package="model" />
@@ -29,6 +29,28 @@
       <property name="password" value=""/>
     </bean>
     
+        <!--  Configuración Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:persistence/mapping/Provider.hbm.xml</value>
+				<value>classpath:persistence/mapping/User.hbm.xml</value>
+				<value>classpath:persistence/mapping/Product.hbm.xml</value>
+				<value>classpath:persistence/mapping/Price.hbm.xml</value>
+				<value>classpath:persistence/mapping/OrderState.hbm.xml</value>
+				<value>classpath:persistence/mapping/Order.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+		   <props>
+		      <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+		      <prop key="hibernate.show_sql">true</prop>
+		   </props>
+		</property>
+   </bean>
+    
     <tx:annotation-driven transaction-manager="transactionManager"/> 
    	 
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -36,7 +58,4 @@
     	<property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-<!--
-    <context:component-scan base-package="com.companyname.springapp.service" />
-    -->
 </beans>

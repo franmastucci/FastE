@@ -22,23 +22,36 @@ public class FastETestFile {
 
 	//Instanciando el contexto
 //	static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigurationContext.class);
-	static ApplicationContext context = new ClassPathXmlApplicationContext("classpath:model/ConfigurationContext.xml");
+	static ApplicationContext context = new ClassPathXmlApplicationContext("classpath:ConfigurationContext.xml");
 	
 
 	public static void main(String[] args) {
         FastETestFile faste = new FastETestFile();
         
-        faste.mappingTest();
+        //faste.mappingTest();
 
         ProviderDAO providerDao = (ProviderDAO) context.getBean("providerDAO");
 
         List<Provider> providers = providerDao.getProviders();
-//        
-//        for(Provider provider:providers) {
-//        	System.out.println(provider);
-//        }
         
+        for(Provider provider:providers) {
+        	System.out.println(provider);
+        }
         
+        faste.persistUser();        
+	}
+	
+	private void persistUser() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+
+        session.beginTransaction();
+		
+        Customer pepe = Customer.register("Juanjo", "contraseña", "Pepe", "pepe@mail.com", LocalDate.now());
+        session.save(pepe);
+        
+        session.getTransaction().commit();
+        
+        System.out.println("Se introdujo otra version de pepe");
 	}
 	
     private void mappingTest() {
