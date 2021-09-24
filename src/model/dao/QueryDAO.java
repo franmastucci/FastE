@@ -1,8 +1,7 @@
 package model.dao;
 
+import java.time.LocalDate;
 import java.util.List;
-
-import org.hibernate.query.Query;
 
 import model.order.Order;
 import model.provider.Product;
@@ -13,23 +12,23 @@ public interface QueryDAO {
 	
 	public List<Order> getAllOrdersMadeByUser(String anUserName); //recbe un String username
 	
-	public List<Customer> getUsersSpendingMoreThan(); //recibe un float amount
+	public List<Customer> getUsersSpendingMoreThan(float amount); //recibe un float amount
 	
 	public List<Product> getTop10MoeExpensiveProducts();
 	
 	public List<Order>  getPendingOrders();
 	
-	public List<Order>  getCancelledOrdersInPeriod(); //recibe un Date startDate y un Date finishDate 
+	public List<Order>  getCancelledOrdersInPeriod(LocalDate startDate, LocalDate finishDate); //recibe un Date startDate y un Date finishDate 
 	
-	public List<Order>  getDeliveredOrdersForUser(); // recibe un String username
+	public List<Order>  getDeliveredOrdersForUser(String username); // recibe un String username
 
-	public List<String> getProductsOnePrice();
+	public List<Product> getProductsOnePrice();
 
-	public List<Product> getSoldProductsOn(); //recibe un Date day
+	public List<Product> getSoldProductsOn(LocalDate day); //recibe un Date day
 	
 	public List<Product>  getProductsWithPriceAt(); //recibe un Date day
 	
-	public List<String> getProductsNotSold();
+	public List<Product> getProductsNotSold();
 	
 	
 }

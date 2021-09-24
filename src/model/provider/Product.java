@@ -87,4 +87,10 @@ public class Product {
 		this.getPriceStory().add(priceToRecord);
 		this.setPrice(newPrice);
 	}
+
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", provider=" + provider + ", weight=" + weight + ", price=" + price + "]";
+	}
+	
 }

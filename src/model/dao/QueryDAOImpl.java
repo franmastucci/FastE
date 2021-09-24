@@ -1,5 +1,6 @@
 package model.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -40,7 +41,7 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		List<Order> ordersByUser = query.getResultList();
 		
-		System.out.println("El resultado de la query es: ");
+		System.out.println("El resultado de la query N° 1 es: ");
 		
 		return ordersByUser;
 	}
@@ -48,13 +49,15 @@ public class QueryDAOImpl implements QueryDAO {
 	
 	@Override
 	@Transactional
-	public List<Customer> getUsersSpendingMoreThan() {
+	public List<Customer> getUsersSpendingMoreThan(float amount) {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Customer> query = session.createQuery("FROM Customer ", Customer.class);
+		Query<Customer> query = session.createNativeQuery("FROM Customer ", Customer.class);
 		
 		List<Customer> users = query.getResultList();
+		
+		System.out.println("El resultado de la query N° 2 es: ");
 		
 		return users;
 	}
@@ -67,13 +70,15 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Product>  query = session.createQuery("SELECT product FROM CurrentPrice ", Product.class);
+		Query<Product>  query = session.createNativeQuery("SELECT NAME,weight,provider,price_id FROM PRODUCT as p "
+				+ "JOIN PRICE_LIST as l ON p.price_id = l.id ORDER BY value LIMIT 10", Product.class);
 		
 		List<Product>  expensiveProducts = query.getResultList();
 		
+		System.out.println("El resultado de la query N° 3 es: ");
+		
 		return expensiveProducts;
 	}
-
 	
 	@Override
 	@Transactional
@@ -81,38 +86,52 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Order> query = session.createQuery("From Order WHERE state = '' ", Order.class);  
+		Query<Order> query = session.createNativeQuery("SELECT * FROM CUSTOMER_ORDER WHERE state = 'Pendiente'", Order.class);  
 		
 		List<Order>  pendingOrders = query.getResultList();
+		
+		System.out.println("El resultado de la query N° 4 es: ");
 		
 		return pendingOrders;
 	}
 	
-
-	
 	@Override
 	@Transactional
-	public List<Order> getCancelledOrdersInPeriod() {
+	public List<Order> getCancelledOrdersInPeriod(LocalDate startDate, LocalDate endDate) {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Order> query = session.createQuery("From Order", Order.class);  
+		Query<Order> query = session.createNativeQuery("SELECT * FROM CUSTOMER_ORDER "
+				+ "WHERE lastStateModification BETWEEN :aStartDate AND :anEndDate "
+				+ "AND state = 'Cancelado'", Order.class)
+				.setParameter("aStartDate", startDate).setParameter("anEndDate", endDate);  
 		
 		List<Order>  cancelledOrders = query.getResultList();
 		
+		System.out.println("El resultado de la query N° 5 es: ");
+		
 		return cancelledOrders;
 	}
-
 	
 	@Override
 	@Transactional
-	public List<Order> getDeliveredOrdersForUser() {
+	public List<Order> getDeliveredOrdersForUser(String username) {
 		
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		Query<Order> query= session.createQuery("From Order", Order.class);
+		LocalDate today = LocalDate.now();
+		LocalDate tenDaysAgo = today.minusDays(10);
+		
+		Query<Order> query= session.createNativeQuery("SELECT orderNumber, quantity, customer, product_name, state, creationDate,"
+				+ " lastStateModification FROM CUSTOMER_ORDER "
+				+ "JOIN DELIVER ON CUSTOMER_ORDER.orderNumber = DELIVER.order_id "
+				+ "WHERE lastStateModification BETWEEN :tenDaysAgo AND :today "
+				+ "AND state = 'Entregado' AND delivery_user_name = :username ORDER BY lastStateModification", Order.class)
+				.setParameter("today", today).setParameter("tenDaysAgo", tenDaysAgo).setParameter("username", username);
 		
 		List<Order> deliveredOrders = query.getResultList();
+
+		System.out.println("El resultado de la query N° 6 es: ");
 		
 		return deliveredOrders;
 	}
@@ -120,14 +139,16 @@ public class QueryDAOImpl implements QueryDAO {
 
 	@Override
 	@Transactional
-	public List<String> getProductsOnePrice() {
+	public List<Product> getProductsOnePrice() {
 
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		@SuppressWarnings("unchecked")
-		Query<String> query = session.createQuery("select name from Product where name not in "
-																+ "(select distinct product from PriceRecord)" ); 
-		List<String> products = query.getResultList();
+		Query<Product> query = session.createNativeQuery("SELECT * FROM PRODUCT "
+				+ "WHERE NAME NOT IN (SELECT DISTINCT product FROM PRICE_STORY)", Product.class); 
+
+		List<Product> products = query.getResultList();
+
+		System.out.println("El resultado de la query N° 7 es: ");
 		
 		return products;
 	}
@@ -135,13 +156,17 @@ public class QueryDAOImpl implements QueryDAO {
 
 	@Override
 	@Transactional
-	public List<Product> getSoldProductsOn() {
+	public List<Product> getSoldProductsOn(LocalDate day) {
 		
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		Query<Product> query= session.createQuery("From Product", Product.class);
+		Query<Product> query= session.createNativeQuery("SELECT NAME, weight, provider, price_id FROM PRODUCT AS p "
+				+ "JOIN CUSTOMER_ORDER AS o ON p.NAME = o.product_name WHERE creationDate = :day", Product.class)
+				.setParameter("day", day);
 		
 		List<Product> soldOnProducts= query.getResultList();
+
+		System.out.println("El resultado de la query N° 8 es: ");
 		
 		return soldOnProducts;
 	}
@@ -157,20 +182,23 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		List<Product> productsWithPrice= query.getResultList();
 		
+		System.out.println("El resultado de la query N° 9 es: ");
+		
 		return productsWithPrice;
 	}
 	
 
 	@Override
 	@Transactional
-	public List<String> getProductsNotSold() {
+	public List<Product> getProductsNotSold() {
 		
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		Query<String> query= session.createQuery("SELECT name FROM Product where name not "
-														+ "	in(select distinct product from Order)", String.class);
+		Query<Product> query= session.createNativeQuery("SELECT * FROM PRODUCT WHERE NAME NOT IN (SELECT DISTINCT product_name FROM CUSTOMER_ORDER)", Product.class);
 		
-		List<String> notSoldProducts= query.getResultList();
+		List<Product> notSoldProducts= query.getResultList();
+		
+		System.out.println("El resultado de la query N° 10 es: ");
 		
 		return notSoldProducts;		
 		

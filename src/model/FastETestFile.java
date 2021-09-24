@@ -31,80 +31,59 @@ public class FastETestFile {
         
         //faste.mappingTest();
 		
-        
+		//1° Query
         QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
 
         List<Order> orders = queryDao.getAllOrdersMadeByUser("pepe");
         
         orders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+
+        //2° Query
+        //List<Customer> users = queryDao.getUsersSpendingMoreThan(10f);
+
+        //3° Query
+        List<Product> expensiveProducts = queryDao.getTop10MoeExpensiveProducts();
         
-//	   	 for(Order i: orders)
-//		 {
-//			 System.out.println("Order Number : " + i.getOrderNumber());
-//			 System.out.println("quantity : " + i.getQuantity());
-//			 
-//			 // could not initialize proxy [model.user.User#pepe] - no Session
-//			
-//			 //System.out.println("Customer Name : " + i.getCustomer()); 
-//			 //System.out.println("Product name : " + i.getProduct());
-//			 //System.out.println("State : " + i.getState());
-//			 System.out.println();
-//		 }
-//
-//        List<Customer> users = queryDao.getUsersSpendingMoreThan();
-//        
-//        for(User name: users) {
-//        	System.out.println(name);
-//        }
-//
-//        List<Product> expensiveProducts = queryDao.getTop10MoeExpensiveProducts();
-//        
-//        for(Product name: expensiveProducts) {
-//        	System.out.println(name);
-//        }
-//
-//        List<Order> pendingOrders = queryDao.getPendingOrders();
-//        
-//        for(Order name: pendingOrders) {
-//        	System.out.println(name);
-//        }
-//
-//        List<Order> cancelledOrders = queryDao.getCancelledOrdersInPeriod();
-//        
-//        for(Order name:cancelledOrders) {
-//        	System.out.println(name);
-//        }
-//
-//        List<Order> deliveredOrders = queryDao.getDeliveredOrdersForUser();
-//        
-//        for(Order name: deliveredOrders) {
-//        	System.out.println(name);
-//        }
-//
-//        List<String> products = queryDao.getProductsOnePrice();
-//        
-//        for(String name:products) {
-//        	System.out.println(name);
-//        }
-//
-//        List<Product> soldOnProducts = queryDao.getSoldProductsOn();
-//        
-//        for(Product name: soldOnProducts) {
-//        	System.out.println(name);
-//        }
-//
+        expensiveProducts.stream().forEach(product-> System.out.println(product));
+
+        
+        //4° Query
+        List<Order> pendingOrders = queryDao.getPendingOrders();
+        
+        pendingOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+
+
+        //5° Query
+        List<Order> cancelledOrders = queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10) );
+        
+        cancelledOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+
+        
+        //6° Query
+        List<Order> deliveredOrders = queryDao.getDeliveredOrdersForUser("josepe");
+        
+        deliveredOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+
+        //7° Query
+        List<Product> products = queryDao.getProductsOnePrice();
+        
+        products.stream().forEach(product-> System.out.println(product));
+
+        //8° Query
+        List<Product> soldOnProducts = queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23));
+        
+        soldOnProducts.stream().forEach(product-> System.out.println(product));
+
 //        List<Product> productsWithPrice = queryDao.getProductsWithPriceAt();;
 //        
 //        for(Product name: productsWithPrice) {
 //        	System.out.println(name);
 //        }
 //
-//        List<String> notSoldProducts = queryDao.getProductsNotSold();
-//        
-//        for(String name: notSoldProducts) {
-//        	System.out.println(name);
-//        }
+        //10° Query
+        List<Product> notSoldProducts = queryDao.getProductsNotSold();
         
+        notSoldProducts.stream().forEach(product-> System.out.println(product));
 	}
 	
 	 private void mappingTest() {
