@@ -36,7 +36,7 @@ public class FastETestFile {
 
         List<Order> orders = queryDao.getAllOrdersMadeByUser("pepe");
         
-        orders.stream().forEach(order-> System.out.println(order));
+        orders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
         
 //	   	 for(Order i: orders)
 //		 {

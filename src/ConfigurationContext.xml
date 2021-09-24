@@ -39,7 +39,7 @@
 				<value>classpath:persistence/mapping/User.hbm.xml</value>
 				<value>classpath:persistence/mapping/Product.hbm.xml</value>
 				<value>classpath:persistence/mapping/Price.hbm.xml</value>
-				<value>classpath:persistence/mapping/OrderState.hbm.xml</value>
+  				<value>classpath:persistence/mapping/OrderState.hbm.xml</value>
 				<value>classpath:persistence/mapping/Order.hbm.xml</value>
 			</list>
 		</property>

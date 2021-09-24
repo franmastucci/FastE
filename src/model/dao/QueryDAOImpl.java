@@ -35,7 +35,7 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Order> query = session.createQuery("from Order where customer.userName = :anUserName", Order.class)
+		Query<Order> query = session.createNativeQuery( "SELECT * FROM CUSTOMER_ORDER WHERE customer = :anUserName", Order.class)
 				.setParameter("anUserName", anUserName);
 		
 		List<Order> ordersByUser = query.getResultList();
