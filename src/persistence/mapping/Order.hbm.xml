@@ -10,9 +10,9 @@
 
     	<property name="quantity"/>
     	
-    	<many-to-one name ="customer" foreign-key="fk_customer"/>
-    	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name"/>
-    	<many-to-one name ="state" class="OrderState"/>
+    	<many-to-one name ="customer" foreign-key="fk_customer" lazy="false"/>
+    	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name" lazy="false"/>
+    	<many-to-one name ="state" class="OrderState" lazy="false"/>
     	<property name="creationDate"/>
     	<property name="lastStateModification"/>
     	

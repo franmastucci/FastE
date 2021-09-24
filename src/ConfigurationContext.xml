@@ -45,11 +45,15 @@
 		</property>
 		<property name="hibernateProperties">
 		   <props>
-		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		      <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 		      <prop key="hibernate.show_sql">true</prop>
 		   </props>
 		</property>
    </bean>
+    
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
     
     <tx:annotation-driven transaction-manager="transactionManager"/> 
    	 

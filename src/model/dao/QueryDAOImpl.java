@@ -31,13 +31,16 @@ public class QueryDAOImpl implements QueryDAO {
 	
 	@Override
 	@Transactional
-	public List<Order> getAllOrdersMadeByUser() {
+	public List<Order> getAllOrdersMadeByUser(String anUserName) {
+		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		@SuppressWarnings("unchecked")
-		Query<Order> query = session.createQuery(" FROM Order WHERE customer =  '' ");
+		Query<Order> query = session.createQuery("from Order where customer.userName = :anUserName", Order.class)
+				.setParameter("anUserName", anUserName);
 		
 		List<Order> ordersByUser = query.getResultList();
+		
+		System.out.println("El resultado de la query es: ");
 		
 		return ordersByUser;
 	}

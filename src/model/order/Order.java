@@ -29,7 +29,7 @@ public class Order {
 	OrderState arrivedState = new ArrivedState();
 	OrderState cancelState = new CancelState();
 
-	private Order() {}
+	public Order() {}
 
 	/**
 	 * @implNote
@@ -42,7 +42,7 @@ public class Order {
 	 * @param aCreationDate
 	 * @param aModificationDate
 	 */
-	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
+	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
@@ -53,7 +53,7 @@ public class Order {
 		lastStateModification = aModificationDate;
 	}
 
-	private Order(User aCustomer, Product aProduct, Integer aQuantity) {
+	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
 		customer = aCustomer;
 		product = aProduct;
 		quantity = aQuantity;
@@ -170,6 +170,12 @@ public class Order {
 
 	public OrderState getArrivedState() {
 		return arrivedState;
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderNumber=" + orderNumber + ", customer=" + customer + ", product=" + product + ", quantity="
+				+ quantity + ", state=" + state + "]";
 	}
 	
 }

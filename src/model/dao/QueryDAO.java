@@ -1,6 +1,9 @@
 package model.dao;
 
 import java.util.List;
+
+import org.hibernate.query.Query;
+
 import model.order.Order;
 import model.provider.Product;
 import model.user.Customer;
@@ -8,8 +11,7 @@ import model.user.User;
 
 public interface QueryDAO {
 	
-
-	public List<Order> getAllOrdersMadeByUser(); //recbe un String username
+	public List<Order> getAllOrdersMadeByUser(String anUserName); //recbe un String username
 	
 	public List<Customer> getUsersSpendingMoreThan(); //recibe un float amount
 	
