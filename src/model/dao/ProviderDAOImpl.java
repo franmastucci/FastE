@@ -34,7 +34,7 @@ public class ProviderDAOImpl implements ProviderDAO {
 //		session.beginTransaction();
 		
 		//crear query
-		Query<Provider> query = session.createQuery("FROM Provider", Provider.class);
+		Query<Provider> query = session.createQuery("From Provider", Provider.class);
 		
 		//almacenar resultado
 		

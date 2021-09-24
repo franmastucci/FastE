@@ -27,65 +27,76 @@ public class FastETestFile {
 	
 
 	public static void main(String[] args) {
-        FastETestFile faste = new FastETestFile();
+        //FastETestFile faste = new FastETestFile();
         
-        faste.mappingTest();
-//        
-//        QueryDAO queryDao1 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Order> orders = queryDao1.getAllOrdersMadeByUser();
-//        
-//        for(Order order:orders) {
-//        	System.out.println(order);
-//        }
+        //faste.mappingTest();
+		
         
+        QueryDAO queryDao1 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Order> orders = queryDao1.getAllOrdersMadeByUser();
         
-        
-//        QueryDAO queryDao2 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<User> users = queryDao2.getUsersSpendingMoreThan();
-//        
-//        for(User name: users) {
-//        	System.out.println(name);
-//        }
-        
-        
-//        QueryDAO queryDao3 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Product> expensiveProducts = queryDao3.getTop10MoeExpensiveProducts();
-//        
-//        for(Product name: expensiveProducts) {
-//        	System.out.println(name);
-//        }
+  
+	   	 for(Order i: orders)
+		 {
+			 System.out.println("Order Number : " + i.getOrderNumber());
+			 System.out.println("quantity : " + i.getQuantity());
+			 
+			 // could not initialize proxy [model.user.User#pepe] - no Session
+			
+			 //System.out.println("Customer Name : " + i.getCustomer()); 
+			 //System.out.println("Product name : " + i.getProduct());
+			 //System.out.println("State : " + i.getState());
+			 System.out.println();
+		 }
         
         
         
-//        QueryDAO queryDao4 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Order> pendingOrders = queryDao4.getPendingOrders();
-//        
-//        for(Order name: pendingOrders) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao2 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Customer> users = queryDao2.getUsersSpendingMoreThan();
+        
+        for(User name: users) {
+        	System.out.println(name);
+        }
         
         
-//        QueryDAO queryDao5 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Order> cancelledOrders = queryDao5.getCancelledOrdersInPeriod();
-//        
-//        for(Order name:cancelledOrders) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao3 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Product> expensiveProducts = queryDao3.getTop10MoeExpensiveProducts();
+        
+        for(Product name: expensiveProducts) {
+        	System.out.println(name);
+        }
         
         
         
-//        QueryDAO queryDao6 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Order> deliveredOrders = queryDao6.getDeliveredOrdersForUser();
-//        
-//        for(Order name: deliveredOrders) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao4 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Order> pendingOrders = queryDao4.getPendingOrders();
+        
+        for(Order name: pendingOrders) {
+        	System.out.println(name);
+        }
+        
+        
+        QueryDAO queryDao5 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Order> cancelledOrders = queryDao5.getCancelledOrdersInPeriod();
+        
+        for(Order name:cancelledOrders) {
+        	System.out.println(name);
+        }
+        
+        
+        
+        QueryDAO queryDao6 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Order> deliveredOrders = queryDao6.getDeliveredOrdersForUser();
+        
+        for(Order name: deliveredOrders) {
+        	System.out.println(name);
+        }
         
         
         QueryDAO queryDao7 = (QueryDAO) context.getBean("queryDAO");
@@ -97,35 +108,35 @@ public class FastETestFile {
         }
         
         
-//        QueryDAO queryDao8 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Product> soldOnProducts = queryDao8.getSoldProductsOn();
-//        
-//        for(Product name: soldOnProducts) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao8 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Product> soldOnProducts = queryDao8.getSoldProductsOn();
+        
+        for(Product name: soldOnProducts) {
+        	System.out.println(name);
+        }
         
         
-//        QueryDAO queryDao9 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Object[]> productsWithPrice = queryDao9.getProductsWithPriceAt();;
-//        
-//        for(Object[] name: productsWithPrice) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao9 = (QueryDAO) context.getBean("queryDAO");
+
+        List<Product> productsWithPrice = queryDao9.getProductsWithPriceAt();;
+        
+        for(Product name: productsWithPrice) {
+        	System.out.println(name);
+        }
           
  
         
-//        QueryDAO queryDao10 = (QueryDAO) context.getBean("queryDAO");
-//
-//        List<Product> notSoldProducts = queryDao10.getProductsNotSold();
-//        
-//        for(Product name: notSoldProducts) {
-//        	System.out.println(name);
-//        }
+        QueryDAO queryDao10 = (QueryDAO) context.getBean("queryDAO");
+
+        List<String> notSoldProducts = queryDao10.getProductsNotSold();
+        
+        for(String name: notSoldProducts) {
+        	System.out.println(name);
+        }
         
         
-        faste.persistUser();        
+//        faste.persistUser();        
 	}
 	
 	private void persistUser() {

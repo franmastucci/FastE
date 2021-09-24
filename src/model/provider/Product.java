@@ -13,9 +13,10 @@ public class Product {
 	private Price price;
 	private List<PriceRecord> priceStory;
 	
-	private Product() {}
+	public Product() {}
 	
 	//Constructor creado para cumplir con requerimientos de Hibernate
+	@SuppressWarnings("unused")
 	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
 		name = aName;
 		provider = aProvider;
