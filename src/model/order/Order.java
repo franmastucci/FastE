@@ -2,6 +2,8 @@ package model.order;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
 import model.provider.Product;
 import model.user.User;
 
@@ -12,7 +14,7 @@ import model.user.User;
  *  a cuando se realiza la consulta
  */
 
-
+@Component
 public class Order {
 	private long orderNumber;
 	private User customer;
