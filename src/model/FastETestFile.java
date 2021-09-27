@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import model.dao.QueryDAO;
 import model.order.Order;
+import model.order.OrderState;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -33,7 +34,7 @@ public class FastETestFile {
 
         List<Order> orders = queryDao.getAllOrdersMadeByUser("pepe");
         
-        orders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+        orders.stream().forEach(order-> System.out.println(order));
 //
 //        //2° Query
 //        //List<Customer> users = queryDao.getUsersSpendingMoreThan(10f);
@@ -47,19 +48,19 @@ public class FastETestFile {
 //        //4° Query
         List<Order> pendingOrders = queryDao.getPendingOrders();
         
-        pendingOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+        pendingOrders.stream().forEach(order-> System.out.println(order));
 
 
 //        //5° Query
         List<Order> cancelledOrders = queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10) );
         
-        cancelledOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+        cancelledOrders.stream().forEach(order-> System.out.println(order));
 
         
 //        //6° Query
         List<Order> deliveredOrders = queryDao.getDeliveredOrdersForUser("josepe");
         
-        deliveredOrders.stream().forEach(order-> System.out.println(order.getOrderNumber()));
+        deliveredOrders.stream().forEach(order-> System.out.println(order));
 
 //        //7° Query
         List<Product> products = queryDao.getProductsOnePrice();
@@ -89,6 +90,11 @@ public class FastETestFile {
 	    	Session session = HibernateUtil.getSessionFactory().openSession();
 
 	        session.beginTransaction();
+	        
+	        session.save(OrderState.getPendingState());
+	        session.save(OrderState.getPreparedState());
+	        session.save(OrderState.getArrivedState());
+	        session.save(OrderState.getCancelState());
 	        
 	        //Instantiate persistent objects 
 	        Customer pepe = Customer.register("pepe", "contraseña", "Pepe", "pepe@mail.com", LocalDate.now());

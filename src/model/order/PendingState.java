@@ -10,7 +10,7 @@ public class PendingState extends OrderState {
 	@Override
 	public void getPrepare(Order anOrder) {
 		anOrder.updateLastModify();
-		anOrder.setState(anOrder.getPreparedState());
+		anOrder.setState(super.getPreparedState());
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class PendingState extends OrderState {
 	@Override
 	public void getCancel(Order anOrder) {
 		anOrder.updateLastModify();
-		anOrder.setState(anOrder.getCancelState());
+		anOrder.setState(super.getCancelState());
 	}
 
 }

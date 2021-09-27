@@ -15,7 +15,7 @@ public class PreparedState extends OrderState {
 	@Override
 	public void getArrive(Order anOrder) {
 		anOrder.updateLastModify();
-		anOrder.setState(anOrder.getArrivedState());
+		anOrder.setState(super.getArrivedState());
 	}
 
 	@Override

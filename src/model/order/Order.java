@@ -23,11 +23,6 @@ public class Order {
 	private OrderState state;
 	private LocalDate creationDate;
 	private LocalDate lastStateModification;
-	
-	OrderState pendingState = new PendingState();
-	OrderState preparedState = new PreparedState();
-	OrderState arrivedState = new ArrivedState();
-	OrderState cancelState = new CancelState();
 
 	public Order() {}
 
@@ -57,7 +52,7 @@ public class Order {
 		customer = aCustomer;
 		product = aProduct;
 		quantity = aQuantity;
-		state = this.getPendingState();
+		state = OrderState.getPendingState();
 		creationDate = LocalDate.now();
 		lastStateModification = LocalDate.now();
 	}
@@ -156,21 +151,21 @@ public class Order {
 		this.setLastStateModification(today);
 	}
 
-	public OrderState getPendingState() {
-		return pendingState;
-	}
-	
-	public OrderState getCancelState() {
-		return cancelState;
-	}
-
-	public OrderState getPreparedState() {
-		return preparedState;
-	}
-
-	public OrderState getArrivedState() {
-		return arrivedState;
-	}
+//	public OrderState getPendingState() {
+//		return pendingState;
+//	}
+//	
+//	public OrderState getCancelState() {
+//		return cancelState;
+//	}
+//
+//	public OrderState getPreparedState() {
+//		return preparedState;
+//	}
+//
+//	public OrderState getArrivedState() {
+//		return arrivedState;
+//	}
 
 	@Override
 	public String toString() {
