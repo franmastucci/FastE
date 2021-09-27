@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.order.DeliverOrder;
 import model.order.Order;
 import model.provider.Product;
 import model.provider.Provider;
@@ -18,7 +17,6 @@ public class Faste {
 	private List<Product> products;
 	private List<Provider> providers;
 	private List<Order> orders;
-	private List<DeliverOrder> deliveredOrders;
 
 	@SuppressWarnings("unused")
 	private Faste() {
@@ -27,22 +25,20 @@ public class Faste {
 		products = new ArrayList<Product>();
 		providers = new ArrayList<Provider>();
 		orders = new ArrayList<Order>();
-		deliveredOrders = new ArrayList<DeliverOrder>();
 	}
 	
 	public Faste(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,
-			List<Provider> aProviderList, List<Order> anOrderList, List<DeliverOrder> aDeliveredOrderList) {
+			List<Provider> aProviderList, List<Order> anOrderList) {
 		this.customers = aCustomerList;
 		this.deliverys = aDeliveryList;
 		this.products = aProductList;
 		this.providers = aProviderList;
 		this.orders = anOrderList;
-		this.deliveredOrders = aDeliveredOrderList;
 	}
 
 	public static Faste initiate(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,
-			List<Provider> aProviderList, List<Order> anOrderList, List<DeliverOrder> aDeliveredOrderList) {
-		return new Faste(aCustomerList, aDeliveryList, aProductList, aProviderList, anOrderList, aDeliveredOrderList);
+			List<Provider> aProviderList, List<Order> anOrderList) {
+		return new Faste(aCustomerList, aDeliveryList, aProductList, aProviderList, anOrderList);
 	}
 
 	public List<Customer> getCustomers() {
@@ -90,14 +86,4 @@ public class Faste {
 	private void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-
-	public List<DeliverOrder> getDeliveredOrders() {
-		return deliveredOrders;
-	}
-
-	@SuppressWarnings("unused")
-	private void setDeliveredOrders(List<DeliverOrder> deliveredOrders) {
-		this.deliveredOrders = deliveredOrders;
-	}
-	
 }

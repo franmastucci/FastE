@@ -21,10 +21,11 @@
 		
 		<subclass name="Delivery" discriminator-value="Delivery">
 	        <property name="capacity"/>        
-	        <bag name="deliveredOrders" inverse="true">
-            	<key column="orderNumber"/>
-            	<one-to-many class="model.order.Order"/>
-       		 </bag>
+	        <bag name="deliveredOrders" table="DELIVER">
+        		<key column="delivery"/>
+        		<many-to-many column="order_id" class="model.order.Order"/>
+    		</bag>
+
    		</subclass>
    		
     </class>

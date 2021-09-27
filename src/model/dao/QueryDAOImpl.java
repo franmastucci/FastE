@@ -126,7 +126,7 @@ public class QueryDAOImpl implements QueryDAO {
 				+ " lastStateModification FROM CUSTOMER_ORDER "
 				+ "JOIN DELIVER ON CUSTOMER_ORDER.orderNumber = DELIVER.order_id "
 				+ "WHERE lastStateModification BETWEEN :tenDaysAgo AND :today "
-				+ "AND state = 'Entregado' AND delivery_user_name = :username ORDER BY lastStateModification", Order.class)
+				+ "AND state = 'Entregado' AND delivery = :username ORDER BY lastStateModification", Order.class)
 				.setParameter("today", today).setParameter("tenDaysAgo", tenDaysAgo).setParameter("username", username);
 		
 		List<Order> deliveredOrders = query.getResultList();
