@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <!-- holding properties for database connectivity 
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    /-->
+
+    <!-- enabling annotation driven configuration /-->
+    <context:annotation-config/>
+
+    <!-- Scans the classpath of this application for @Components to deploy as beans -->
+    <context:component-scan base-package="model" />
+ 
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+      <property name="url" value="jdbc:mysql://localhost/Faste?useSSL=false"/>
+      <property name="username"  value="root"/>
+      <property name="password" value=""/>
+    </bean>
+    
+        <!--  Configuración Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:persistence/mapping/Provider.hbm.xml</value>
+				<value>classpath:persistence/mapping/User.hbm.xml</value>
+				<value>classpath:persistence/mapping/Product.hbm.xml</value>
+				<value>classpath:persistence/mapping/Price.hbm.xml</value>
+  				<value>classpath:persistence/mapping/OrderState.hbm.xml</value>
+				<value>classpath:persistence/mapping/Order.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+		   <props>
+		      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		      <prop key="hibernate.show_sql">true</prop>
+		   </props>
+		</property>
+   </bean>
+    
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+    	<property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/> 
+   	 
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+    	<property name="dataSource" ref="dataSource"/>  
+    	<property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+</beans>

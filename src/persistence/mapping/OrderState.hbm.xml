@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model.order">
+
+    <class name="OrderState" table="ORDER_STATE" abstract="true" >
+        <id name="name"/>
+        <discriminator type="string" column="state"/>
+        
+        <subclass name="ArrivedState" discriminator-value="Arrived">
+		</subclass>
+		
+		<subclass name="CancelState" discriminator-value="Cancel">
+		</subclass>
+		
+		<subclass name="PendingState" discriminator-value="Pending">
+		</subclass>
+		
+		<subclass name="PreparedState" discriminator-value="Prepared">
+		</subclass>
+		
+    </class>
+    
+</hibernate-mapping>
+

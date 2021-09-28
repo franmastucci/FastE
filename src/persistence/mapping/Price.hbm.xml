@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package = "model.price">
+	
+	<class name = "Price" abstract="true" table= "CONSOLIDED_PRICE">
+		<id name="id">
+			<generator class="increment"/>
+		</id>
+		<discriminator column= "type" type="string"/>
+		
+		<property name="value" not-null="true"/>
+		<property name="startDate" not-null="true"/>
+        
+        <subclass name="CurrentPrice" discriminator-value="Current">
+			<many-to-one name = "product" foreign-key="PRODUCT_NAME" cascade="save-update" lazy="false"/> 
+		</subclass>
+		
+		<subclass name="PriceRecord" discriminator-value="Record">
+			<property name="finishDate"/>									
+			<many-to-one name = "product" not-null="true" foreign-key="PRODUCT_NAME" cascade="save-update" lazy="false"/> 
+		</subclass>
+		
+    </class>
+    
+</hibernate-mapping>
+

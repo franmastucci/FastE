@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping package="model.order">
+    
+	<class name="Order" table="CUSTOMER_ORDER">
+    	<id name="orderNumber" type="long">
+            <column name="orderNumber" sql-type="BIGINT" not-null="true"/>
+            <generator class="increment"/>
+        </id>
+
+    	<property name="quantity"/>
+    	
+    	<many-to-one name ="customer" foreign-key="fk_customer" lazy="false"/>
+    	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name" lazy="false"/>
+    	<many-to-one name ="state" class="OrderState" lazy="false"/>
+    	<property name="creationDate"/>
+    	<property name="lastStateModification"/>
+    	<property name="unitaryPrice"/>
+    	
+    </class>
+
+</hibernate-mapping>    
