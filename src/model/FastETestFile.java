@@ -37,7 +37,10 @@ public class FastETestFile {
         orders.stream().forEach(order-> System.out.println(order));
 
 //        //2° Query
-//        //List<Customer> users = queryDao.getUsersSpendingMoreThan(10f);
+
+        List<Customer> users = queryDao.getUsersSpendingMoreThan(199f);
+
+        users.stream().forEach(user-> System.out.println(user));
 //
 //        //3° Query
         List<Product> expensiveProducts = queryDao.getTop10MoreExpensiveProducts();

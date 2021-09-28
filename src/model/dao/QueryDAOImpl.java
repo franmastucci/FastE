@@ -53,7 +53,10 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
-		Query<Customer> query = session.createNativeQuery("FROM Customer ", Customer.class);
+		
+		Query<Customer> query = session.createNativeQuery("SELECT DISTINCT  USER_NAME, pass, name, email, birthday\r\n"
+				+ "FROM CUSTOMER_ORDER JOIN USER ON CUSTOMER_ORDER.customer = USER.USER_NAME\r\n"
+				+ "WHERE (CUSTOMER_ORDER.quantity * CUSTOMER_ORDER.unitaryPrice) > :amount ", Customer.class).setParameter("amount", amount );
 		
 		List<Customer> users = query.getResultList();
 		
@@ -123,7 +126,7 @@ public class QueryDAOImpl implements QueryDAO {
 		LocalDate tenDaysAgo = today.minusDays(10);
 		
 		Query<Order> query= session.createNativeQuery("SELECT orderNumber, quantity, customer, product_name, state, creationDate,"
-				+ " lastStateModification FROM CUSTOMER_ORDER "
+				+ " lastStateModification, unitaryPrice FROM CUSTOMER_ORDER "
 				+ "JOIN DELIVER ON CUSTOMER_ORDER.orderNumber = DELIVER.order_id "
 				+ "WHERE lastStateModification BETWEEN :tenDaysAgo AND :today "
 				+ "AND state = 'Entregado' AND delivery = :username ORDER BY lastStateModification", Order.class)

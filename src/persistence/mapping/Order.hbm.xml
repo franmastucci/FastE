@@ -15,6 +15,7 @@
     	<many-to-one name ="state" class="OrderState" lazy="false"/>
     	<property name="creationDate"/>
     	<property name="lastStateModification"/>
+    	<property name="unitaryPrice"/>
     	
     </class>
 

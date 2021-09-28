@@ -23,6 +23,7 @@ public class Order {
 	private OrderState state;
 	private LocalDate creationDate;
 	private LocalDate lastStateModification;
+	private float unitaryPrice;
 
 	public Order() {}
 
@@ -38,7 +39,7 @@ public class Order {
 	 * @param aModificationDate
 	 */
 	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
-			LocalDate aCreationDate, LocalDate aModificationDate) {
+			LocalDate aCreationDate, LocalDate aModificationDate, float anUnitaryPrice ) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
 		product = aProduct;
@@ -46,6 +47,7 @@ public class Order {
 		state = anOrderState;
 		creationDate = aCreationDate;
 		lastStateModification = aModificationDate;
+		unitaryPrice = anUnitaryPrice;
 	}
 
 	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -55,6 +57,7 @@ public class Order {
 		state = OrderState.getPendingState();
 		creationDate = LocalDate.now();
 		lastStateModification = LocalDate.now();
+		unitaryPrice = product.getPrice().getValue();
 	}
 
 	/**
@@ -133,6 +136,14 @@ public class Order {
 	private void setLastStateModification(LocalDate lastStateModifycation) {
 		this.lastStateModification = lastStateModifycation;
 	}
+	
+	public float getUnitaryPrice() {
+		return unitaryPrice;
+	}
+
+	public void setUnitaryPrice(float unitaryPrice) {
+		this.unitaryPrice = unitaryPrice;
+	}
 
 	public void getCancel(){
 		this.state.getCancel(this);
@@ -172,5 +183,6 @@ public class Order {
 		return "Order [orderNumber=" + orderNumber + ", customer=" + customer + ", product=" + product + ", quantity="
 				+ quantity + ", state=" + state + "]";
 	}
+
 	
 }
