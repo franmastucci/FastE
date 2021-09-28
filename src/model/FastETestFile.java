@@ -28,7 +28,7 @@ public class FastETestFile {
 	public static void main(String[] args) {
         FastETestFile faste = new FastETestFile();
 
-        //faste.mappingTest();
+        faste.mappingTest();
 
         //1° Query
         QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
@@ -36,7 +36,6 @@ public class FastETestFile {
         faste.printQueryResult(queryDao.getAllOrdersMadeByUser("pepe"));
 
         //2° Query
-
         faste.printQueryResult(queryDao.getUsersSpendingMoreThan(199f)); 
 
         //3° Query
