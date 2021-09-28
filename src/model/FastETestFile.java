@@ -35,12 +35,12 @@ public class FastETestFile {
         List<Order> orders = queryDao.getAllOrdersMadeByUser("pepe");
         
         orders.stream().forEach(order-> System.out.println(order));
-//
+
 //        //2° Query
 //        //List<Customer> users = queryDao.getUsersSpendingMoreThan(10f);
 //
 //        //3° Query
-        List<Product> expensiveProducts = queryDao.getTop10MoeExpensiveProducts();
+        List<Product> expensiveProducts = queryDao.getTop10MoreExpensiveProducts();
         
         expensiveProducts.stream().forEach(product-> System.out.println(product));
 
@@ -73,11 +73,7 @@ public class FastETestFile {
         soldOnProducts.stream().forEach(product-> System.out.println(product));
 
 //        List<Product> productsWithPrice = queryDao.getProductsWithPriceAt();;
-//        
-//        for(Product name: productsWithPrice) {
-//        	System.out.println(name);
-//        }
-//
+
         //10° Query
         List<Product> notSoldProducts = queryDao.getProductsNotSold();
         
@@ -141,12 +137,6 @@ public class FastETestFile {
 	        spriteOrder.getPrepare();
 	        jose.deliver(spriteOrder);
 	        
-	 	        
-	        Order dato = session.load(Order.class, Integer.toUnsignedLong(1));
-	        System.out.println("El estado de la orden " + dato.getOrderNumber() + " del cliente " 
-	        + dato.getCustomer().getUserName() + " de " + dato.getProduct().getName() + " por la cantidad de "
-	        		+ dato.getQuantity() + " es " + dato.getState().getName() + " y suma un total a pagar de "
-	        		+ dato.getTotalCost());
 	        
 	        session.getTransaction().commit();
 	        

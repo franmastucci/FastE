@@ -37,6 +37,11 @@ public abstract class OrderState {
 	public static CancelState getCancelState() {
 		return cancelState;
 	}
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 
 	public abstract void getPrepare(Order anOrder) ;
 	

@@ -63,4 +63,9 @@ public abstract class User {
 		this.birthday = aDate;
 	}
 
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", name=" + name + ", email=" + email + ", birthday=" + birthday + "]";
+	}
+
 }

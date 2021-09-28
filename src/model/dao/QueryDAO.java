@@ -14,7 +14,7 @@ public interface QueryDAO {
 	
 	public List<Customer> getUsersSpendingMoreThan(float amount); //recibe un float amount
 	
-	public List<Product> getTop10MoeExpensiveProducts();
+	public List<Product> getTop10MoreExpensiveProducts();
 	
 	public List<Order>  getPendingOrders();
 	

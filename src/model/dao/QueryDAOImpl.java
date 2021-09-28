@@ -66,7 +66,7 @@ public class QueryDAOImpl implements QueryDAO {
 
 	@Override
 	@Transactional
-	public List<Product> getTop10MoeExpensiveProducts() {
+	public List<Product> getTop10MoreExpensiveProducts() {
 		
 		Session session = this.sessionFactory.getCurrentSession();
 		
