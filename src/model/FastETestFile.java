@@ -26,67 +26,48 @@ public class FastETestFile {
 	
 
 	public static void main(String[] args) {
-        //FastETestFile faste = new FastETestFile();
-        
+        FastETestFile faste = new FastETestFile();
+
         //faste.mappingTest();
-		
-		//1Â° Query
+
+        //1° Query
         QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
 
-        List<Order> orders = queryDao.getAllOrdersMadeByUser("pepe");
-        
-        orders.stream().forEach(order-> System.out.println(order));
+        faste.printQueryResult(queryDao.getAllOrdersMadeByUser("pepe"));
 
-        //2Â° Query
+        //2° Query
 
-        List<Customer> users = queryDao.getUsersSpendingMoreThan(199f);
+        faste.printQueryResult(queryDao.getUsersSpendingMoreThan(199f)); 
 
-        users.stream().forEach(user-> System.out.println(user));
+        //3° Query
+        faste.printQueryResult(queryDao.getTop10MoreExpensiveProducts());
 
-        //3Â° Query
-        List<Product> expensiveProducts = queryDao.getTop10MoreExpensiveProducts();
-        
-        expensiveProducts.stream().forEach(product-> System.out.println(product));
+        //4° Query
+        faste.printQueryResult(queryDao.getPendingOrders());
 
-        
-        //4Â° Query
-        List<Order> pendingOrders = queryDao.getPendingOrders();
-        
-        pendingOrders.stream().forEach(order-> System.out.println(order));
+        //5° Query
+        faste.printQueryResult(queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10)));
 
+        //6° Query
+        faste.printQueryResult(queryDao.getDeliveredOrdersForUser("josepe"));
 
-        //5Â° Query
-        List<Order> cancelledOrders = queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10) );
-        
-        cancelledOrders.stream().forEach(order-> System.out.println(order));
+        //7° Query
+        faste.printQueryResult(queryDao.getProductsOnePrice());
 
-        
-        //6Â° Query
-        List<Order> deliveredOrders = queryDao.getDeliveredOrdersForUser("josepe");
-        
-        deliveredOrders.stream().forEach(order-> System.out.println(order));
+        //8° Query
+        faste.printQueryResult(queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23)));
 
-        //7Â° Query
-        List<Product> products = queryDao.getProductsOnePrice();
-        
-        products.stream().forEach(product-> System.out.println(product));
+        //9° Query, se retorna la lista de precios para la fecha pedida a la que se puede solicitar el producto del mismo
+        faste.printQueryResult(queryDao.getProductsWithPriceAt(LocalDate.now()));
 
-        //8Â° Query
-        List<Product> soldOnProducts = queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23));
-        
-        soldOnProducts.stream().forEach(product-> System.out.println(product));
+        //10° Query
+        faste.printQueryResult(queryDao.getProductsNotSold());
 
-        //9Â° Query, se retorna la lista de precios para la fecha pedida a la que se puede solicitar el producto del mismo
-        List<Price> productsWithPrice = queryDao.getProductsWithPriceAt(LocalDate.now());
-        
-        productsWithPrice.stream().forEach(product-> System.out.println(product));
+    }
 
-        //10Â° Query
-        List<Product> notSoldProducts = queryDao.getProductsNotSold();
-        
-        notSoldProducts.stream().forEach(product-> System.out.println(product));
-	}
-	
+     private void printQueryResult(List<?> queryResultList) {
+        queryResultList.stream().forEach(result-> System.out.println(result));
+    }
 	 @SuppressWarnings("unused")
 	private void mappingTest() {
 
