@@ -6,7 +6,6 @@ import java.util.List;
 import model.order.Order;
 import model.provider.Product;
 import model.user.Customer;
-import model.user.User;
 
 public interface QueryDAO {
 	

@@ -2,8 +2,6 @@ package model.order;
 
 import java.time.LocalDate;
 
-import org.springframework.stereotype.Component;
-
 import model.provider.Product;
 import model.user.User;
 
@@ -11,24 +9,24 @@ public class Order {
 	private long orderNumber;
 	private User customer;
 	private Product product;
+	private Float unitaryPrice;
 	private Integer quantity;
 	private OrderState state;
 	private LocalDate creationDate;
 	private LocalDate lastStateModification;
-	private float unitaryPrice;
 
 	public Order() {}
 
 	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
-			LocalDate aCreationDate, LocalDate aModificationDate, float anUnitaryPrice ) {
+			LocalDate aCreationDate, LocalDate aModificationDate, Float anUnitaryPrice ) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
 		product = aProduct;
+		unitaryPrice = anUnitaryPrice;
 		quantity = aQuantity;
 		state = anOrderState;
 		creationDate = aCreationDate;
 		lastStateModification = aModificationDate;
-		unitaryPrice = anUnitaryPrice;
 	}
 
 	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -84,7 +82,7 @@ public class Order {
 		return unitaryPrice;
 	}
 	
-	public void setUnitaryPrice(float unitaryPrice) {
+	public void setUnitaryPrice(Float unitaryPrice) {
 		this.unitaryPrice = unitaryPrice;
 	}
 	

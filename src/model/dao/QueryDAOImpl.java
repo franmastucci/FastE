@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import model.order.Order;
 import model.provider.Product;
 import model.user.Customer;
-import model.user.User;
 
 
 @Repository(value = "queryDAO")
