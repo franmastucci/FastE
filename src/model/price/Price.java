@@ -51,10 +51,10 @@ public abstract class Price {
 	protected void setStartDate(LocalDate aStartDate) {
 		this.startDate = aStartDate;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Price [value=" + value + "]";
+		return "Price [id=" + id + ", value=" + value + ", product=" + product + "]";
 	}
 
 	public abstract LocalDate getFinishDate();

@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import model.dao.QueryDAO;
 import model.order.Order;
 import model.order.OrderState;
+import model.price.Price;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -25,9 +26,9 @@ public class FastETestFile {
 	
 
 	public static void main(String[] args) {
-        FastETestFile faste = new FastETestFile();
+        //FastETestFile faste = new FastETestFile();
         
-        faste.mappingTest();
+        //faste.mappingTest();
 		
 		//1° Query
         QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
@@ -36,46 +37,49 @@ public class FastETestFile {
         
         orders.stream().forEach(order-> System.out.println(order));
 
-//        //2° Query
+        //2° Query
 
         List<Customer> users = queryDao.getUsersSpendingMoreThan(199f);
 
         users.stream().forEach(user-> System.out.println(user));
 
-//        //3° Query
+        //3° Query
         List<Product> expensiveProducts = queryDao.getTop10MoreExpensiveProducts();
         
         expensiveProducts.stream().forEach(product-> System.out.println(product));
 
         
-//        //4° Query
+        //4° Query
         List<Order> pendingOrders = queryDao.getPendingOrders();
         
         pendingOrders.stream().forEach(order-> System.out.println(order));
 
 
-//        //5° Query
+        //5° Query
         List<Order> cancelledOrders = queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10) );
         
         cancelledOrders.stream().forEach(order-> System.out.println(order));
 
         
-//        //6° Query
+        //6° Query
         List<Order> deliveredOrders = queryDao.getDeliveredOrdersForUser("josepe");
         
         deliveredOrders.stream().forEach(order-> System.out.println(order));
 
-//        //7° Query
+        //7° Query
         List<Product> products = queryDao.getProductsOnePrice();
         
         products.stream().forEach(product-> System.out.println(product));
 
-//        //8° Query
+        //8° Query
         List<Product> soldOnProducts = queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23));
         
         soldOnProducts.stream().forEach(product-> System.out.println(product));
 
-//        List<Product> productsWithPrice = queryDao.getProductsWithPriceAt();;
+        //9° Query, se retorna la lista de precios para la fecha pedida a la que se puede solicitar el producto del mismo
+        List<Price> productsWithPrice = queryDao.getProductsWithPriceAt(LocalDate.now());
+        
+        productsWithPrice.stream().forEach(product-> System.out.println(product));
 
         //10° Query
         List<Product> notSoldProducts = queryDao.getProductsNotSold();
@@ -83,7 +87,8 @@ public class FastETestFile {
         notSoldProducts.stream().forEach(product-> System.out.println(product));
 	}
 	
-	 private void mappingTest() {
+	 @SuppressWarnings("unused")
+	private void mappingTest() {
 
 	    	//Instantiate a session 
 	    	Session session = HibernateUtil.getSessionFactory().openSession();

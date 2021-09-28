@@ -90,7 +90,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", provider=" + provider + ", weight=" + weight + ", price=" + price + "]";
+		return "Product [name=" + name + ", provider=" + provider + ", weight=" + weight + ", price=" + price.getValue() + "]";
 	}
 	
 }

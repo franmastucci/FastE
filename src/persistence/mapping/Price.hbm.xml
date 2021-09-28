@@ -2,22 +2,23 @@
 
 <hibernate-mapping package = "model.price">
 	
-	<class name = "Price" abstract="true">
+	<class name = "Price" abstract="true" table= "CONSOLIDED_PRICE">
 		<id name="id">
 			<generator class="increment"/>
 		</id>
+		<discriminator column= "type" type="string"/>
 		
 		<property name="value" not-null="true"/>
 		<property name="startDate" not-null="true"/>
         
-        <union-subclass name="CurrentPrice" table="PRICE_LIST">
-		<many-to-one name = "product" unique="true" foreign-key="PRODUCT_NAME" cascade="save-update" lazy="false"/> 
-		</union-subclass>
+        <subclass name="CurrentPrice" discriminator-value="Current">
+			<many-to-one name = "product" foreign-key="PRODUCT_NAME" cascade="save-update" lazy="false"/> 
+		</subclass>
 		
-		<union-subclass name="PriceRecord" table="PRICE_STORY">
-			<property name="finishDate" not-null="true"/>									
-			<many-to-one name = "product" not-null="true" foreign-key="PRODUCT_NAME" cascade="save-update"/> 
-		</union-subclass>
+		<subclass name="PriceRecord" discriminator-value="Record">
+			<property name="finishDate"/>									
+			<many-to-one name = "product" not-null="true" foreign-key="PRODUCT_NAME" cascade="save-update" lazy="false"/> 
+		</subclass>
 		
     </class>
     

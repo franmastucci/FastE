@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import model.order.Order;
+import model.price.Price;
 import model.provider.Product;
 import model.user.Customer;
 
@@ -25,7 +26,7 @@ public interface QueryDAO {
 
 	public List<Product> getSoldProductsOn(LocalDate day); //recibe un Date day
 	
-	public List<Product>  getProductsWithPriceAt(); //recibe un Date day
+	public List<Price>  getProductsWithPriceAt(LocalDate day); //recibe un Date day
 	
 	public List<Product> getProductsNotSold();
 	

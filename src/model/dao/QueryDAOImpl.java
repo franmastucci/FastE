@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.order.Order;
+import model.price.Price;
 import model.provider.Product;
 import model.user.Customer;
 
@@ -74,7 +75,7 @@ public class QueryDAOImpl implements QueryDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		
 		Query<Product>  query = session.createNativeQuery("SELECT NAME,weight,provider,price_id FROM PRODUCT as p "
-				+ "JOIN PRICE_LIST as l ON p.price_id = l.id ORDER BY value LIMIT 10", Product.class);
+				+ "JOIN CONSOLIDED_PRICE as l ON p.price_id = l.id ORDER BY value LIMIT 10", Product.class);
 		
 		List<Product>  expensiveProducts = query.getResultList();
 		
@@ -147,7 +148,8 @@ public class QueryDAOImpl implements QueryDAO {
 		Session session = this.sessionFactory.getCurrentSession();		
 		
 		Query<Product> query = session.createNativeQuery("SELECT * FROM PRODUCT "
-				+ "WHERE NAME NOT IN (SELECT DISTINCT product FROM PRICE_STORY)", Product.class); 
+				+ "WHERE NAME NOT IN (SELECT DISTINCT product FROM CONSOLIDED_PRICE "
+				+ "WHERE type = 'Record')", Product.class); 
 
 		List<Product> products = query.getResultList();
 
@@ -177,13 +179,21 @@ public class QueryDAOImpl implements QueryDAO {
 	
 	@Override
 	@Transactional
-	public List<Product> getProductsWithPriceAt() {
+	public List<Price> getProductsWithPriceAt(LocalDate day) {
 		
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		Query<Product> query= session.createQuery("From Product", Product.class);
+		Query<Price> query= session.createNativeQuery("SELECT * FROM CONSOLIDED_PRICE "
+				+ "WHERE :day BETWEEN startDate AND finishDate "
+				+ "AND product NOT IN (SELECT product FROM CONSOLIDED_PRICE "
+				+ "WHERE type = 'Current' "
+				+ "AND startDate <= :day) "
+				+ "UNION (SELECT * FROM CONSOLIDED_PRICE "
+				+ "WHERE startDate <= :day "
+				+ "AND type = 'Current')", Price.class)
+				.setParameter("day", day);
 		
-		List<Product> productsWithPrice= query.getResultList();
+		List<Price> productsWithPrice= query.getResultList();
 		
 		System.out.println("El resultado de la query N° 9 es: ");
 		
@@ -197,7 +207,8 @@ public class QueryDAOImpl implements QueryDAO {
 		
 		Session session = this.sessionFactory.getCurrentSession();		
 		
-		Query<Product> query= session.createNativeQuery("SELECT * FROM PRODUCT WHERE NAME NOT IN (SELECT DISTINCT product_name FROM CUSTOMER_ORDER)", Product.class);
+		Query<Product> query= session.createNativeQuery("SELECT * FROM PRODUCT "
+				+ "WHERE NAME NOT IN (SELECT DISTINCT product_name FROM CUSTOMER_ORDER)", Product.class);
 		
 		List<Product> notSoldProducts= query.getResultList();
 		
