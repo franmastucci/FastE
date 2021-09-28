@@ -54,9 +54,10 @@ public class QueryDAOImpl implements QueryDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		
 		
-		Query<Customer> query = session.createNativeQuery("SELECT DISTINCT  USER_NAME, pass, name, email, birthday\r\n"
-				+ "FROM CUSTOMER_ORDER JOIN USER ON CUSTOMER_ORDER.customer = USER.USER_NAME\r\n"
-				+ "WHERE (CUSTOMER_ORDER.quantity * CUSTOMER_ORDER.unitaryPrice) > :amount ", Customer.class).setParameter("amount", amount );
+		Query<Customer> query = session.createNativeQuery("SELECT DISTINCT  USER_NAME, pass, name, email, birthday "
+				+ "FROM CUSTOMER_ORDER JOIN USER ON CUSTOMER_ORDER.customer = USER.USER_NAME "
+				+ "WHERE (CUSTOMER_ORDER.quantity * CUSTOMER_ORDER.unitaryPrice) > :amount ", Customer.class)
+				.setParameter("amount", amount );
 		
 		List<Customer> users = query.getResultList();
 		

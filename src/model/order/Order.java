@@ -7,14 +7,6 @@ import org.springframework.stereotype.Component;
 import model.provider.Product;
 import model.user.User;
 
-/**
- *  @implNote
- *  Se introducen las variables de instancia creationDate y lastStateModification a fines de poder obtener en la base de datos
- *  los los montos totales gastados por los clientes en determinadas fechas asi como las ordenes canceladas dias dias atras respecto
- *  a cuando se realiza la consulta
- */
-
-@Component
 public class Order {
 	private long orderNumber;
 	private User customer;
@@ -27,17 +19,6 @@ public class Order {
 
 	public Order() {}
 
-	/**
-	 * @implNote
-	 * Constructor creado para cumplir con requerimientos de Hibernate	
-	 * @param anOrderNumber
-	 * @param aCustomer
-	 * @param aProduct
-	 * @param aQuantity
-	 * @param anOrderState
-	 * @param aCreationDate
-	 * @param aModificationDate
-	 */
 	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate, float anUnitaryPrice ) {
 		orderNumber = anOrderNumber;
@@ -53,27 +34,19 @@ public class Order {
 	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
 		customer = aCustomer;
 		product = aProduct;
+		unitaryPrice = aProduct.getPrice().getValue();
 		quantity = aQuantity;
 		state = OrderState.getPendingState();
 		creationDate = LocalDate.now();
 		lastStateModification = LocalDate.now();
-		unitaryPrice = product.getPrice().getValue();
 	}
 
-	/**
-	 * @implNote
-	 * Metodo de acceso publico para crear instancias de Order	
-	 * @param aCustomer
-	 * @param aProduct
-	 * @param aQuantity
-	 * @return Order
-	 */
 	public static Order newOrder(User aCustomer, Product aProduct, Integer aQuantity) {
 		return new Order(aCustomer, aProduct, aQuantity);
 	}
 	
 	public Float getTotalCost() {
-        return this.getProduct().getPrice().getValue() * this.getQuantity();
+        return this.getUnitaryPrice() * this.getQuantity();
     }
 	
 	public long getOrderNumber() {
@@ -107,6 +80,14 @@ public class Order {
 		return product;
 	}
 	
+	public float getUnitaryPrice() {
+		return unitaryPrice;
+	}
+	
+	public void setUnitaryPrice(float unitaryPrice) {
+		this.unitaryPrice = unitaryPrice;
+	}
+	
 	@SuppressWarnings("unused")
 	private void setProduct(Product product) {
 		this.product = product;
@@ -135,14 +116,6 @@ public class Order {
 	
 	private void setLastStateModification(LocalDate lastStateModifycation) {
 		this.lastStateModification = lastStateModifycation;
-	}
-	
-	public float getUnitaryPrice() {
-		return unitaryPrice;
-	}
-
-	public void setUnitaryPrice(float unitaryPrice) {
-		this.unitaryPrice = unitaryPrice;
 	}
 
 	public void getCancel(){

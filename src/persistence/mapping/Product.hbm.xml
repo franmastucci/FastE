@@ -8,7 +8,7 @@
 		<many-to-one name = "provider" not-null="true" foreign-key="PROVIDER_CUIL" cascade="save-update" lazy="false"/>
 		<many-to-one name = "price" column="price_id" unique="true" not-null="true" foreign-key="PRICE_COD" cascade="save-update"
 			lazy="false"/> 
-		<list name="priceStory"  inverse="true" cascade="all"  table="PRICE_LIST">
+		<list name="priceStory"  inverse="true" cascade="all">
 			<key column="value" not-null="true"/>
 			<list-index column="RECORD_IDX"/>
 			<one-to-many class="model.price.PriceRecord"/>
