@@ -7,6 +7,10 @@ import model.price.PriceRecord;
 
 @Component
 public class Product {
+	private static final String INVALID_NAME = "El nombre no puede estar en blanco";
+	private static final String INVALID_PPRICE_VALUE = "EL valor del precio debe ser positivo";
+	private static final String INVALID_WEIGHT = "El peso del producto debe ser menor a 30";
+	private static final String INVALID_PROVIDER = "El valor ingresado debe ser de tipo 'Provider' ";
 	private String name;
 	private Provider provider;
 	private Float weight;
@@ -35,7 +39,45 @@ public class Product {
 
 	//Metodo de acceso publico para crear instancias de Product
 	public static Product publishProduct(String aName, Provider aProvider, Float aWeight, Float aPriceValue)  {
+		
+		assertIsValidName(aName); 
+		assertIsValidValue(aPriceValue);
+		assertIsValidWeight(aWeight);
+		assertIsValidProvider(aProvider);
+		
 		return new Product(aName, aProvider, aWeight, aPriceValue);
+	}
+
+	private static void assertIsValidProvider(Provider aProvider) {
+		if(!isValidProvider(aProvider) ) throw new RuntimeException(INVALID_PROVIDER);
+	}
+
+	private static boolean isValidProvider(Provider aProvider) {
+		return aProvider != null;
+	}
+
+	private static void assertIsValidWeight(Float aWeight) {
+		if(!isValidWeight(aWeight)) throw new RuntimeException(INVALID_WEIGHT);
+	}
+
+	private static boolean isValidWeight(Float aWeight) {
+		return aWeight <= 20;
+	}
+
+	private static void assertIsValidValue(Float aPriceValue) {
+		if(!isValidValue(aPriceValue)) throw new RuntimeException(INVALID_PPRICE_VALUE);
+	}
+
+	private static boolean isValidValue(Float aPriceValue) {
+		return aPriceValue > 0;
+	}
+
+	private static void assertIsValidName(String aName) {
+		if(!isValidName(aName)) throw new RuntimeException(INVALID_NAME);
+	}
+
+	private static boolean isValidName(String aName) {
+		return !aName.isBlank();
 	}
 
 	public String getName() {
