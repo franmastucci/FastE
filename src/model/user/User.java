@@ -1,6 +1,9 @@
 package model.user;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -44,19 +47,18 @@ public abstract class User {
 	}
 	
 	private static boolean checkSpecialChars(String aPass) {
+	
 		String specialChars = "!@#$%&*()'+,-./:;<=>?[]^_`{|}";
-		boolean check = false;
+
+		List<Character> specialCharList = new ArrayList<>(specialChars.chars().mapToObj(e -> (char) e)
+				.collect(Collectors.toList()));
+		List<Character> passChar = new ArrayList<>(aPass.chars().mapToObj(e -> (char) e)
+				.collect(Collectors.toList()));
+
+		List<Character> result = specialCharList.stream().filter(charact -> passChar.contains(charact))
+				.collect(Collectors.toList());
 		
-		for (int i = 0; i < aPass.length(); i++) {
-			String strChar = Character.toString(aPass.charAt(i));
-
-			if (specialChars.contains(strChar)) {
-				check = true;
-				break;
-			}
-		}
-
-		return check;
+		return !result.isEmpty();
 	}	
 
 	protected static void assertIsValidName(String aName) {
