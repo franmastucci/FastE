@@ -13,7 +13,7 @@
 
         
         <subclass name="Customer" discriminator-value="Customer">
-	        <bag name="activeOrders" inverse="true">
+	        <bag name="ordersStory" inverse="true">
 	           	<key column="orderNumber"/>
 	            <one-to-many class="model.order.Order"/>
 	       	</bag>

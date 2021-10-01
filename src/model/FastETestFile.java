@@ -81,9 +81,9 @@ public class FastETestFile {
 	        session.save(OrderState.getCancelState());
 	        
 	        //Instantiate persistent objects 
-	        Customer pepe = Customer.register("pepe", "contraseña", "Pepe", "pepe@mail.com", LocalDate.now());
-	        Delivery jose = Delivery.register("josepe", "algo", "Jose", "jose@mail.com", LocalDate.now(), 10f);
-	        Provider cocaCola = Provider.register(3030123, "Coca-Cola", "calle falsa 123", 0, 10);
+	        Customer pepe = Customer.register("pepe", "contraseña_", "Pepe", "pepe@mail.com", LocalDate.of(1999,2,1));
+	        Delivery jose = Delivery.register("josepe", "algo!", "Jose", "jose@mail.com", LocalDate.of(1980,2 ,1), 10f);
+	        Provider cocaCola = Provider.register(20301230001l, "Coca-Cola", "calle falsa 123", 0, 10);
 	        Product coca = Product.publishProduct("Coca", cocaCola, 1.0f, 15.0f);
 	        Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
 	        Product sprite = Product.publishProduct("Sprite", cocaCola, 1.0f, 20.0f);

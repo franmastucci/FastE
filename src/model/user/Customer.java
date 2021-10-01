@@ -8,41 +8,56 @@ import model.provider.Product;
 
 public class Customer extends User {
 	
-	private List<Order> activeOrders;
+	private List<Order> ordersStory;
 	
 	protected Customer() {}
 
 	//Requerido por hibernate
 	protected Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, 
-			List<Order>	anActiveOrderList) {
+			List<Order>	anOrdersStoryList) {
 		
 		super(anUserName, aPass, aName, anEmail, aBirthday);
-		activeOrders = anActiveOrderList;
+		this.ordersStory = anOrdersStoryList;
 	}
 
 	//Metodo de acceso publico para crear instancias de Customer
 	public static Customer register(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
 		
-		List<Order> anActiveOrders = new ArrayList<Order>();
-		return new Customer(anUserName, aPass, aName, anEmail, aBirthday, anActiveOrders);
+		assertIsValidUserName(anUserName);
+		assertIsValidPass(aPass);
+		assertIsValidName(aName);
+		assertIsValidEmail(anEmail);
+		assertIsvalidBirthday(aBirthday);
+		
+		List<Order> anOrdersStory = new ArrayList<Order>();
+		return new Customer(anUserName, aPass, aName, anEmail, aBirthday, anOrdersStory);
 	}
+	
 
-	public List<Order> getActiveOrders() {
-		return activeOrders;
+	public List<Order> getOrdersStory() {
+		return ordersStory;
 	}
 	
 	@SuppressWarnings("unused")
-	private void setActiveOrders(List<Order> anOrderList) {
-		this.activeOrders = anOrderList;
+	private void setOrdersStory(List<Order> anOrderList) {
+		this.ordersStory = anOrderList;
 	}
 
 	public Order makeAnOrder(Product aProduct, Integer aQuantity) {
-		return Order.newOrder(this, aProduct, aQuantity);
+		Order newOrder = Order.newOrder(this, aProduct, aQuantity);
+		this.getOrdersStory().add(newOrder);
+		return newOrder;
 	}
+	
+	
 	
 	@Override
 	public String toString() {
 		return "Customer [username=" + userName+ ", name=" + name+ ", email=" + email+ "]";
+	}
+
+	public boolean hasMadeAnOrder() {
+		return !this.getOrdersStory().isEmpty();
 	}
 
 }
