@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Provider {
-	private static final String INVALID_CUIL = "El cuil debe ser un valor entre 30000000001 y 31000000000";
+	private static final String INVALID_CUIL = "El cuil debe ser un valor entre 20000000001 y 21000000000";
 	private static final String INVALID_NAME = "El nombre no puede estar en blanco";
 	private static final String INVALID_ADDRESS = "La dirección no puede estar en blanco";
 	private Long cuil;
@@ -17,11 +17,11 @@ public class Provider {
 	private Provider() {};
 	
 	private Provider(Long aCuil, String aName, String anAdress, Integer aXCoordinate, Integer aYCoordinate) {
-		cuil = aCuil;
-		name = aName;
-		adress = anAdress;
-		xCoordinate = aXCoordinate;
-		yCoordinate = aYCoordinate;
+		this.cuil = aCuil;
+		this.name = aName;
+		this.adress = anAdress;
+		this.xCoordinate = aXCoordinate;
+		this.yCoordinate = aYCoordinate;
 	}
 
 	//Metodo de acceso publico para crear instancias de Provider
@@ -52,7 +52,7 @@ public class Provider {
 	}
 
 	private static boolean isValidCuil(Long aCuil) {
-		return aCuil > 30000000000l && aCuil < 31000000000l;
+		return aCuil > 20000000000l && aCuil < 21000000000l;
 	}
 
 	public String getName() {

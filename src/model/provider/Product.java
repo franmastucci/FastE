@@ -5,36 +5,36 @@ import model.price.CurrentPrice;
 import model.price.Price;
 import model.price.PriceRecord;
 
-@Component
+
 public class Product {
 	private static final String INVALID_NAME = "El nombre no puede estar en blanco";
 	private static final String INVALID_PPRICE_VALUE = "EL valor del precio debe ser positivo";
-	private static final String INVALID_WEIGHT = "El peso del producto debe ser menor a 30";
-	private static final String INVALID_PROVIDER = "El valor ingresado debe ser de tipo 'Provider' ";
+	private static final String INVALID_WEIGHT = "El peso del producto debe ser mayor a 0 y menor a 20";
+	private static final String INVALID_PROVIDER = "Debe ingresar un proveedor no nulo ";
 	private String name;
 	private Provider provider;
 	private Float weight;
 	private Price price;
 	private List<PriceRecord> priceStory;
 	
-	public Product() {}
+	private Product() {}
 	
 	//Constructor creado para cumplir con requerimientos de Hibernate
 	@SuppressWarnings("unused")
 	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
-		name = aName;
-		provider = aProvider;
-		weight = aWeight;
-		price = aPrice;
-		priceStory = aPriceStory;
+		this.name = aName;
+		this.provider = aProvider;
+		this.weight = aWeight;
+		this.price = aPrice;
+		this.priceStory = aPriceStory;
 	}
 
 	private Product(String aName, Provider aProvider, Float aWeight, Float aPriceValue) {
-		name = aName;
-		provider = aProvider;
-		weight = aWeight;
-		price = CurrentPrice.settlePrice(aPriceValue, this);
-		priceStory = new ArrayList<PriceRecord>();
+		this.name = aName;
+		this.provider = aProvider;
+		this.weight = aWeight;
+		this.price = CurrentPrice.settlePrice(aPriceValue, this);
+		this.priceStory = new ArrayList<PriceRecord>();
 	}
 
 	//Metodo de acceso publico para crear instancias de Product
@@ -43,8 +43,7 @@ public class Product {
 		assertIsValidName(aName); 
 		assertIsValidValue(aPriceValue);
 		assertIsValidWeight(aWeight);
-		assertIsValidProvider(aProvider);
-		
+		assertIsValidProvider(aProvider);	
 		return new Product(aName, aProvider, aWeight, aPriceValue);
 	}
 
@@ -61,7 +60,7 @@ public class Product {
 	}
 
 	private static boolean isValidWeight(Float aWeight) {
-		return aWeight <= 20;
+		return aWeight > 0 && aWeight <= 20;
 	}
 
 	private static void assertIsValidValue(Float aPriceValue) {
