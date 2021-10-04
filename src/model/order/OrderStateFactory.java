@@ -1,6 +1,6 @@
 package model.order;
 
-public abstract class OrderStateImpl {
+public abstract class OrderStateFactory {
 
 	protected String name;
 	public final static PendingState pendingState = new PendingState();
