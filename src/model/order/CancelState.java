@@ -1,6 +1,6 @@
 package model.order;
 
-public class CancelState extends OrderState {
+public class CancelState extends OrderStateImpl implements OrderState{
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public CancelState() {

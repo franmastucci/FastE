@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import model.dao.QueryDAO;
 import model.order.Order;
-import model.order.OrderState;
+import model.order.OrderStateImpl;
 import model.price.Price;
 import model.provider.Product;
 import model.provider.Provider;
@@ -30,39 +30,43 @@ public class FastETestFile {
 
         faste.mappingTest();
 
-        //1∞ Query
-        QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
-
-        faste.printQueryResult(queryDao.getAllOrdersMadeByUser("pepe"));
-
-        //2∞ Query
-        faste.printQueryResult(queryDao.getUsersSpendingMoreThan(199f)); 
-
-        //3∞ Query
-        faste.printQueryResult(queryDao.getTop10MoreExpensiveProducts());
-
-        //4∞ Query
-        faste.printQueryResult(queryDao.getPendingOrders());
-
-        //5∞ Query
-        faste.printQueryResult(queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10)));
-
-        //6∞ Query
-        faste.printQueryResult(queryDao.getDeliveredOrdersForUser("josepe"));
-
-        //7∞ Query
-        faste.printQueryResult(queryDao.getProductsOnePrice());
-
-        //8∞ Query
-        faste.printQueryResult(queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23)));
-
-        //9∞ Query, se retorna la lista de precios para la fecha pedida a la que se puede solicitar el producto del mismo
-        faste.printQueryResult(queryDao.getProductsWithPriceAt(LocalDate.now()));
-
-        //10∞ Query
-        faste.printQueryResult(queryDao.getProductsNotSold());
+        faste.querys();
 
     }
+
+	private void querys() {
+		//1∞ Query
+        QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
+
+        this.printQueryResult(queryDao.getAllOrdersMadeByUser("pepe"));
+
+        //2∞ Query
+        this.printQueryResult(queryDao.getUsersSpendingMoreThan(199f)); 
+
+        //3∞ Query
+        this.printQueryResult(queryDao.getTop10MoreExpensiveProducts());
+
+        //4∞ Query
+        this.printQueryResult(queryDao.getPendingOrders());
+
+        //5∞ Query
+        this.printQueryResult(queryDao.getCancelledOrdersInPeriod(LocalDate.of(2020, 1, 10),LocalDate.of(2021, 10, 10)));
+
+        //6∞ Query
+        this.printQueryResult(queryDao.getDeliveredOrdersForUser("josepe"));
+
+        //7∞ Query
+        this.printQueryResult(queryDao.getProductsOnePrice());
+
+        //8∞ Query
+        this.printQueryResult(queryDao.getSoldProductsOn(LocalDate.of(2021, 9, 23)));
+
+        //9∞ Query, se retorna la lista de precios para la fecha pedida a la que se puede solicitar el producto del mismo
+        this.printQueryResult(queryDao.getProductsWithPriceAt(LocalDate.now()));
+
+        //10∞ Query
+        this.printQueryResult(queryDao.getProductsNotSold());
+	}
 
      private void printQueryResult(List<?> queryResultList) {
         queryResultList.stream().forEach(result-> System.out.println(result));
@@ -75,10 +79,10 @@ public class FastETestFile {
 
 	        session.beginTransaction();
 	        
-	        session.save(OrderState.getPendingState());
-	        session.save(OrderState.getPreparedState());
-	        session.save(OrderState.getArrivedState());
-	        session.save(OrderState.getCancelState());
+	        session.save(OrderStateImpl.getPendingState());
+	        session.save(OrderStateImpl.getPreparedState());
+	        session.save(OrderStateImpl.getArrivedState());
+	        session.save(OrderStateImpl.getCancelState());
 	        
 	        //Instantiate persistent objects 
 	        Customer pepe = Customer.register("pepe", "contrase√±a_", "Pepe", "pepe@mail.com", LocalDate.of(1999,2,1));

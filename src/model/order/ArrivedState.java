@@ -1,6 +1,6 @@
 package model.order;
 
-public class ArrivedState extends OrderState {
+public class ArrivedState extends OrderStateImpl implements OrderState {
 
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public ArrivedState() {

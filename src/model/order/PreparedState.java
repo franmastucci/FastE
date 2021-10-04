@@ -1,6 +1,6 @@
 package model.order;
 
-public class PreparedState extends OrderState {
+public class PreparedState extends OrderStateImpl implements OrderState{
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public PreparedState() {

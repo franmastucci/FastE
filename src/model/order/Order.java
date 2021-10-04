@@ -34,7 +34,7 @@ public class Order {
 		product = aProduct;
 		unitaryPrice = aProduct.getPrice().getValue();
 		quantity = aQuantity;
-		state = OrderState.getPendingState();
+		state = State.PENDING;
 		creationDate = LocalDate.now();
 		lastStateModification = LocalDate.now();
 	}
