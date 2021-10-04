@@ -4,7 +4,7 @@ public class ArrivedState extends OrderStateFactory implements State {
 
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public ArrivedState() {
-		name = "Entregado";
+		this.name = "Entregado";
 	}
 	
 	@Override

@@ -14,7 +14,7 @@ public class PriceRecord extends Price{
 	//Reuerido por hibernate
 	protected PriceRecord(Float aValue, Product aProduct, LocalDate aStartDate, LocalDate aFinishDate) {
 		super(aValue, aProduct, aStartDate);
-		finishDate =  aFinishDate;
+		this.finishDate =  aFinishDate;
 	}
 
 	//Metodo de acceso publico para crear instancias de PriceRecord

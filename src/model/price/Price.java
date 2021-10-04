@@ -14,9 +14,9 @@ public abstract class Price {
 	protected Price() {}
 	
 	protected Price(Float aValue, Product aProduct, LocalDate aStartDate) {
-		value = aValue;
-		product = aProduct;
-		startDate = aStartDate;
+		this.value = aValue;
+		this.product = aProduct;
+		this.startDate = aStartDate;
 	}
 	
 	public long getId() {

@@ -19,7 +19,7 @@ public abstract class OrderStateFactory {
 	}
 	
 	protected void setName(String aName) {
-		name = aName;
+		this.name = aName;
 	}
 	
 	public static PendingState getPendingState() {
@@ -40,7 +40,7 @@ public abstract class OrderStateFactory {
 	
 	@Override
 	public String toString() {
-		return name;
+		return this.name;
 	}
 
 }

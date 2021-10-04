@@ -6,7 +6,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import model.dao.QueryDAO;
 import model.order.Order;
 import model.order.OrderStateFactory;
-import model.price.Price;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -71,8 +70,8 @@ public class FastETestFile {
      private void printQueryResult(List<?> queryResultList) {
         queryResultList.stream().forEach(result-> System.out.println(result));
     }
-	 @SuppressWarnings("unused")
-	private void mappingTest() {
+	 
+     private void mappingTest() {
 
 	    	//Instantiate a session 
 	    	Session session = HibernateUtil.getSessionFactory().openSession();

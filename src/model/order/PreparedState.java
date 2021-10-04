@@ -4,7 +4,7 @@ public class PreparedState extends OrderStateFactory implements State{
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public PreparedState() {
-		name = "Preparado";
+		this.name = "Preparado";
 	}
 
 	@Override

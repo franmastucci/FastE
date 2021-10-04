@@ -19,24 +19,24 @@ public class Order {
 
 	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, State anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate, Float anUnitaryPrice ) {
-		orderNumber = anOrderNumber;
-		customer = aCustomer;
-		product = aProduct;
-		unitaryPrice = anUnitaryPrice;
-		quantity = aQuantity;
-		state = anOrderState;
-		creationDate = aCreationDate;
-		lastStateModification = aModificationDate;
+		this.orderNumber = anOrderNumber;
+		this.customer = aCustomer;
+		this.product = aProduct;
+		this.unitaryPrice = anUnitaryPrice;
+		this.quantity = aQuantity;
+		this.state = anOrderState;
+		this.creationDate = aCreationDate;
+		this.lastStateModification = aModificationDate;
 	}
 
 	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
-		customer = aCustomer;
-		product = aProduct;
-		unitaryPrice = aProduct.getPrice().getValue();
-		quantity = aQuantity;
-		state = OrderState.PENDING;
-		creationDate = LocalDate.now();
-		lastStateModification = LocalDate.now();
+		this.customer = aCustomer;
+		this.product = aProduct;
+		this.unitaryPrice = aProduct.getPrice().getValue();
+		this.quantity = aQuantity;
+		this.state = OrderState.PENDING;
+		this.creationDate = LocalDate.now();
+		this.lastStateModification = LocalDate.now();
 	}
 
 	public static Order newOrder(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -78,17 +78,17 @@ public class Order {
 		return product;
 	}
 	
+	@SuppressWarnings("unused")
+	private void setProduct(Product product) {
+		this.product = product;
+	}
+	
 	public float getUnitaryPrice() {
 		return unitaryPrice;
 	}
 	
 	public void setUnitaryPrice(Float unitaryPrice) {
 		this.unitaryPrice = unitaryPrice;
-	}
-	
-	@SuppressWarnings("unused")
-	private void setProduct(Product product) {
-		this.product = product;
 	}
 
 	public State getState() {

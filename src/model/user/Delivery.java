@@ -20,8 +20,8 @@ public class Delivery extends User {
 			List<Order> aDeliveredOrdersList) {
 		
 		super(anUserName, aPass, aName, anEmail, aBirthday);
-		capacity = aCapacity;
-		deliveredOrders = aDeliveredOrdersList;
+		this.capacity = aCapacity;
+		this.deliveredOrders = aDeliveredOrdersList;
 	}
 
 	//Metodo de acceso publico para crear instancias de Delivery

@@ -23,11 +23,11 @@ public abstract class User {
 	
 	protected User(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
 		String encryptedPass = DigestUtils.sha1Hex(aPass);
-		userName = anUserName;
-		pass = encryptedPass;
-		name = aName;
-		email = anEmail;
-		birthday = aBirthday;
+		this.userName = anUserName;
+		this.pass = encryptedPass;
+		this.name = aName;
+		this.email = anEmail;
+		this.birthday = aBirthday;
 	}
 	
 	protected static void assertIsValidUserName(String anUserName) {

@@ -4,7 +4,7 @@ public class PendingState extends OrderStateFactory implements State{
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public PendingState() {
-		name = "Pendiente";
+		this.name = "Pendiente";
 	}
 	
 	@Override

@@ -4,7 +4,7 @@ public class CancelState extends OrderStateFactory implements State{
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	public CancelState() {
-		name = "Cancelado";
+		this.name = "Cancelado";
 	}
 	
 	@Override

@@ -1,6 +1,5 @@
 package model.provider;
 import java.util.*;
-import org.springframework.stereotype.Component;
 import model.price.CurrentPrice;
 import model.price.Price;
 import model.price.PriceRecord;
@@ -20,7 +19,6 @@ public class Product {
 	private Product() {}
 	
 	//Constructor creado para cumplir con requerimientos de Hibernate
-	@SuppressWarnings("unused")
 	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
 		this.name = aName;
 		this.provider = aProvider;
