@@ -48,16 +48,14 @@ public class Customer extends User {
 		this.getOrdersStory().add(newOrder);
 		return newOrder;
 	}
-	
-	
+		
+	public boolean hasMadeAnOrder() {
+		return !this.getOrdersStory().isEmpty();
+	}
 	
 	@Override
 	public String toString() {
 		return "Customer [username=" + userName+ ", name=" + name+ ", email=" + email+ "]";
-	}
-
-	public boolean hasMadeAnOrder() {
-		return !this.getOrdersStory().isEmpty();
 	}
 
 }

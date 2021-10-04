@@ -15,9 +15,9 @@ public class Order {
 	private LocalDate creationDate;
 	private LocalDate lastStateModification;
 
-	public Order() {}
+	private Order() {}
 
-	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, State anOrderState,
+	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, State anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate, Float anUnitaryPrice ) {
 		this.orderNumber = anOrderNumber;
 		this.customer = aCustomer;
@@ -29,7 +29,7 @@ public class Order {
 		this.lastStateModification = aModificationDate;
 	}
 
-	public Order(User aCustomer, Product aProduct, Integer aQuantity) {
+	private Order(User aCustomer, Product aProduct, Integer aQuantity) {
 		this.customer = aCustomer;
 		this.product = aProduct;
 		this.unitaryPrice = aProduct.getPrice().getValue();

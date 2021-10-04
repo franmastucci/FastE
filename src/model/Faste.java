@@ -18,7 +18,6 @@ public class Faste {
 	private List<Provider> providers;
 	private List<Order> orders;
 
-	@SuppressWarnings("unused")
 	private Faste() {
 		customers = new ArrayList<Customer>();
 		deliverys = new ArrayList<Delivery>();
@@ -27,7 +26,7 @@ public class Faste {
 		orders = new ArrayList<Order>();
 	}
 	
-	public Faste(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,
+	private Faste(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,
 			List<Provider> aProviderList, List<Order> anOrderList) {
 		this.customers = aCustomerList;
 		this.deliverys = aDeliveryList;
