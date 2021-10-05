@@ -2,7 +2,7 @@
 
 <hibernate-mapping package="model.order">
 
-    <class name="OrderStateFactory" table="ORDER_STATE" abstract="true" >
+    <class name="OrderState" table="ORDER_STATE" abstract="true" >
         <id name="name"/>
         <discriminator type="string" column="state"/>
         

@@ -11,13 +11,13 @@ public class Order {
 	private Product product;
 	private Float unitaryPrice;
 	private Integer quantity;
-	private OrderStateFactory state;
+	private OrderState state;
 	private LocalDate creationDate;
 	private LocalDate lastStateModification;
 
 	public Order() {}
 
-	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderStateFactory anOrderState,
+	public Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderState anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate, Float anUnitaryPrice ) {
 		orderNumber = anOrderNumber;
 		customer = aCustomer;
@@ -34,7 +34,7 @@ public class Order {
 		product = aProduct;
 		unitaryPrice = aProduct.getPrice().getValue();
 		quantity = aQuantity;
-		state = OrderStateFactory.getPendingState();
+		state = OrderState.getPendingState();
 		creationDate = LocalDate.now();
 		lastStateModification = LocalDate.now();
 	}
@@ -91,11 +91,11 @@ public class Order {
 		this.product = product;
 	}
 
-	public OrderStateFactory getState() {
+	public OrderState getState() {
 		return state;
 	}
 
-	void setState(OrderStateFactory state) {
+	void setState(OrderState state) {
 		this.state = state;
 	}
 	
