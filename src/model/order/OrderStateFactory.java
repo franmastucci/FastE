@@ -1,6 +1,6 @@
 package model.order;
 
-public abstract class OrderState {
+public abstract class OrderStateFactory {
 
 	private String name;
 	private final static PendingState pendingState = new PendingState();
@@ -14,7 +14,7 @@ public abstract class OrderState {
 	protected String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
 	protected String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado " + this.getName();
 	
-	public OrderState(String anStateName) {
+	public OrderStateFactory(String anStateName) {
 		this.name = anStateName;
 	}
 	

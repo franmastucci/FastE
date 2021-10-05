@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import model.dao.QueryDAO;
 import model.order.Order;
-import model.order.OrderState;
+import model.order.OrderStateFactory;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -74,10 +74,10 @@ public class FastETestFile {
 
 	        session.beginTransaction();
 	        
-	        session.save(OrderState.getPendingState());
-	        session.save(OrderState.getPreparedState());
-	        session.save(OrderState.getArrivedState());
-	        session.save(OrderState.getCancelState());
+	        session.save(OrderStateFactory.getPendingState());
+	        session.save(OrderStateFactory.getPreparedState());
+	        session.save(OrderStateFactory.getArrivedState());
+	        session.save(OrderStateFactory.getCancelState());
 	        
 	        //Instantiate persistent objects 
 	        Customer pepe = Customer.register("pepe", "contraseña!", "Pepe", "pepe@mail.com", LocalDate.of(1999,2,1));
