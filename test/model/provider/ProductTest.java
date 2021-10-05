@@ -1,11 +1,9 @@
 package model.provider;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.user.Customer;
 
 class ProductTest {
 	private Provider cocaCola ;

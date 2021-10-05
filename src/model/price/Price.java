@@ -6,10 +6,10 @@ import model.provider.Product;
 
 public abstract class Price {
 	
-	long id;
-	Float value;
-	Product product;
-	LocalDate startDate;
+	private long id;
+	private Float value;
+	private Product product; 
+	private LocalDate startDate;
 
 	protected Price() {}
 	

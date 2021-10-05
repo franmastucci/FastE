@@ -1,18 +1,22 @@
 package model.order;
 
-public abstract class OrderState {
+public abstract class OrderStateFactory {
 
-	protected String name;
-	public final static PendingState pendingState = new PendingState();
-	public final static PreparedState preparedState = new PreparedState();
-	public final static ArrivedState arrivedState = new ArrivedState();
-	public final static CancelState cancelState = new CancelState();
+	private String name;
+	private final static PendingState pendingState = new PendingState();
+	private final static PreparedState preparedState = new PreparedState();
+	private final static ArrivedState arrivedState = new ArrivedState();
+	private final static CancelState cancelState = new CancelState();
 	
 	//se declaran los mensajes de error para las subclases lanzados como runtimeException. Sujeto a modificacion 
 	//en caso de ser necesario
 	protected String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado " + this.getName();
 	protected String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
 	protected String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado " + this.getName();
+	
+	public OrderStateFactory(String anStateName) {
+		this.name = anStateName;
+	}
 	
 	public String getName() {
 		return name;

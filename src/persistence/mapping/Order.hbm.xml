@@ -12,7 +12,7 @@
     	
     	<many-to-one name ="customer" foreign-key="fk_customer" lazy="false"/>
     	<many-to-one name ="product" column="product_name" foreign-key="fk_product_name" lazy="false"/>
-    	<many-to-one name ="state" class="OrderState" lazy="false"/>
+    	<many-to-one name ="state" class="OrderStateFactory" lazy="false"/>
     	<property name="creationDate"/>
     	<property name="lastStateModification"/>
     	<property name="unitaryPrice"/>

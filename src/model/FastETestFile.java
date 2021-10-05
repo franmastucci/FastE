@@ -5,8 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import model.dao.QueryDAO;
 import model.order.Order;
-import model.order.OrderState;
-import model.price.Price;
+import model.order.OrderStateFactory;
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
@@ -75,15 +74,15 @@ public class FastETestFile {
 
 	        session.beginTransaction();
 	        
-	        session.save(OrderState.getPendingState());
-	        session.save(OrderState.getPreparedState());
-	        session.save(OrderState.getArrivedState());
-	        session.save(OrderState.getCancelState());
+	        session.save(OrderStateFactory.getPendingState());
+	        session.save(OrderStateFactory.getPreparedState());
+	        session.save(OrderStateFactory.getArrivedState());
+	        session.save(OrderStateFactory.getCancelState());
 	        
 	        //Instantiate persistent objects 
-	        Customer pepe = Customer.register("pepe", "contraseña_", "Pepe", "pepe@mail.com", LocalDate.of(1999,2,1));
+	        Customer pepe = Customer.register("pepe", "contraseña!", "Pepe", "pepe@mail.com", LocalDate.of(1999,2,1));
 	        Delivery jose = Delivery.register("josepe", "algo!", "Jose", "jose@mail.com", LocalDate.of(1980,2 ,1), 10f);
-	        Provider cocaCola = Provider.register(20301230001l, "Coca-Cola", "calle falsa 123", 0, 10);
+	        Provider cocaCola = Provider.register(20301230009l, "Coca-Cola", "calle falsa 123", 0, 10);
 	        Product coca = Product.publishProduct("Coca", cocaCola, 1.0f, 15.0f);
 	        Product cindor = Product.publishProduct("Cindor", cocaCola, 1.0f, 20.0f);
 	        Product sprite = Product.publishProduct("Sprite", cocaCola, 1.0f, 20.0f);
