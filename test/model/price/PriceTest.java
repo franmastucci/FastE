@@ -11,10 +11,11 @@ import org.junit.jupiter.api.Test;
 import model.provider.Product;
 import model.provider.Provider;
 	
-class CurrentPriceTest {
+class PriceTest {
 	private Provider cocaCola;
 	private Product coca;
 	private Price price;
+	
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -42,5 +43,10 @@ class CurrentPriceTest {
 	@Test
 	void testACurrentPriceHasNotAFinishDate(){
 		assertThrows(RuntimeException.class,  ()-> price.getFinishDate());
+	}
+	
+	@Test
+	void testAPriceCanNotBeNotNullToGenerateARecordPrice() {
+		assertThrows(RuntimeException.class, ()-> PriceRecord.generateRecord(null));
 	}
 }

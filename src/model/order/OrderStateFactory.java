@@ -52,4 +52,12 @@ public abstract class OrderStateFactory {
 	public abstract void getArrive(Order anOrder) ;
 	
 	public abstract void getCancel(Order anOrder) ;
+
+	protected abstract boolean isPending();
+
+	protected abstract boolean isPrepared();
+
+	protected abstract boolean isCancel();
+
+	protected abstract boolean isArrived();
 }
