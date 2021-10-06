@@ -8,12 +8,6 @@ public abstract class OrderStateFactory {
 	private final static ArrivedState arrivedState = new ArrivedState();
 	private final static CancelState cancelState = new CancelState();
 	
-	//se declaran los mensajes de error para las subclases lanzados como runtimeException. Sujeto a modificacion 
-	//en caso de ser necesario
-	protected String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado " + this.getName();
-	protected String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
-	protected String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado " + this.getName();
-	
 	public OrderStateFactory(String anStateName) {
 		this.name = anStateName;
 	}

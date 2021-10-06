@@ -1,8 +1,6 @@
 package model.order;
 
 import java.time.LocalDate;
-import java.util.function.BooleanSupplier;
-
 import model.provider.Product;
 import model.user.User;
 

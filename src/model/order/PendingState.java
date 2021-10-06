@@ -2,6 +2,8 @@ package model.order;
 
 public class PendingState extends OrderStateFactory {
 	
+	private String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
+	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	 protected PendingState() {
 		super("Pendiente");

@@ -2,6 +2,11 @@ package model.order;
 
 public class CancelState extends OrderStateFactory {
 	
+	private String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado " + this.getName();
+	private String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
+	private String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado " + this.getName();
+
+	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	protected CancelState() {
 		super("Cancelado");

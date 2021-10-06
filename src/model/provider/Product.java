@@ -1,6 +1,5 @@
 package model.provider;
 import java.util.*;
-import org.springframework.stereotype.Component;
 import model.price.CurrentPrice;
 import model.price.Price;
 import model.price.PriceRecord;
