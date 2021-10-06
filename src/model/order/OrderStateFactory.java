@@ -2,6 +2,10 @@ package model.order;
 
 public abstract class OrderStateFactory {
 
+	protected String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado ";
+	protected String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado ";
+	protected String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado ";	
+	
 	private String name;
 	private final static PendingState pendingState = new PendingState();
 	private final static PreparedState preparedState = new PreparedState();

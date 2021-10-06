@@ -1,11 +1,6 @@
 package model.order;
 
 public class ArrivedState extends OrderStateFactory {
-
-	private String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado " + this.getName();
-	private String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado " + this.getName();
-	private String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado " + this.getName();
-
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
 	protected ArrivedState() {
@@ -14,17 +9,17 @@ public class ArrivedState extends OrderStateFactory {
 	
 	@Override
 	public void getPrepare(Order anOrder) {
-		throw new RuntimeException(CANT_BE_PREPARED);
+		throw new RuntimeException(CANT_BE_PREPARED + this.getName());
 	}
 
 	@Override
 	public void getArrive(Order anOrder) {
-		throw new RuntimeException(CANT_BE_ARRIVED);
+		throw new RuntimeException(CANT_BE_ARRIVED + this.getName());
 	}
 
 	@Override
 	public void getCancel(Order anOrder) {
-		throw new RuntimeException(CANT_BE_CANCEL);
+		throw new RuntimeException(CANT_BE_CANCEL + this.getName());
 	}
 
 	@Override
