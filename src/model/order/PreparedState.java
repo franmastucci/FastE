@@ -22,4 +22,24 @@ public class PreparedState extends OrderStateFactory {
 	public void getCancel(Order anOrder) {
 		throw new RuntimeException(CANT_BE_CANCEL);
 	}
+
+	@Override
+	protected boolean isPending() {
+		return false;
+	}
+
+	@Override
+	protected boolean isPrepared() {
+		return true;
+	}
+
+	@Override
+	protected boolean isCancel() {
+		return false;
+	}
+
+	@Override
+	protected boolean isArrived() {
+		return false;
+	}
 }

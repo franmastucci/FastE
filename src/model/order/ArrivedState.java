@@ -22,4 +22,24 @@ public class ArrivedState extends OrderStateFactory {
 		throw new RuntimeException(CANT_BE_CANCEL);
 	}
 
+	@Override
+	protected boolean isPending() {
+		return false;
+	}
+
+	@Override
+	protected boolean isPrepared() {
+		return false;
+	}
+
+	@Override
+	protected boolean isCancel() {
+		return false;
+	}
+
+	@Override
+	protected boolean isArrived() {
+		return true;
+	}
+	
 }

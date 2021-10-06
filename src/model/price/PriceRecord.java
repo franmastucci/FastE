@@ -6,6 +6,7 @@ import model.provider.Product;
 
 public class PriceRecord extends Price{
 	
+	private static final String INVALID_PRICE = "El precio no puede ser nulo";
 	private LocalDate finishDate;
 	
 	
@@ -19,8 +20,19 @@ public class PriceRecord extends Price{
 
 	//Metodo de acceso publico para crear instancias de PriceRecord
 	public static PriceRecord generateRecord(Price aPrice) {
+		
+		asserIsValidPrice(aPrice);
+		
 		LocalDate aFinishDate = LocalDate.now();
 		return new PriceRecord(aPrice.getValue(), aPrice.getProduct(), aPrice.getStartDate(), aFinishDate);
+	}
+
+	private static void asserIsValidPrice(Price aPrice) {
+		if (!isValidPrice(aPrice)) throw new RuntimeException(INVALID_PRICE);
+	}
+
+	private static boolean isValidPrice(Price aPrice) {
+		return aPrice != null;
 	}
 
 	@Override

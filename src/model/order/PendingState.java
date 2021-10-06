@@ -24,4 +24,24 @@ public class PendingState extends OrderStateFactory {
 		anOrder.setState(super.getCancelState());
 	}
 
+	@Override
+	protected boolean isPending() {
+		return true;
+	}
+
+	@Override
+	protected boolean isPrepared() {
+		return false;
+	}
+
+	@Override
+	protected boolean isCancel() {
+		return false;
+	}
+
+	@Override
+	protected boolean isArrived() {
+		return false;
+	}
+
 }
