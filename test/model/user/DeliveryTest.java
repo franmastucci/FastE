@@ -15,10 +15,10 @@ class DeliveryTest extends UserTest{
 
 	@BeforeEach
 	public void setup() {
-		cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
-		coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
-		juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
-		pedro = Delivery.register("Pedro", "prueba2_", "Delivery", "delivery@gmail.com",  LocalDate.of(1988, 8, 1), 20f );
+		this.cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
+		this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
+		this.juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
+		this.pedro = Delivery.register("Pedro", "prueba2_", "Delivery", "delivery@gmail.com",  LocalDate.of(1988, 8, 1), 20f );
 	}
 	
 	@Test

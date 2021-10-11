@@ -3,9 +3,6 @@ package model.user;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.when;
-
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,9 +15,9 @@ class CustomerTest extends UserTest{
 
 	@BeforeEach
 	public void setup() {
-		juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
-		cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
-		coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
+		this.juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
+		this.cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
+		this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
 	}
 	
 	@Test

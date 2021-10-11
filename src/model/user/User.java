@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 public abstract class User {
 	private static final String INVALID_USER_NAME = "Se debe completar el nombre de usuario";
 	private static final String INVALID_PASS = "La contraseña debe contener al menos un caracter especial";
@@ -22,12 +20,11 @@ public abstract class User {
 	protected User() {};
 	
 	protected User(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
-		String encryptedPass = DigestUtils.sha1Hex(aPass);
-		userName = anUserName;
-		pass = encryptedPass;
-		name = aName;
-		email = anEmail;
-		birthday = aBirthday;
+		this.userName = anUserName;
+		this.pass = aPass;
+		this.name = aName;
+		this.email = anEmail;
+		this.birthday = aBirthday;
 	}
 	
 	protected static void assertIsValidUserName(String anUserName) {
@@ -83,7 +80,7 @@ public abstract class User {
 	}
 	
 	public String getUserName() {
-		return userName;
+		return this.userName;
 	}
 
 	protected void setUserName(String anUserName) {
