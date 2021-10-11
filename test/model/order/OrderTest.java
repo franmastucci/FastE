@@ -8,13 +8,19 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import model.provider.Product;
 import model.provider.Provider;
 import model.user.Customer;
 import model.user.User;
 
+@RunWith(MockitoJUnitRunner.class)
 class OrderTest {
+	
+	@InjectMocks
 	private User customer; 
 	private Provider cocaCola;
 	private Product coca;

@@ -19,14 +19,14 @@ class PriceTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		 cocaCola = Provider.register(20000000001l,"coca-cola","Avenida Beiró", 20, 20);
-		 coca = Product.publishProduct("Coca", cocaCola, 20f, 15.6f);
-		 price = CurrentPrice.settlePrice(30.0f, coca);
+		 this.cocaCola = Provider.register(20000000001l,"coca-cola","Avenida Beiró", 20, 20);
+		 this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15.6f);
+		 this.price = CurrentPrice.settlePrice(30.0f, coca);
 	}
 
 	@Test
 	void testACurrentPriceValueMustBePositive() {
-		assertThrows(RuntimeException.class, ()->CurrentPrice.settlePrice(-25f,coca));
+		assertThrows(RuntimeException.class, ()->CurrentPrice.settlePrice(-25f, this.coca));
 	}
 	
 	@Test
@@ -37,12 +37,12 @@ class PriceTest {
 	@Test
 	void testANewCurrentPriceTakesEffectToday() {
 		LocalDate today = LocalDate.now();
-		assertEquals(today, price.getStartDate());
+		assertEquals(today, this.price.getStartDate());
 	}
 	
 	@Test
 	void testACurrentPriceHasNotAFinishDate(){
-		assertThrows(RuntimeException.class,  ()-> price.getFinishDate());
+		assertThrows(RuntimeException.class,  ()-> this.price.getFinishDate());
 	}
 	
 	@Test

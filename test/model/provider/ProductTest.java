@@ -1,20 +1,20 @@
 package model.provider;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
+import static org.mockito.Mockito.*;
+
 import org.junit.jupiter.api.Test;
 
 
 class ProductTest {
-	private Provider cocaCola ;
-
+	//Dependiente (la que se quiere probar) SUT
 	
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+	//Dependencia (la clase de la que depende su comportamiento) Provider.class
+	private Provider cocaCola = mock(Provider.class);
 
 	@Test
 	void testNameCanNotBeBlank() {
+		System.out.println(cocaCola);
 		assertThrows(RuntimeException.class, ()->Product.publishProduct(" ", cocaCola, 20f, 50f));
 	}
 	
