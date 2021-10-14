@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import model.order.Order;
 import model.provider.Product;
 import model.provider.Provider;
-
-
 
 public class UserTest {
 	
@@ -28,6 +28,9 @@ public class UserTest {
 		this.newUser = mock(Delivery.class);
 		when(this.newUser.getName()).thenReturn("newUser");
 		when(this.newUser.getUserName()).thenReturn("newUserUsername");
+		when(this.newUser.getPass()).thenReturn("12345");
+		when(this.newUser.getBirthday()).thenReturn(LocalDate.now());
+		when(this.newUser.getEmail()).thenReturn("pepe@gmail.com");
 	}
 	
 	@Test
@@ -38,6 +41,20 @@ public class UserTest {
 	@Test
 	public void testGetName() {
 		assertEquals("newUser", this.newUser.getName());
+	}
+	
+	@Test
+	public void testGetPass() {
+		assertEquals("12345", this.newUser.getPass());
+	}
+	@Test
+	public void testGetBirthday() {
+		assertEquals(LocalDate.now(), this.newUser.getBirthday());
+	}
+	
+	@Test
+	public void testGetEmail() {
+		assertEquals("pepe@gmail.com", this.newUser.getEmail());
 	}
 		
 }
