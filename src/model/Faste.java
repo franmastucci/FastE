@@ -20,11 +20,11 @@ public class Faste {
 
 	@SuppressWarnings("unused")
 	private Faste() {
-		customers = new ArrayList<Customer>();
-		deliverys = new ArrayList<Delivery>();
-		products = new ArrayList<Product>();
-		providers = new ArrayList<Provider>();
-		orders = new ArrayList<Order>();
+		this.customers = new ArrayList<Customer>();
+		this.deliverys = new ArrayList<Delivery>();
+		this.products = new ArrayList<Product>();
+		this.providers = new ArrayList<Provider>();
+		this.orders = new ArrayList<Order>();
 	}
 	
 	public Faste(List<Customer> aCustomerList, List<Delivery> aDeliveryList, List<Product> aProductList,
@@ -42,7 +42,7 @@ public class Faste {
 	}
 
 	public List<Customer> getCustomers() {
-		return customers;
+		return this.customers;
 	}
 
 	
@@ -52,7 +52,7 @@ public class Faste {
 	}
 
 	public List<Delivery> getDeliverys() {
-		return deliverys;
+		return this.deliverys;
 	}
 
 	@SuppressWarnings("unused")
@@ -61,7 +61,7 @@ public class Faste {
 	}
 
 	public List<Product> getProducts() {
-		return products;
+		return this.products;
 	}
 
 	@SuppressWarnings("unused")
@@ -70,7 +70,7 @@ public class Faste {
 	}
 
 	public List<Provider> getProviders() {
-		return providers;
+		return this.providers;
 	}
 
 	@SuppressWarnings("unused")
@@ -79,7 +79,7 @@ public class Faste {
 	}
 
 	public List<Order> getOrders() {
-		return orders;
+		return this.orders;
 	}
 
 	@SuppressWarnings("unused")

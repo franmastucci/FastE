@@ -15,9 +15,9 @@ class CustomerTest extends UserTest{
 
 	@BeforeEach
 	public void setup() {
-		this.juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
+		this.newUser = Customer.register("newUserUsername", "123@45", "newUser", "pepe@gmail.com", LocalDate.of(1988, 8, 1));
 		this.cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
-		this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
+		this.coca = Product.publishProduct("Coca", this.cocaCola, 20f, 15f);
 	}
 	
 	@Test
@@ -46,13 +46,13 @@ class CustomerTest extends UserTest{
 	
 	@Test
 	public void testNewCustomerHasNotMadeAnOrder() {
-		assertFalse(juan.hasMadeAnOrder());
+		assertFalse(((Customer) this.newUser).hasMadeAnOrder());
 	}
 	
 	@Test
 	public void testCustomerHasMadeAnOrder() {
-		anOrder = juan.makeAnOrder(coca, 3);
-		assertTrue(juan.hasMadeAnOrder());
+		this.anOrder = ((Customer) this.newUser).makeAnOrder(this.coca, 3);
+		assertTrue(((Customer) this.newUser).hasMadeAnOrder());
 	}
 	
 }

@@ -79,7 +79,7 @@ public class Product {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	@SuppressWarnings("unused")
@@ -88,7 +88,7 @@ public class Product {
 	}	
 
 	public Provider getProvider() {
-		return provider;
+		return this.provider;
 	}
 
 	@SuppressWarnings("unused")
@@ -97,7 +97,7 @@ public class Product {
 	}		
 	
 	public Float getWeight() {
-		return weight;
+		return this.weight;
 	}
 
 	@SuppressWarnings("unused")
@@ -106,7 +106,7 @@ public class Product {
 	}	
 
 	public Price getPrice() {
-		return price;
+		return this.price;
 	}
 	
 	private void setPrice(Price aPrice) {
@@ -114,7 +114,7 @@ public class Product {
 	}	
 
 	public List<PriceRecord> getPriceStory() {
-		return priceStory;
+		return this.priceStory;
 	}
 	
 	public void setPriceStory(List<PriceRecord> aPriceRecord) {
@@ -130,7 +130,8 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", provider=" + provider + ", weight=" + weight + ", price=" + price.getValue() + "]";
+		return "Product [name=" + this.name + ", provider=" + this.provider + ", weight=" + this.weight + 
+				", price=" + this.price.getValue() + "]";
 	}
 	
 }

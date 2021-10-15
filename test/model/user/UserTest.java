@@ -1,12 +1,8 @@
 package model.user;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
@@ -14,7 +10,7 @@ import model.order.Order;
 import model.provider.Product;
 import model.provider.Provider;
 
-public class UserTest {
+public abstract class UserTest {
 	
 	protected User newUser;
 	protected Customer juan;
@@ -23,15 +19,15 @@ public class UserTest {
 	protected Product coca;
 	protected Order anOrder;
 	
-	@BeforeEach
-	public void setUp(){
-		this.newUser = mock(Delivery.class);
-		when(this.newUser.getName()).thenReturn("newUser");
-		when(this.newUser.getUserName()).thenReturn("newUserUsername");
-		when(this.newUser.getPass()).thenReturn("12345");
-		when(this.newUser.getBirthday()).thenReturn(LocalDate.now());
-		when(this.newUser.getEmail()).thenReturn("pepe@gmail.com");
-	}
+//	@BeforeEach
+//	public void setUp(){
+//		this.newUser = mock(Delivery.class);
+//		when(this.newUser.getName()).thenReturn("newUser");
+//		when(this.newUser.getUserName()).thenReturn("newUserUsername");
+//		when(this.newUser.getPass()).thenReturn("12345");
+//		when(this.newUser.getBirthday()).thenReturn(LocalDate.now());
+//		when(this.newUser.getEmail()).thenReturn("pepe@gmail.com");
+//	}
 	
 	@Test
 	public void testGetUserName() {
@@ -45,11 +41,12 @@ public class UserTest {
 	
 	@Test
 	public void testGetPass() {
-		assertEquals("12345", this.newUser.getPass());
+		assertEquals("123@45", this.newUser.getPass());
 	}
 	@Test
 	public void testGetBirthday() {
-		assertEquals(LocalDate.now(), this.newUser.getBirthday());
+		LocalDate birthday = LocalDate.of(1988, 8, 1);
+		assertEquals(birthday, this.newUser.getBirthday());
 	}
 	
 	@Test

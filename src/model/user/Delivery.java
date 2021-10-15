@@ -20,8 +20,8 @@ public class Delivery extends User {
 			List<Order> aDeliveredOrdersList) {
 		
 		super(anUserName, aPass, aName, anEmail, aBirthday);
-		capacity = aCapacity;
-		deliveredOrders = aDeliveredOrdersList;
+		this.capacity = aCapacity;
+		this.deliveredOrders = aDeliveredOrdersList;
 	}
 
 	//Metodo de acceso publico para crear instancias de Delivery
@@ -48,7 +48,7 @@ public class Delivery extends User {
 	}
 	
 	public Float getCapacity() {
-		return capacity;
+		return this.capacity;
 	}
 	
 	@SuppressWarnings("unused")
@@ -57,12 +57,12 @@ public class Delivery extends User {
 	}	
 
 	public List<Order> getDeliveredOrders() {
-		return deliveredOrders;
+		return this.deliveredOrders;
 	}
 
 	@SuppressWarnings("unused")
 	private void setDeliveredOrders(List<Order> aListOfDeliveredOrders) {
-		deliveredOrders = aListOfDeliveredOrders;
+		this.deliveredOrders = aListOfDeliveredOrders;
 	}	
 	
 	public void deliver(Order anOrder) {

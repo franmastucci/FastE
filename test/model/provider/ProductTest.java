@@ -14,18 +14,17 @@ class ProductTest {
 
 	@Test
 	void testNameCanNotBeBlank() {
-		System.out.println(cocaCola);
-		assertThrows(RuntimeException.class, ()->Product.publishProduct(" ", cocaCola, 20f, 50f));
+		assertThrows(RuntimeException.class, ()->Product.publishProduct(" ", this.cocaCola, 20f, 50f));
 	}
 	
 	@Test
 	void testPriceValueMustBePositive() {
-		assertThrows(RuntimeException.class, ()->Product.publishProduct("Cepita", cocaCola, 10f,-20f));
+		assertThrows(RuntimeException.class, ()->Product.publishProduct("Cepita", this.cocaCola, 10f,-20f));
 	}
 	
 	@Test
 	void testWeightMustBeLessThan( ) {
-		assertThrows(RuntimeException.class, ()->Product.publishProduct("Cepita", cocaCola, 30f, 20f));
+		assertThrows(RuntimeException.class, ()->Product.publishProduct("Cepita", this.cocaCola, 30f, 20f));
 	}
 	
 	@Test

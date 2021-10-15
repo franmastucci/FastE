@@ -88,7 +88,7 @@ public abstract class User {
 	}
 	
 	public String getPass() {
-		return pass;
+		return this.pass;
 	}
 	
 	protected void setPass(String aPass) {
@@ -96,7 +96,7 @@ public abstract class User {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	
 	protected void setName(String aName) {
@@ -104,7 +104,7 @@ public abstract class User {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	protected void setEmail(String anEMail) {
@@ -112,7 +112,7 @@ public abstract class User {
 	}
 	
 	public LocalDate getBirthday() {
-		return birthday;
+		return this.birthday;
 	}
 
 	protected void setBirthday(LocalDate aDate) {
@@ -121,7 +121,8 @@ public abstract class User {
 
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", name=" + name + ", email=" + email + ", birthday=" + birthday + "]";
+		return "User [userName=" + this.userName + ", name=" + this.name + ", email=" + this.email + 
+				", birthday=" + this.birthday + "]";
 	}
 
 }

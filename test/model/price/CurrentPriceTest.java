@@ -2,6 +2,7 @@ package model.price;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.time.LocalDate;
 
@@ -9,17 +10,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.provider.Product;
-import model.provider.Provider;
 
 public class CurrentPriceTest extends PriceTest {
 
 	@BeforeEach
 	public void setUp()  {
-		 this.cocaCola = Provider.register(20000000001l,"coca-cola","Avenida Beiró", 20, 20);
-		 this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15.6f);
-		 this.newPrice = CurrentPrice.settlePrice(30.0f, coca); 
+		//Dummy (sirve para relleno de parametros de la instancia del SUT)
+		 this.coca = mock(Product.class);
+		 
+		 this.today = LocalDate.now();
+		 this.newPrice = CurrentPrice.settlePrice(30f, coca); 
+		 this.string = "Price value: 30.0";
 	}
 
+	@Test
+	public void testSettlePrice() {
+		assertDoesNotThrow(()->CurrentPrice.settlePrice(30f, coca));
+	}
+	
 	@Test
 	public void testACurrentPriceValueMustBePositive() {
 		assertThrows(RuntimeException.class, ()->CurrentPrice.settlePrice(-25f, this.coca));
@@ -32,8 +40,7 @@ public class CurrentPriceTest extends PriceTest {
 	
 	@Test
 	public void testANewCurrentPriceTakesEffectToday() {
-		LocalDate today = LocalDate.now();
-		assertEquals(today, this.newPrice.getStartDate());
+		assertEquals(this.today, this.newPrice.getStartDate());
 	}
 	
 	@Test

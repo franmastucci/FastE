@@ -21,24 +21,24 @@ public class Order {
 
 	private Order(long anOrderNumber, User aCustomer, Product aProduct, Integer aQuantity, OrderStateFactory anOrderState,
 			LocalDate aCreationDate, LocalDate aModificationDate, Float anUnitaryPrice ) {
-		orderNumber = anOrderNumber;
-		customer = aCustomer;
-		product = aProduct;
-		unitaryPrice = anUnitaryPrice;
-		quantity = aQuantity;
-		state = anOrderState;
-		creationDate = aCreationDate;
-		lastStateModification = aModificationDate;
+		this.orderNumber = anOrderNumber;
+		this.customer = aCustomer;
+		this.product = aProduct;
+		this.unitaryPrice = anUnitaryPrice;
+		this.quantity = aQuantity;
+		this.state = anOrderState;
+		this.creationDate = aCreationDate;
+		this.lastStateModification = aModificationDate;
 	}
 
 	private  Order(User aCustomer, Product aProduct, Integer aQuantity) {
-		customer = aCustomer;
-		product = aProduct;
-		unitaryPrice = aProduct.getPrice().getValue();
-		quantity = aQuantity;
-		state = OrderStateFactory.getPendingState();
-		creationDate = LocalDate.now();
-		lastStateModification = LocalDate.now();
+		this.customer = aCustomer;
+		this.product = aProduct;
+		this.unitaryPrice = aProduct.getPrice().getValue();
+		this.quantity = aQuantity;
+		this.state = OrderStateFactory.getPendingState();
+		this.creationDate = LocalDate.now();
+		this.lastStateModification = LocalDate.now();
 	}
 
 	public static Order newOrder(User aCustomer, Product aProduct, Integer aQuantity) {
@@ -79,7 +79,7 @@ public class Order {
     }
 	
 	public long getOrderNumber() {
-		return orderNumber;
+		return this.orderNumber;
 	}
 
 	@SuppressWarnings("unused")
@@ -88,7 +88,7 @@ public class Order {
 	}
 
 	public Integer getQuantity() {
-		return quantity;
+		return this.quantity;
 	}
 	
 	@SuppressWarnings("unused")
@@ -97,7 +97,7 @@ public class Order {
 	}
 
 	public User getCustomer() {
-		return customer;
+		return this.customer;
 	}
 	
 	@SuppressWarnings("unused")
@@ -106,11 +106,11 @@ public class Order {
 	}
 
 	public Product getProduct() {
-		return product;
+		return this.product;
 	}
 	
 	public float getUnitaryPrice() {
-		return unitaryPrice;
+		return this.unitaryPrice;
 	}
 	
 	public void setUnitaryPrice(Float unitaryPrice) {
@@ -123,7 +123,7 @@ public class Order {
 	}
 
 	public OrderStateFactory getState() {
-		return state;
+		return this.state;
 	}
 
 	void setState(OrderStateFactory state) {
@@ -131,7 +131,7 @@ public class Order {
 	}
 	
 	public LocalDate getCreationDate() {
-		return creationDate;
+		return this.creationDate;
 	}
 
 	@SuppressWarnings("unused")
@@ -140,7 +140,7 @@ public class Order {
 	}
 
 	public LocalDate getLastStateModification() {
-		return lastStateModification;
+		return this.lastStateModification;
 	}
 	
 	private void setLastStateModification(LocalDate lastStateModifycation) {

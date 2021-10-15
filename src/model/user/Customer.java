@@ -35,7 +35,7 @@ public class Customer extends User {
 	
 
 	public List<Order> getOrdersStory() {
-		return ordersStory;
+		return this.ordersStory;
 	}
 	
 	@SuppressWarnings("unused")
@@ -53,7 +53,7 @@ public class Customer extends User {
 	
 	@Override
 	public String toString() {
-		return "Customer [username=" + userName+ ", name=" + name+ ", email=" + email+ "]";
+		return "Customer [username=" + this.userName+ ", name=" + this.name+ ", email=" + this.email+ "]";
 	}
 
 	public boolean hasMadeAnOrder() {

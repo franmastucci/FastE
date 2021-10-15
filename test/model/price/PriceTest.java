@@ -2,38 +2,18 @@ package model.price;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.provider.Product;
-import model.provider.Provider;
-import model.user.Delivery;
 	
-public class PriceTest {
-	protected Provider cocaCola;
-	protected Product coca;
-	protected Price newPrice;
-	
-	
-	@BeforeEach
-	public void setUp()  {
-		
-		this.newPrice = mock(CurrentPrice.class);
-		//when(this.newPrice.getId()).thenReturn(1234567l);
-		when(this.newPrice.getValue()).thenReturn(30f);
-		when(this.newPrice.getProduct()).thenReturn(coca);
-		when(this.newPrice.getStartDate()).thenReturn(LocalDate.now());
-	}
+public abstract class PriceTest {
 
-//	@Test
-//	public void testGetId() {
-//		assertEquals(1234567l, this.newPrice.getId());	
-//	}
+	protected String string;
+	protected Product coca;
+	protected LocalDate today;
+	protected Price newPrice;
 	
 	@Test
 	public void testGetValue() {
@@ -42,12 +22,17 @@ public class PriceTest {
 	
 	@Test
 	public void testGetProduct() {
-		assertEquals(coca, this.newPrice.getProduct());	
+		assertEquals(this.coca, this.newPrice.getProduct());	
 	}
 	
 	@Test
 	public void testGetStartDate() {
-		assertEquals(LocalDate.now(), this.newPrice.getStartDate());	
+		assertEquals(this.today, this.newPrice.getStartDate());	
+	}
+	
+	@Test
+	public void testToString() {
+		assertEquals(this.string, this.newPrice.toString());	
 	}
 
 }

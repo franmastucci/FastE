@@ -2,6 +2,7 @@ package model.user;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.LocalDate;
 
@@ -18,7 +19,7 @@ class DeliveryTest extends UserTest{
 		this.cocaCola = Provider.register(20122334459l, "coca-cola","Av donato Alvarez 123", 20,30);
 		this.coca = Product.publishProduct("Coca", cocaCola, 20f, 15f);
 		this.juan = Customer.register("Juan ", "prueba_", "CUstomer ", "customer@gmail.com ", LocalDate.of(1988, 8, 1));
-		this.pedro = Delivery.register("Pedro", "prueba2_", "Delivery", "delivery@gmail.com",  LocalDate.of(1988, 8, 1), 20f );
+		this.newUser = Delivery.register("newUserUsername", "123@45", "newUser", "pepe@gmail.com", LocalDate.of(1988, 8, 1), 15f);
 	}
 	
 	@Test
@@ -55,17 +56,21 @@ class DeliveryTest extends UserTest{
 		assertThrows(RuntimeException.class, ()->Delivery.register("Juan ", "prueba_", "CUstomer ", "delivery@gmail.com", LocalDate.of(1888, 8, 1), 15f ));
 	}
 	
+	@Test void testGetCapacity() {
+		assertEquals(((Delivery) this.newUser).getCapacity(), 15f);
+	}
+	
 	@Test
 	public void testANewDeliveryHasNotDeliveredOrders() {
-		assertFalse(pedro.hasDeliveredOrders());
+		assertFalse(((Delivery) this.newUser).hasDeliveredOrders());
 	}
 	
 	@Test
 	public void testANewDeliveryHasMadeADeliver() {
-		anOrder = juan.makeAnOrder(coca, 3);
-		anOrder.getPrepare();
-		pedro.deliver(anOrder);
-		assertTrue(pedro.hasDeliveredOrders());
+		this.anOrder = this.juan.makeAnOrder(this.coca, 3);
+		this.anOrder.getPrepare();
+		((Delivery) this.newUser).deliver(this.anOrder);
+		assertTrue(((Delivery) this.newUser).hasDeliveredOrders());
 	}
 	
 }

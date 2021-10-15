@@ -14,13 +14,13 @@ public abstract class Price {
 	protected Price() {}
 	
 	protected Price(Float aValue, Product aProduct, LocalDate aStartDate) {
-		value = aValue;
-		product = aProduct;
-		startDate = aStartDate;
+		this.value = aValue;
+		this.product = aProduct;
+		this.startDate = aStartDate;
 	}
 	
 	public long getId() {
-		return id;
+		return this.id;
 	}
 
 	@SuppressWarnings("unused")
@@ -29,7 +29,7 @@ public abstract class Price {
 	}
 
 	public Float getValue() {
-		return value;
+		return this.value;
 	}
 	
 	protected void setValue(Float aValue) {
@@ -37,7 +37,7 @@ public abstract class Price {
 	}
 
 	public Product getProduct() {
-		return product;
+		return this.product;
 	}
 
 	protected void setProduct(Product product) {
@@ -45,7 +45,7 @@ public abstract class Price {
 	}
 
 	public LocalDate getStartDate() {
-		return startDate;
+		return this.startDate;
 	}
 	
 	protected void setStartDate(LocalDate aStartDate) {
@@ -54,7 +54,7 @@ public abstract class Price {
 
 	@Override
 	public String toString() {
-		return "Price [id=" + id + ", value=" + value + ", product=" + product + "]";
+		return "Price value: " + this.getValue();
 	}
 
 	public abstract LocalDate getFinishDate();

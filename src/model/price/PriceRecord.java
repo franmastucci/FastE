@@ -20,7 +20,6 @@ public class PriceRecord extends Price{
 
 	//Metodo de acceso publico para crear instancias de PriceRecord
 	public static PriceRecord generateRecord(Price aPrice) {
-		
 		asserIsValidPrice(aPrice);
 		
 		LocalDate aFinishDate = LocalDate.now();
@@ -37,7 +36,7 @@ public class PriceRecord extends Price{
 
 	@Override
 	public LocalDate getFinishDate() {
-		return finishDate;
+		return this.finishDate;
 	}
 	
 	@Override

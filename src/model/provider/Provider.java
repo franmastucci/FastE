@@ -56,7 +56,7 @@ public class Provider {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	@SuppressWarnings("unused")
@@ -65,7 +65,7 @@ public class Provider {
 	}
 
 	public Long getCuil() {
-		return cuil;
+		return this.cuil;
 	}
 
 	@SuppressWarnings("unused")
@@ -74,7 +74,7 @@ public class Provider {
 	}
 
 	public String getAdress() {
-		return adress;
+		return this.adress;
 	}
 
 	@SuppressWarnings("unused")
@@ -83,7 +83,7 @@ public class Provider {
 	}
 
 	public Integer getxCoordinate() {
-		return xCoordinate;
+		return this.xCoordinate;
 	}
 
 	@SuppressWarnings("unused")
@@ -92,7 +92,7 @@ public class Provider {
 	}
 
 	public Integer getyCoordinate() {
-		return yCoordinate;
+		return this.yCoordinate;
 	}
 
 	@SuppressWarnings("unused")
@@ -102,8 +102,8 @@ public class Provider {
 
 	@Override
 	public String toString() {
-		return "Provider [cuil=" + cuil + ", name=" + name + ", adress=" + adress + ", xCoordinate=" + xCoordinate
-				+ ", yCoordinate=" + yCoordinate + "]";
+		return "Provider [cuil=" + this.cuil + ", name=" + this.name + ", adress=" + this.adress + 
+				", xCoordinate=" + this.xCoordinate + ", yCoordinate=" + this.yCoordinate + "]";
 	}
 
 }
