@@ -10,7 +10,8 @@ public class Customer extends User {
 	
 	private List<Order> ordersStory;
 	
-	protected Customer() {}
+	@SuppressWarnings("unused")
+	private Customer() {}
 
 	//Requerido por hibernate
 	protected Customer(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, 
@@ -48,7 +49,6 @@ public class Customer extends User {
 		this.getOrdersStory().add(newOrder);
 		return newOrder;
 	}
-	
 	
 	
 	@Override

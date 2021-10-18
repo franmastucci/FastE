@@ -10,7 +10,8 @@ public class PriceRecord extends Price{
 	private LocalDate finishDate;
 	
 	
-	protected PriceRecord() {}
+	@SuppressWarnings("unused")
+	private PriceRecord() {}
 	
 	//Reuerido por hibernate
 	protected PriceRecord(Float aValue, Product aProduct, LocalDate aStartDate, LocalDate aFinishDate) {

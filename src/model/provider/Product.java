@@ -19,8 +19,8 @@ public class Product {
 	private Product() {}
 	
 	//Constructor creado para cumplir con requerimientos de Hibernate
-	@SuppressWarnings("unused")
-	private Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
+	@SuppressWarnings("unused")  
+	Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
 		this.name = aName;
 		this.provider = aProvider;
 		this.weight = aWeight;

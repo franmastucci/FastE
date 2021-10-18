@@ -164,22 +164,6 @@ public class Order {
 		this.setLastStateModification(today);
 	}
 
-//	public OrderState getPendingState() {
-//		return pendingState;
-//	}
-//	
-//	public OrderState getCancelState() {
-//		return cancelState;
-//	}
-//
-//	public OrderState getPreparedState() {
-//		return preparedState;
-//	}
-//
-//	public OrderState getArrivedState() {
-//		return arrivedState;
-//	}
-
 	@Override
 	public String toString() {
 		return "Order [orderNumber=" + orderNumber + ", customer=" + customer + ", product=" + product + ", quantity="

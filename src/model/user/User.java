@@ -17,7 +17,8 @@ public abstract class User {
 	protected String email;
 	protected LocalDate birthday;
 
-	protected User() {};
+	@SuppressWarnings("unused")
+	private User() {};
 	
 	protected User(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday) {
 		this.userName = anUserName;

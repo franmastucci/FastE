@@ -11,7 +11,8 @@ public class CurrentPrice extends Price{
 	private String IS_CURRENT_PRICE = "El precio es el actual por lo que aun no tiene fecha de finalizacion";
 	
 	
-	protected CurrentPrice() {}
+	@SuppressWarnings("unused")
+	private CurrentPrice() {}
 	
 	//Requerido por hibernate
 	protected CurrentPrice(Float aValue, Product aProduct, LocalDate aStartDate) {

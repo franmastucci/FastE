@@ -2,6 +2,7 @@ package model.user;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.LocalDate;
 
@@ -53,6 +54,13 @@ class CustomerTest extends UserTest{
 	public void testCustomerHasMadeAnOrder() {
 		this.anOrder = ((Customer) this.newUser).makeAnOrder(this.coca, 3);
 		assertTrue(((Customer) this.newUser).hasMadeAnOrder());
+	}
+
+
+	@Test
+	public void testToString() {
+		assertEquals("Customer [username=" + newUser.getUserName() + ", name=" + newUser.getName() + ", email=" + newUser.getEmail() + 
+				  "]", this.newUser.toString());
 	}
 	
 }

@@ -147,4 +147,51 @@ class OrderTest {
 		this.newOrder.getArrive();
 		assertTrue(this.newOrder.isArrived());
 	}
+	
+	@Test
+	void testGetProduct() {
+		assertEquals(this.coca,this.newOrder.getProduct());
+	}
+	
+	@Test
+	void testGetUnitaryPrice() {
+		assertEquals(35.5f,this.newOrder.getUnitaryPrice());
+	}
+	
+	@Test
+	void testGetCustomer() {
+		assertEquals(this.customer,this.newOrder.getCustomer());
+	}
+	
+	@Test
+	void testGetQuantity() {
+		assertEquals(10,this.newOrder.getQuantity());
+	}
+	
+	@Test
+	void testGetOrderNumber() {
+		assertEquals(0,this.newOrder.getOrderNumber());
+	}
+	
+	@Test
+	void testGetTotalCost() {
+		assertEquals(355.0f,this.newOrder.getTotalCost());
+	}
+	
+	@Test
+	void testToString() {
+		assertEquals("Order [orderNumber=" + this.newOrder.getOrderNumber() + ", customer=" + this.newOrder.getCustomer() + ", product=" + this.newOrder.getProduct() + ", quantity="
+				+ this.newOrder.getQuantity() + ", state=" + this.newOrder.getState() + "]", newOrder.toString() );
+	}
+	
+	@Test
+	void testGetCreationDate() {
+		assertEquals(LocalDate.now(), this.newOrder.getCreationDate());
+	}
+	
+	@Test
+	void testGetLastStateModification() {
+		assertEquals(LocalDate.now(), this.newOrder.getLastStateModification());
+	}
+	
 }

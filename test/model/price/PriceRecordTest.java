@@ -18,12 +18,12 @@ class PriceRecordTest extends PriceTest {
 	public void setUp()  {
 		 //Dummy
 		this.coca = mock(Product.class);
-		this.today = mock(LocalDate.class);
+		this.today = LocalDate.now(); 
 		this.aCurrentPrice = mock(CurrentPrice.class);
 		 
 		when(this.aCurrentPrice.getValue()).thenReturn(30f);
 		when(this.aCurrentPrice.getProduct()).thenReturn(coca);
-		when(this.aCurrentPrice.getStartDate()).thenReturn(this.today);
+		when(this.aCurrentPrice.getStartDate()).thenReturn(today);
 		 
 		this.newPrice = PriceRecord.generateRecord(aCurrentPrice);
 		this.string = "Price value: 30.0";
@@ -47,8 +47,7 @@ class PriceRecordTest extends PriceTest {
 	
 	@Test 
 	void testGetFinishDate() {
-		LocalDate today = LocalDate.now();
-		assertEquals(today, this.newPrice.getFinishDate());
+		assertEquals(this.today, this.newPrice.getFinishDate());
 	}
 
 }

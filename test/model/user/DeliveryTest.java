@@ -73,4 +73,10 @@ class DeliveryTest extends UserTest{
 		assertTrue(((Delivery) this.newUser).hasDeliveredOrders());
 	}
 	
+	@Test
+	public void testToString() {
+		assertEquals("User [userName=" + newUser.getUserName() + ", name=" + newUser.getName() + ", email=" + newUser.getEmail() + 
+				", birthday=" + newUser.getBirthday() + "]", this.newUser.toString());
+	}
+	
 }

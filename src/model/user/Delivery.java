@@ -13,7 +13,8 @@ public class Delivery extends User {
 	private Float capacity;
 	private List<Order> deliveredOrders;
 	
-	protected Delivery() {}
+	@SuppressWarnings("unused")
+	private Delivery() {}
 
 	//Requerido por hibernate	
 	protected Delivery(String anUserName, String aPass, String aName, String anEmail, LocalDate aBirthday, Float aCapacity, 

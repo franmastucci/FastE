@@ -53,5 +53,6 @@ public abstract class UserTest {
 	public void testGetEmail() {
 		assertEquals("pepe@gmail.com", this.newUser.getEmail());
 	}
+	
 		
 }
