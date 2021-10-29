@@ -29,7 +29,12 @@ public class FastETestFile {
 
         faste.mappingTest();
 
-        //1° Query
+        //queryTest(faste);
+
+    }
+
+	private static void queryTest(FastETestFile faste) {
+		//1° Query
         QueryDAO queryDao = (QueryDAO) context.getBean("queryDAO");
 
         faste.printQueryResult(queryDao.getAllOrdersMadeByUser("pepe"));
@@ -60,8 +65,7 @@ public class FastETestFile {
 
         //10° Query
         faste.printQueryResult(queryDao.getProductsNotSold());
-
-    }
+	}
 
      private void printQueryResult(List<?> queryResultList) {
         queryResultList.stream().forEach(result-> System.out.println(result));

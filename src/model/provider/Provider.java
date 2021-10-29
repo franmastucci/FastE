@@ -1,16 +1,23 @@
 package model.provider;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
 
-@Component
+@Entity
+//@Table -> cuando le cambias el nombre
 public class Provider {
 	private static final String INVALID_CUIL = "El cuil debe ser un valor entre 20000000001 y 21000000000";
 	private static final String INVALID_NAME = "El nombre no puede estar en blanco";
 	private static final String INVALID_ADDRESS = "La dirección no puede estar en blanco";
+	@Id
+	@Column
 	private Long cuil;
+	@Column
 	private String name;
+	@Column
 	private String adress; // se podria implimentar una clase "direcciï¿½n" que contenga las coordenadas X e Y"
+	@Column
 	private Integer xCoordinate;
+	@Column
 	private Integer yCoordinate;
 	
 	

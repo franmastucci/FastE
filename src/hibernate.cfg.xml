@@ -31,15 +31,25 @@
         <!-- Drop and re-create the database schema on startup-->
         <property name="hbm2ddl.auto">create</property>
          
- 
-        <mapping resource="persistence/mapping/Provider.hbm.xml"/>
-		<mapping resource="persistence/mapping/User.hbm.xml"/>
+  		<mapping class="model.provider.Provider"/>
+        <mapping class="model.provider.Product"/>
+		<mapping class="model.user.User"/>
+		<mapping class="model.user.Customer"/>
+		<mapping class="model.user.Delivery"/>
+        <mapping class="model.price.Price"/>
+        <mapping class="model.price.CurrentPrice"/>
+        <mapping class="model.price.PriceRecord"/>
+        <mapping class="model.order.OrderStateFactory"/>
+        <mapping class="model.order.Order"/>
+        
+<!--         
         <mapping resource="persistence/mapping/Product.hbm.xml"/>
+        <mapping resource="persistence/mapping/Provider.hbm.xml"/>
+        <mapping resource="persistence/mapping/User.hbm.xml"/>
         <mapping resource="persistence/mapping/Price.hbm.xml"/>
         <mapping resource="persistence/mapping/OrderStateFactory.hbm.xml"/>
         <mapping resource="persistence/mapping/Order.hbm.xml"/>
         
-<!--         
  -->        
     </session-factory>
 

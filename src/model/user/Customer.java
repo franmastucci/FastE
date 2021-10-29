@@ -3,11 +3,14 @@ package model.user;
 import java.time.LocalDate;
 import java.util.*;
 
+import javax.persistence.*;
+
 import model.order.Order;
 import model.provider.Product;
-
+@Entity
+@DiscriminatorValue("Customer")
 public class Customer extends User {
-	
+	@OneToMany
 	private List<Order> ordersStory;
 	
 	@SuppressWarnings("unused")

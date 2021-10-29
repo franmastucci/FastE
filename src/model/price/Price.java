@@ -2,13 +2,18 @@ package model.price;
 
 import java.time.LocalDate;
 
-import model.provider.Product;
+import javax.persistence.*;
 
+import model.provider.Product;
+@MappedSuperclass
 public abstract class Price {
-	
+	@Id
 	private long id;
+	@Column
 	private Float value;
+	@ManyToOne(targetEntity = Product.class)
 	private Product product; 
+	@Column
 	private LocalDate startDate;
 
 	protected Price() {}

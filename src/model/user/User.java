@@ -5,16 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.*;
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
 public abstract class User {
 	private static final String INVALID_USER_NAME = "Se debe completar el nombre de usuario";
 	private static final String INVALID_PASS = "La contraseña debe contener al menos un caracter especial";
 	private static final String INVALID_EMAIL = "El email debe conterner el caracter '@' ";
 	private static final String INVALID_BIRTHDAY = "El usuario debe ser mayor de edad ";
 	private static final String INVALID_NAME = "Se debe completar el nombre";
+	@Id
 	protected String userName;
+	@Column
 	protected String pass;
+	@Column
 	protected String name;
+	@Column
 	protected String email;
+	@Column
 	protected LocalDate birthday;
 
 	

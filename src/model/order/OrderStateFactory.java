@@ -1,11 +1,16 @@
 package model.order;
 
+import javax.persistence.*;
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="state",discriminatorType=DiscriminatorType.STRING)
 public abstract class OrderStateFactory {
 
 	protected String CANT_BE_PREPARED = "La orden no puede ser preparada porque esta en estado ";
 	protected String CANT_BE_ARRIVED = "La orden no puede ser entregada porque esta en estado ";
 	protected String CANT_BE_CANCEL = "La orden no puede ser cancelada porque esta en estado ";	
-	
+	@Id
 	private String name;
 	private final static PendingState pendingState = new PendingState();
 	private final static PreparedState preparedState = new PreparedState();

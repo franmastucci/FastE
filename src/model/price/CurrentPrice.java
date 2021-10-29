@@ -2,8 +2,10 @@ package model.price;
 
 import java.time.LocalDate;
 
-import model.provider.Product;
+import javax.persistence.*;
 
+import model.provider.Product;
+@Entity
 public class CurrentPrice extends Price{
 
 	private static final String INVALID_PRICE_VALUE = "El precio del producto debe ser positivo";
@@ -20,7 +22,7 @@ public class CurrentPrice extends Price{
 	}
 		
 	//Metodo de acceso publico para crear instancias de CurrentPrice
-	public static Price settlePrice(Float aPriceValue, Product aProduct) {
+	public static CurrentPrice settlePrice(Float aPriceValue, Product aProduct) {
 		
 		assertIsAValidPriceValue(aPriceValue);
 		assertIsAValidProduct(aProduct);

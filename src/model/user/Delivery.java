@@ -4,13 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+
 import model.order.Order;
 
-
+@Entity
+@DiscriminatorValue("Delivery")
 public class Delivery extends User {
 	
 	private static final String INVALID_CAPACITY = "La capacidad debe ser mayor que 0 y menor que 20";
+	@Column
 	private Float capacity;
+	@OneToMany
 	private List<Order> deliveredOrders;
 	
 	@SuppressWarnings("unused")

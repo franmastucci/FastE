@@ -1,5 +1,10 @@
 package model.order;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Cancel")
 public class CancelState extends OrderStateFactory {
 		
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete

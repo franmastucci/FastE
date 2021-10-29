@@ -1,20 +1,32 @@
 package model.order;
 
 import java.time.LocalDate;
-import model.provider.Product;
-import model.user.User;
 
+import javax.persistence.*;
+
+import model.provider.Product;
+import model.user.Customer;
+import model.user.User;
+@Entity
 public class Order {
 	private static final String INVALID_CUSTOMER = "El cliente no puede ser nulo";
 	private static final String INVALID_PRODUCT = "El producto no puede ser nulo";
 	private static final String INVALID_QUANTITY = "La cantidad debe ser un valor psitivo";
+	@Id
 	private long orderNumber;
+	@ManyToOne(targetEntity = Customer.class)
 	private User customer;
+	@ManyToOne(targetEntity = Product.class)
 	private Product product;
+	@Column
 	private Float unitaryPrice;
+	@Column
 	private Integer quantity;
+	@Column
 	private OrderStateFactory state;
+	@Column
 	private LocalDate creationDate;
+	@Column
 	private LocalDate lastStateModification;
 
 	private Order() {}

@@ -1,26 +1,35 @@
 package model.provider;
 import java.util.*;
+
+import javax.persistence.*;
+
 import model.price.CurrentPrice;
 import model.price.Price;
 import model.price.PriceRecord;
 
-
+@Entity
 public class Product {
 	private static final String INVALID_NAME = "El nombre no puede estar en blanco";
 	private static final String INVALID_PPRICE_VALUE = "EL valor del precio debe ser positivo";
 	private static final String INVALID_WEIGHT = "El peso del producto debe ser mayor a 0 y menor a 20";
 	private static final String INVALID_PROVIDER = "Debe ingresar un proveedor no nulo ";
+	@Id
+	@Column
 	private String name;
+	@Column
 	private Provider provider;
+	@Column
 	private Float weight;
-	private Price price;
+	@Column
+	private CurrentPrice price;
+	@OneToMany
 	private List<PriceRecord> priceStory;
 	
 	private Product() {}
 	
 	//Constructor creado para cumplir con requerimientos de Hibernate
 	@SuppressWarnings("unused")  
-	Product(String aName, Provider aProvider, Float aWeight, Price aPrice, List<PriceRecord> aPriceStory) {
+	Product(String aName, Provider aProvider, Float aWeight, CurrentPrice aPrice, List<PriceRecord> aPriceStory) {
 		this.name = aName;
 		this.provider = aProvider;
 		this.weight = aWeight;
@@ -105,11 +114,11 @@ public class Product {
 		this.weight = aWeight;
 	}	
 
-	public Price getPrice() {
+	public CurrentPrice getPrice() {
 		return this.price;
 	}
 	
-	private void setPrice(Price aPrice) {
+	private void setPrice(CurrentPrice aPrice) {
 		this.price = aPrice;
 	}	
 
@@ -123,7 +132,7 @@ public class Product {
 	
 	public void updatePrice(Float aNewPriceValue) {
 		PriceRecord priceToRecord = PriceRecord.generateRecord(this.getPrice());
-		Price newPrice = CurrentPrice.settlePrice(aNewPriceValue, this);
+		CurrentPrice newPrice = CurrentPrice.settlePrice(aNewPriceValue, this);
 		this.getPriceStory().add(priceToRecord);
 		this.setPrice(newPrice);
 	}

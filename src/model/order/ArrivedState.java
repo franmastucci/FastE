@@ -1,5 +1,10 @@
 package model.order;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("Arrived")
 public class ArrivedState extends OrderStateFactory {
 	
 	//constructor temporalmente con modificador publico, evaluar si el alcance es de paquete
